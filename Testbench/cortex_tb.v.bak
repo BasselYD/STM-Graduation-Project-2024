@@ -1,0 +1,68 @@
+`timescale 1ns/1ps
+module cortex_tb ();
+                                        
+
+reg HCLK;
+reg HRESETn;
+wire TXD0;
+wire RXD0;
+wire TXD0_EN;
+wire TXD1;
+reg  RXD1;
+wire TXD1_EN;
+reg EXTIN;
+
+wire [15:0] SYSTEM_OUT;
+
+localparam clk_period                = 10;
+localparam pclk			     = 10*2;
+            
+/////clock generation///////
+always #(clk_period/2) HCLK=~HCLK;
+
+
+SYSTEM_TOP top (
+    .HCLK(HCLK),
+    .HRESETn(HRESETn),
+    .REMAP(REMAP),
+    .TXD0(TXD0),
+    .RXD0(RXD0),
+    .TXD0_EN(TXD0_EN),
+    .TXD1(TXD1),
+    .RXD1(RXD1),
+    .TXD1_EN(TXD1_EN),
+    .EXTIN(EXTIN),
+    .SYSTEM_OUT(SYSTEM_OUT)
+);
+    
+
+task receive ;
+  input [9:0] data ;
+  integer i;
+  begin
+    for (i = 0 ; i < 10 ; i = i+1)
+    begin
+      RXD1 = data[i] ;
+      repeat(32)
+      #(pclk);
+    end
+    
+  end
+endtask
+initial begin
+
+    HCLK = 0;
+    HRESETn = 1;
+    EXTIN = 1;
+    #(clk_period)
+    HRESETn = 0;
+    #(clk_period)
+    HRESETn = 1;
+    #10000;
+    receive(10'b1100100110);
+    #100000;
+    $stop;
+
+end
+             
+endmodule  

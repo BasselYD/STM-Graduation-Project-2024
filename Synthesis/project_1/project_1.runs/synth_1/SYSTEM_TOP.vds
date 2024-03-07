@@ -1,0 +1,1479 @@
+#-----------------------------------------------------------
+# Vivado v2018.2 (64-bit)
+# SW Build 2258646 on Thu Jun 14 20:03:12 MDT 2018
+# IP Build 2256618 on Thu Jun 14 22:10:49 MDT 2018
+# Start of session at: Tue Feb 27 16:10:26 2024
+# Process ID: 20400
+# Current directory: C:/Ain_shams/GP/Synthesis/project_1/project_1.runs/synth_1
+# Command line: vivado.exe -log SYSTEM_TOP.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source SYSTEM_TOP.tcl
+# Log file: C:/Ain_shams/GP/Synthesis/project_1/project_1.runs/synth_1/SYSTEM_TOP.vds
+# Journal file: C:/Ain_shams/GP/Synthesis/project_1/project_1.runs/synth_1\vivado.jou
+#-----------------------------------------------------------
+source SYSTEM_TOP.tcl -notrace
+Command: synth_design -top SYSTEM_TOP -part xc7v585tffg1157-3 -flatten_hierarchy none
+Starting synth_design
+Attempting to get a license for feature 'Synthesis' and/or device 'xc7v585t'
+INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7v585t'
+INFO: Launching helper process for spawning children vivado processes
+INFO: Helper process launched with PID 23652 
+---------------------------------------------------------------------------------
+Starting Synthesize : Time (s): cpu = 00:00:01 ; elapsed = 00:00:02 . Memory (MB): peak = 454.727 ; gain = 87.617
+---------------------------------------------------------------------------------
+INFO: [Synth 8-6157] synthesizing module 'SYSTEM_TOP' [C:/Ain_shams/GP/Synthesis/project_1/project_1.srcs/sources_1/imports/RTL/top/SYSTEM_TOP.v:1]
+	Parameter AW bound to: 16 - type: integer 
+	Parameter Include_dual_timer bound to: 1 - type: integer 
+	Parameter MEMFILE bound to: ../Program/Scratch/main.bin - type: string 
+INFO: [Synth 8-6157] synthesizing module 'CORTEXM0INTEGRATION' [C:/Ain_shams/GP/Synthesis/project_1/project_1.srcs/sources_1/imports/RTL/cortex/CORTEXM0INTEGRATION.v:29]
+INFO: [Synth 8-6157] synthesizing module 'cortexm0ds_logic' [C:/Ain_shams/GP/Synthesis/project_1/project_1.srcs/sources_1/imports/RTL/cortex/cortexm0ds_logic.v:27]
+INFO: [Synth 8-6155] done synthesizing module 'cortexm0ds_logic' (1#1) [C:/Ain_shams/GP/Synthesis/project_1/project_1.srcs/sources_1/imports/RTL/cortex/cortexm0ds_logic.v:27]
+INFO: [Synth 8-6155] done synthesizing module 'CORTEXM0INTEGRATION' (2#1) [C:/Ain_shams/GP/Synthesis/project_1/project_1.srcs/sources_1/imports/RTL/cortex/CORTEXM0INTEGRATION.v:29]
+INFO: [Synth 8-6157] synthesizing module 'RCC' [C:/Ain_shams/GP/Synthesis/project_1/project_1.srcs/sources_1/imports/RTL/ahb_peripherals/rcc/RCC.v:1]
+	Parameter scale1 bound to: 8 - type: integer 
+	Parameter scale2 bound to: 8 - type: integer 
+	Parameter scale3 bound to: 8 - type: integer 
+	Parameter RESET_WDOG bound to: 2 - type: integer 
+	Parameter RESET_APB bound to: 2 - type: integer 
+INFO: [Synth 8-6157] synthesizing module 'CLK_GATE' [C:/Ain_shams/GP/Synthesis/project_1/project_1.srcs/sources_1/imports/RTL/ahb_peripherals/rcc/CLK_GATE.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'CLK_GATE' (3#1) [C:/Ain_shams/GP/Synthesis/project_1/project_1.srcs/sources_1/imports/RTL/ahb_peripherals/rcc/CLK_GATE.v:6]
+INFO: [Synth 8-6157] synthesizing module 'CLKDIV' [C:/Ain_shams/GP/Synthesis/project_1/project_1.srcs/sources_1/imports/RTL/ahb_peripherals/rcc/CLKDIV.v:1]
+	Parameter width bound to: 8 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'CLKDIV' (4#1) [C:/Ain_shams/GP/Synthesis/project_1/project_1.srcs/sources_1/imports/RTL/ahb_peripherals/rcc/CLKDIV.v:1]
+INFO: [Synth 8-6157] synthesizing module 'RESET_SYNC' [C:/Ain_shams/GP/Synthesis/project_1/project_1.srcs/sources_1/imports/RTL/ahb_peripherals/rcc/RESET_SYNC.v:1]
+	Parameter NUM_STAGES bound to: 2 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'RESET_SYNC' (5#1) [C:/Ain_shams/GP/Synthesis/project_1/project_1.srcs/sources_1/imports/RTL/ahb_peripherals/rcc/RESET_SYNC.v:1]
+INFO: [Synth 8-6155] done synthesizing module 'RCC' (6#1) [C:/Ain_shams/GP/Synthesis/project_1/project_1.srcs/sources_1/imports/RTL/ahb_peripherals/rcc/RCC.v:1]
+INFO: [Synth 8-6157] synthesizing module 'Instruction_SRAM_TOP' [C:/Ain_shams/GP/Synthesis/project_1/project_1.srcs/sources_1/imports/RTL/ahb_peripherals/memory/Instruction_SRAM_TOP.v:1]
+	Parameter AW bound to: 16 - type: integer 
+	Parameter MEMFILE bound to: ../Program/Scratch/main.bin - type: string 
+INFO: [Synth 8-6157] synthesizing module 'cmsdk_ahb_to_isram' [C:/Ain_shams/GP/Synthesis/project_1/project_1.srcs/sources_1/imports/RTL/ahb_peripherals/memory/cmsdk_ahb_to_isram.v:26]
+	Parameter AW bound to: 16 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'cmsdk_ahb_to_isram' (7#1) [C:/Ain_shams/GP/Synthesis/project_1/project_1.srcs/sources_1/imports/RTL/ahb_peripherals/memory/cmsdk_ahb_to_isram.v:26]
+INFO: [Synth 8-6157] synthesizing module 'cmsdk_fpga_isram' [C:/Ain_shams/GP/Synthesis/project_1/project_1.srcs/sources_1/imports/RTL/ahb_peripherals/memory/cmsdk_fpga_isram.v:27]
+	Parameter AW bound to: 16 - type: integer 
+	Parameter AWT bound to: 65535 - type: integer 
+	Parameter MEM_SIZE bound to: 262144 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'cmsdk_fpga_isram' (8#1) [C:/Ain_shams/GP/Synthesis/project_1/project_1.srcs/sources_1/imports/RTL/ahb_peripherals/memory/cmsdk_fpga_isram.v:27]
+INFO: [Synth 8-6155] done synthesizing module 'Instruction_SRAM_TOP' (9#1) [C:/Ain_shams/GP/Synthesis/project_1/project_1.srcs/sources_1/imports/RTL/ahb_peripherals/memory/Instruction_SRAM_TOP.v:1]
+INFO: [Synth 8-6157] synthesizing module 'DATA_SRAM_TOP' [C:/Ain_shams/GP/Synthesis/project_1/project_1.srcs/sources_1/imports/RTL/ahb_peripherals/memory/DATA_SRAM_TOP.v:1]
+	Parameter AW bound to: 16 - type: integer 
+INFO: [Synth 8-6157] synthesizing module 'cmsdk_ahb_to_dsram' [C:/Ain_shams/GP/Synthesis/project_1/project_1.srcs/sources_1/imports/RTL/ahb_peripherals/memory/cmsdk_ahb_to_dsram.v:26]
+	Parameter AW bound to: 16 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'cmsdk_ahb_to_dsram' (10#1) [C:/Ain_shams/GP/Synthesis/project_1/project_1.srcs/sources_1/imports/RTL/ahb_peripherals/memory/cmsdk_ahb_to_dsram.v:26]
+INFO: [Synth 8-6157] synthesizing module 'cmsdk_fpga_dsram' [C:/Ain_shams/GP/Synthesis/project_1/project_1.srcs/sources_1/imports/RTL/ahb_peripherals/memory/cmsdk_fpga_dsram.v:27]
+	Parameter AW bound to: 16 - type: integer 
+	Parameter MEMFILE bound to: image.hex - type: string 
+	Parameter AWT bound to: 65535 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'cmsdk_fpga_dsram' (11#1) [C:/Ain_shams/GP/Synthesis/project_1/project_1.srcs/sources_1/imports/RTL/ahb_peripherals/memory/cmsdk_fpga_dsram.v:27]
+INFO: [Synth 8-6155] done synthesizing module 'DATA_SRAM_TOP' (12#1) [C:/Ain_shams/GP/Synthesis/project_1/project_1.srcs/sources_1/imports/RTL/ahb_peripherals/memory/DATA_SRAM_TOP.v:1]
+INFO: [Synth 8-6157] synthesizing module 'cmsdk_apb_subsystem' [C:/Ain_shams/GP/Synthesis/project_1/project_1.srcs/sources_1/imports/RTL/ahb_peripherals/apb_subsystem/subsystem_top/cmsdk_apb_subsystem.v:26]
+	Parameter Include_dual_timer bound to: 1 - type: integer 
+INFO: [Synth 8-6157] synthesizing module 'cmsdk_apb_dualtimers' [C:/Ain_shams/GP/Synthesis/project_1/project_1.srcs/sources_1/imports/RTL/ahb_peripherals/apb_subsystem/dual_timer/cmsdk_apb_dualtimers.v:31]
+INFO: [Synth 8-226] default block is never used [C:/Ain_shams/GP/Synthesis/project_1/project_1.srcs/sources_1/imports/RTL/ahb_peripherals/apb_subsystem/dual_timer/cmsdk_apb_dualtimers.v:197]
+INFO: [Synth 8-226] default block is never used [C:/Ain_shams/GP/Synthesis/project_1/project_1.srcs/sources_1/imports/RTL/ahb_peripherals/apb_subsystem/dual_timer/cmsdk_apb_dualtimers.v:227]
+INFO: [Synth 8-6157] synthesizing module 'cmsdk_apb_dualtimers_frc' [C:/Ain_shams/GP/Synthesis/project_1/project_1.srcs/sources_1/imports/RTL/ahb_peripherals/apb_subsystem/dual_timer/cmsdk_apb_dualtimers_frc.v:31]
+INFO: [Synth 8-6155] done synthesizing module 'cmsdk_apb_dualtimers_frc' (13#1) [C:/Ain_shams/GP/Synthesis/project_1/project_1.srcs/sources_1/imports/RTL/ahb_peripherals/apb_subsystem/dual_timer/cmsdk_apb_dualtimers_frc.v:31]
+INFO: [Synth 8-6155] done synthesizing module 'cmsdk_apb_dualtimers' (14#1) [C:/Ain_shams/GP/Synthesis/project_1/project_1.srcs/sources_1/imports/RTL/ahb_peripherals/apb_subsystem/dual_timer/cmsdk_apb_dualtimers.v:31]
+INFO: [Synth 8-6157] synthesizing module 'APB_Bridge' [C:/Ain_shams/GP/Synthesis/project_1/project_1.srcs/sources_1/imports/RTL/ahb_peripherals/apb_subsystem/bridge/APB_Bridge.v:64]
+	Parameter HADDR_SIZE bound to: 16 - type: integer 
+	Parameter HDATA_SIZE bound to: 32 - type: integer 
+	Parameter PADDR_SIZE bound to: 16 - type: integer 
+	Parameter PDATA_SIZE bound to: 32 - type: integer 
+	Parameter SYNC_DEPTH bound to: 3 - type: integer 
+	Parameter ST_AHB_IDLE bound to: 2'b00 
+	Parameter ST_AHB_TRANSFER bound to: 2'b01 
+	Parameter ST_AHB_ERROR bound to: 2'b10 
+	Parameter ST_APB_IDLE bound to: 2'b00 
+	Parameter ST_APB_SETUP bound to: 2'b01 
+	Parameter ST_APB_TRANSFER bound to: 2'b10 
+	Parameter PPROT_NORMAL bound to: 3'b000 
+	Parameter PPROT_PRIVILEGED bound to: 3'b001 
+	Parameter PPROT_SECURE bound to: 3'b000 
+	Parameter PPROT_NONSECURE bound to: 3'b010 
+	Parameter PPROT_DATA bound to: 3'b000 
+	Parameter PPROT_INSTRUCTION bound to: 3'b100 
+	Parameter SYNC_DEPTH_MIN bound to: 3 - type: integer 
+	Parameter SYNC_DEPTH_CHK bound to: 3 - type: integer 
+	Parameter HTRANS_SIZE bound to: 2 - type: integer 
+	Parameter HSIZE_SIZE bound to: 3 - type: integer 
+	Parameter HBURST_SIZE bound to: 3 - type: integer 
+	Parameter HPROT_SIZE bound to: 4 - type: integer 
+	Parameter HTRANS_IDLE bound to: 2'b00 
+	Parameter HTRANS_BUSY bound to: 2'b01 
+	Parameter HTRANS_NONSEQ bound to: 2'b10 
+	Parameter HTRANS_SEQ bound to: 2'b11 
+	Parameter HSIZE_B8 bound to: 3'b000 
+	Parameter HSIZE_B16 bound to: 3'b001 
+	Parameter HSIZE_B32 bound to: 3'b010 
+	Parameter HSIZE_B64 bound to: 3'b011 
+	Parameter HSIZE_B128 bound to: 3'b100 
+	Parameter HSIZE_B256 bound to: 3'b101 
+	Parameter HSIZE_B512 bound to: 3'b110 
+	Parameter HSIZE_B1024 bound to: 3'b111 
+	Parameter HSIZE_BYTE bound to: 3'b000 
+	Parameter HSIZE_HWORD bound to: 3'b001 
+	Parameter HSIZE_WORD bound to: 3'b010 
+	Parameter HSIZE_DWORD bound to: 3'b011 
+	Parameter HBURST_SINGLE bound to: 3'b000 
+	Parameter HBURST_INCR bound to: 3'b001 
+	Parameter HBURST_WRAP4 bound to: 3'b010 
+	Parameter HBURST_INCR4 bound to: 3'b011 
+	Parameter HBURST_WRAP8 bound to: 3'b100 
+	Parameter HBURST_INCR8 bound to: 3'b101 
+	Parameter HBURST_WRAP16 bound to: 3'b110 
+	Parameter HBURST_INCR16 bound to: 3'b111 
+	Parameter HPROT_OPCODE bound to: 4'b0000 
+	Parameter HPROT_DATA bound to: 4'b0001 
+	Parameter HPROT_USER bound to: 4'b0000 
+	Parameter HPROT_PRIVILEGED bound to: 4'b0010 
+	Parameter HPROT_NON_BUFFERABLE bound to: 4'b0000 
+	Parameter HPROT_BUFFERABLE bound to: 4'b0100 
+	Parameter HPROT_NON_CACHEABLE bound to: 4'b0000 
+	Parameter HPROT_CACHEABLE bound to: 4'b1000 
+	Parameter HRESP_OKAY bound to: 1'b0 
+	Parameter HRESP_ERROR bound to: 1'b1 
+INFO: [Synth 8-155] case statement is not full and has no default [C:/Ain_shams/GP/Synthesis/project_1/project_1.srcs/sources_1/imports/RTL/ahb_peripherals/apb_subsystem/bridge/APB_Bridge.v:372]
+INFO: [Synth 8-155] case statement is not full and has no default [C:/Ain_shams/GP/Synthesis/project_1/project_1.srcs/sources_1/imports/RTL/ahb_peripherals/apb_subsystem/bridge/APB_Bridge.v:503]
+INFO: [Synth 8-6155] done synthesizing module 'APB_Bridge' (15#1) [C:/Ain_shams/GP/Synthesis/project_1/project_1.srcs/sources_1/imports/RTL/ahb_peripherals/apb_subsystem/bridge/APB_Bridge.v:64]
+INFO: [Synth 8-6157] synthesizing module 'APB_decoder' [C:/Ain_shams/GP/Synthesis/project_1/project_1.srcs/sources_1/imports/RTL/ahb_peripherals/apb_subsystem/subsystem_top/APB_decoder.v:1]
+	Parameter Include_dual_timer bound to: 1 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'APB_decoder' (16#1) [C:/Ain_shams/GP/Synthesis/project_1/project_1.srcs/sources_1/imports/RTL/ahb_peripherals/apb_subsystem/subsystem_top/APB_decoder.v:1]
+INFO: [Synth 8-6157] synthesizing module 'cmsdk_apb_timer' [C:/Ain_shams/GP/Synthesis/project_1/project_1.srcs/sources_1/imports/RTL/ahb_peripherals/apb_subsystem/timer/cmsdk_apb_timer.v:45]
+	Parameter ARM_CMSDK_APB_TIMER_PID0 bound to: 8'b00100010 
+	Parameter ARM_CMSDK_APB_TIMER_PID1 bound to: 8'b10111000 
+	Parameter ARM_CMSDK_APB_TIMER_PID2 bound to: 8'b00011011 
+	Parameter ARM_CMSDK_APB_TIMER_PID3 bound to: 4'b0000 
+	Parameter ARM_CMSDK_APB_TIMER_PID4 bound to: 8'b00000100 
+	Parameter ARM_CMSDK_APB_TIMER_PID5 bound to: 8'b00000000 
+	Parameter ARM_CMSDK_APB_TIMER_PID6 bound to: 8'b00000000 
+	Parameter ARM_CMSDK_APB_TIMER_PID7 bound to: 8'b00000000 
+	Parameter ARM_CMSDK_APB_TIMER_CID0 bound to: 8'b00001101 
+	Parameter ARM_CMSDK_APB_TIMER_CID1 bound to: 8'b11110000 
+	Parameter ARM_CMSDK_APB_TIMER_CID2 bound to: 8'b00000101 
+	Parameter ARM_CMSDK_APB_TIMER_CID3 bound to: 8'b10110001 
+INFO: [Synth 8-226] default block is never used [C:/Ain_shams/GP/Synthesis/project_1/project_1.srcs/sources_1/imports/RTL/ahb_peripherals/apb_subsystem/timer/cmsdk_apb_timer.v:163]
+INFO: [Synth 8-226] default block is never used [C:/Ain_shams/GP/Synthesis/project_1/project_1.srcs/sources_1/imports/RTL/ahb_peripherals/apb_subsystem/timer/cmsdk_apb_timer.v:172]
+INFO: [Synth 8-226] default block is never used [C:/Ain_shams/GP/Synthesis/project_1/project_1.srcs/sources_1/imports/RTL/ahb_peripherals/apb_subsystem/timer/cmsdk_apb_timer.v:209]
+INFO: [Synth 8-6155] done synthesizing module 'cmsdk_apb_timer' (17#1) [C:/Ain_shams/GP/Synthesis/project_1/project_1.srcs/sources_1/imports/RTL/ahb_peripherals/apb_subsystem/timer/cmsdk_apb_timer.v:45]
+INFO: [Synth 8-6157] synthesizing module 'cmsdk_apb_watchdog' [C:/Ain_shams/GP/Synthesis/project_1/project_1.srcs/sources_1/imports/RTL/ahb_peripherals/apb_subsystem/watchdog/cmsdk_apb_watchdog.v:29]
+	Parameter WDOG_PERIPH_ID0 bound to: 8'b00100100 
+	Parameter WDOG_PERIPH_ID1 bound to: 8'b10111000 
+	Parameter WDOG_PERIPH_ID2 bound to: 8'b00011011 
+	Parameter WDOG_PERIPH_ID3 bound to: 4'b0000 
+	Parameter WDOG_PERIPH_ID4 bound to: 8'b00000100 
+	Parameter WDOG_PERIPH_ID5 bound to: 8'b00000000 
+	Parameter WDOG_PERIPH_ID6 bound to: 8'b00000000 
+	Parameter WDOG_PERIPH_ID7 bound to: 8'b00000000 
+	Parameter WDOG_PCELL_ID0 bound to: 8'b00001101 
+	Parameter WDOG_PCELL_ID1 bound to: 8'b11110000 
+	Parameter WDOG_PCELL_ID2 bound to: 8'b00000101 
+	Parameter WDOG_PCELL_ID3 bound to: 8'b10110001 
+INFO: [Synth 8-226] default block is never used [C:/Ain_shams/GP/Synthesis/project_1/project_1.srcs/sources_1/imports/RTL/ahb_peripherals/apb_subsystem/watchdog/cmsdk_apb_watchdog.v:249]
+INFO: [Synth 8-226] default block is never used [C:/Ain_shams/GP/Synthesis/project_1/project_1.srcs/sources_1/imports/RTL/ahb_peripherals/apb_subsystem/watchdog/cmsdk_apb_watchdog.v:270]
+INFO: [Synth 8-226] default block is never used [C:/Ain_shams/GP/Synthesis/project_1/project_1.srcs/sources_1/imports/RTL/ahb_peripherals/apb_subsystem/watchdog/cmsdk_apb_watchdog.v:272]
+INFO: [Synth 8-6157] synthesizing module 'cmsdk_apb_watchdog_frc' [C:/Ain_shams/GP/Synthesis/project_1/project_1.srcs/sources_1/imports/RTL/ahb_peripherals/apb_subsystem/watchdog/cmsdk_apb_watchdog_frc.v:33]
+INFO: [Synth 8-6155] done synthesizing module 'cmsdk_apb_watchdog_frc' (18#1) [C:/Ain_shams/GP/Synthesis/project_1/project_1.srcs/sources_1/imports/RTL/ahb_peripherals/apb_subsystem/watchdog/cmsdk_apb_watchdog_frc.v:33]
+INFO: [Synth 8-6155] done synthesizing module 'cmsdk_apb_watchdog' (19#1) [C:/Ain_shams/GP/Synthesis/project_1/project_1.srcs/sources_1/imports/RTL/ahb_peripherals/apb_subsystem/watchdog/cmsdk_apb_watchdog.v:29]
+INFO: [Synth 8-6157] synthesizing module 'cmsdk_apb_uart' [C:/Ain_shams/GP/Synthesis/project_1/project_1.srcs/sources_1/imports/RTL/ahb_peripherals/apb_subsystem/uart/cmsdk_apb_uart.v:56]
+	Parameter ARM_CMSDK_APB_UART_PID4 bound to: 8'b00000100 
+	Parameter ARM_CMSDK_APB_UART_PID5 bound to: 8'b00000000 
+	Parameter ARM_CMSDK_APB_UART_PID6 bound to: 8'b00000000 
+	Parameter ARM_CMSDK_APB_UART_PID7 bound to: 8'b00000000 
+	Parameter ARM_CMSDK_APB_UART_PID0 bound to: 8'b00100001 
+	Parameter ARM_CMSDK_APB_UART_PID1 bound to: 8'b10111000 
+	Parameter ARM_CMSDK_APB_UART_PID2 bound to: 8'b00011011 
+	Parameter ARM_CMSDK_APB_UART_PID3 bound to: 4'b0000 
+	Parameter ARM_CMSDK_APB_UART_CID0 bound to: 8'b00001101 
+	Parameter ARM_CMSDK_APB_UART_CID1 bound to: 8'b11110000 
+	Parameter ARM_CMSDK_APB_UART_CID2 bound to: 8'b00000101 
+	Parameter ARM_CMSDK_APB_UART_CID3 bound to: 8'b10110001 
+INFO: [Synth 8-226] default block is never used [C:/Ain_shams/GP/Synthesis/project_1/project_1.srcs/sources_1/imports/RTL/ahb_peripherals/apb_subsystem/uart/cmsdk_apb_uart.v:263]
+INFO: [Synth 8-226] default block is never used [C:/Ain_shams/GP/Synthesis/project_1/project_1.srcs/sources_1/imports/RTL/ahb_peripherals/apb_subsystem/uart/cmsdk_apb_uart.v:275]
+INFO: [Synth 8-6155] done synthesizing module 'cmsdk_apb_uart' (20#1) [C:/Ain_shams/GP/Synthesis/project_1/project_1.srcs/sources_1/imports/RTL/ahb_peripherals/apb_subsystem/uart/cmsdk_apb_uart.v:56]
+INFO: [Synth 8-6157] synthesizing module 'cmsdk_apb_slave_mux' [C:/Ain_shams/GP/Synthesis/project_1/project_1.srcs/sources_1/imports/RTL/ahb_peripherals/apb_subsystem/subsystem_top/cmsdk_apb_slave_mux.v:26]
+INFO: [Synth 8-6155] done synthesizing module 'cmsdk_apb_slave_mux' (21#1) [C:/Ain_shams/GP/Synthesis/project_1/project_1.srcs/sources_1/imports/RTL/ahb_peripherals/apb_subsystem/subsystem_top/cmsdk_apb_slave_mux.v:26]
+INFO: [Synth 8-6157] synthesizing module 'cmsdk_irq_sync' [C:/Ain_shams/GP/Synthesis/project_1/project_1.srcs/sources_1/imports/RTL/ahb_peripherals/apb_subsystem/subsystem_top/cmsdk_irq_sync.v:26]
+INFO: [Synth 8-6155] done synthesizing module 'cmsdk_irq_sync' (22#1) [C:/Ain_shams/GP/Synthesis/project_1/project_1.srcs/sources_1/imports/RTL/ahb_peripherals/apb_subsystem/subsystem_top/cmsdk_irq_sync.v:26]
+INFO: [Synth 8-6155] done synthesizing module 'cmsdk_apb_subsystem' (23#1) [C:/Ain_shams/GP/Synthesis/project_1/project_1.srcs/sources_1/imports/RTL/ahb_peripherals/apb_subsystem/subsystem_top/cmsdk_apb_subsystem.v:26]
+INFO: [Synth 8-6157] synthesizing module 'GPIO_HW' [C:/Ain_shams/GP/Synthesis/project_1/project_1.srcs/sources_1/imports/RTL/ahb_peripherals/gpio/GPIO_HW.v:1]
+INFO: [Synth 8-6157] synthesizing module 'mux_2x1' [C:/Ain_shams/GP/Synthesis/project_1/project_1.srcs/sources_1/imports/RTL/ahb_peripherals/gpio/mux_2x1.v:1]
+INFO: [Synth 8-6155] done synthesizing module 'mux_2x1' (24#1) [C:/Ain_shams/GP/Synthesis/project_1/project_1.srcs/sources_1/imports/RTL/ahb_peripherals/gpio/mux_2x1.v:1]
+INFO: [Synth 8-6157] synthesizing module 'tri_state_buffer' [C:/Ain_shams/GP/Synthesis/project_1/project_1.srcs/sources_1/imports/RTL/ahb_peripherals/gpio/tri_state_buffer.v:1]
+INFO: [Synth 8-6155] done synthesizing module 'tri_state_buffer' (25#1) [C:/Ain_shams/GP/Synthesis/project_1/project_1.srcs/sources_1/imports/RTL/ahb_peripherals/gpio/tri_state_buffer.v:1]
+INFO: [Synth 8-6157] synthesizing module 'cmsdk_ahb_gpio' [C:/Ain_shams/GP/Synthesis/project_1/project_1.srcs/sources_1/imports/RTL/ahb_peripherals/gpio/cmsdk_ahb_gpio.v:24]
+	Parameter ALTERNATE_FUNC_MASK bound to: 16'b1111111111111111 
+	Parameter ALTERNATE_FUNC_DEFAULT bound to: 16'b0000000000000000 
+	Parameter BE bound to: 0 - type: integer 
+INFO: [Synth 8-6157] synthesizing module 'cmsdk_ahb_to_iop' [C:/Ain_shams/GP/Synthesis/project_1/project_1.srcs/sources_1/imports/RTL/ahb_peripherals/gpio/cmsdk_ahb_to_iop.v:28]
+INFO: [Synth 8-6155] done synthesizing module 'cmsdk_ahb_to_iop' (26#1) [C:/Ain_shams/GP/Synthesis/project_1/project_1.srcs/sources_1/imports/RTL/ahb_peripherals/gpio/cmsdk_ahb_to_iop.v:28]
+INFO: [Synth 8-6157] synthesizing module 'cmsdk_iop_gpio' [C:/Ain_shams/GP/Synthesis/project_1/project_1.srcs/sources_1/imports/RTL/ahb_peripherals/gpio/cmsdk_iop_gpio.v:57]
+	Parameter ALTERNATE_FUNC_MASK bound to: 16'b1111111111111111 
+	Parameter ALTERNATE_FUNC_DEFAULT bound to: 16'b0000000000000000 
+	Parameter BE bound to: 0 - type: integer 
+	Parameter PortWidth bound to: 16 - type: integer 
+	Parameter ARM_CMSDK_IOP_GPIO_PID0 bound to: 32 - type: integer 
+	Parameter ARM_CMSDK_IOP_GPIO_PID1 bound to: 184 - type: integer 
+	Parameter ARM_CMSDK_IOP_GPIO_PID2 bound to: 27 - type: integer 
+	Parameter ARM_CMSDK_IOP_GPIO_PID3 bound to: 0 - type: integer 
+	Parameter ARM_CMSDK_IOP_GPIO_PID4 bound to: 4 - type: integer 
+	Parameter ARM_CMSDK_IOP_GPIO_PID5 bound to: 0 - type: integer 
+	Parameter ARM_CMSDK_IOP_GPIO_PID6 bound to: 0 - type: integer 
+	Parameter ARM_CMSDK_IOP_GPIO_PID7 bound to: 0 - type: integer 
+	Parameter ARM_CMSDK_IOP_GPIO_CID0 bound to: 13 - type: integer 
+	Parameter ARM_CMSDK_IOP_GPIO_CID1 bound to: 240 - type: integer 
+	Parameter ARM_CMSDK_IOP_GPIO_CID2 bound to: 5 - type: integer 
+	Parameter ARM_CMSDK_IOP_GPIO_CID3 bound to: 177 - type: integer 
+INFO: [Synth 8-226] default block is never used [C:/Ain_shams/GP/Synthesis/project_1/project_1.srcs/sources_1/imports/RTL/ahb_peripherals/gpio/cmsdk_iop_gpio.v:173]
+INFO: [Synth 8-226] default block is never used [C:/Ain_shams/GP/Synthesis/project_1/project_1.srcs/sources_1/imports/RTL/ahb_peripherals/gpio/cmsdk_iop_gpio.v:176]
+INFO: [Synth 8-226] default block is never used [C:/Ain_shams/GP/Synthesis/project_1/project_1.srcs/sources_1/imports/RTL/ahb_peripherals/gpio/cmsdk_iop_gpio.v:202]
+WARNING: [Synth 8-3936] Found unconnected internal register 'IOWDATALE_reg' and it is trimmed from '32' to '16' bits. [C:/Ain_shams/GP/Synthesis/project_1/project_1.srcs/sources_1/imports/RTL/ahb_peripherals/gpio/cmsdk_iop_gpio.v:242]
+INFO: [Synth 8-6155] done synthesizing module 'cmsdk_iop_gpio' (27#1) [C:/Ain_shams/GP/Synthesis/project_1/project_1.srcs/sources_1/imports/RTL/ahb_peripherals/gpio/cmsdk_iop_gpio.v:57]
+INFO: [Synth 8-6155] done synthesizing module 'cmsdk_ahb_gpio' (28#1) [C:/Ain_shams/GP/Synthesis/project_1/project_1.srcs/sources_1/imports/RTL/ahb_peripherals/gpio/cmsdk_ahb_gpio.v:24]
+INFO: [Synth 8-6155] done synthesizing module 'GPIO_HW' (29#1) [C:/Ain_shams/GP/Synthesis/project_1/project_1.srcs/sources_1/imports/RTL/ahb_peripherals/gpio/GPIO_HW.v:1]
+INFO: [Synth 8-6157] synthesizing module 'AHB_BusMatrix_lite' [C:/Ain_shams/GP/Synthesis/project_1/project_1.srcs/sources_1/imports/RTL/bus_matrix/AHB_BusMatrix_lite.v:33]
+INFO: [Synth 8-6157] synthesizing module 'AHB_BusMatrix' [C:/Ain_shams/GP/Synthesis/project_1/project_1.srcs/sources_1/imports/RTL/bus_matrix/AHB_BusMatrix.v:45]
+INFO: [Synth 8-6157] synthesizing module 'AHB_InputStage' [C:/Ain_shams/GP/Synthesis/project_1/project_1.srcs/sources_1/imports/RTL/bus_matrix/AHB_InputStage.v:32]
+INFO: [Synth 8-226] default block is never used [C:/Ain_shams/GP/Synthesis/project_1/project_1.srcs/sources_1/imports/RTL/bus_matrix/AHB_InputStage.v:391]
+INFO: [Synth 8-226] default block is never used [C:/Ain_shams/GP/Synthesis/project_1/project_1.srcs/sources_1/imports/RTL/bus_matrix/AHB_InputStage.v:407]
+INFO: [Synth 8-6155] done synthesizing module 'AHB_InputStage' (30#1) [C:/Ain_shams/GP/Synthesis/project_1/project_1.srcs/sources_1/imports/RTL/bus_matrix/AHB_InputStage.v:32]
+INFO: [Synth 8-6157] synthesizing module 'AHB_DecoderStageS0' [C:/Ain_shams/GP/Synthesis/project_1/project_1.srcs/sources_1/imports/RTL/bus_matrix/AHB_DecoderStageS0.v:36]
+INFO: [Synth 8-6157] synthesizing module 'AHB_BusMatrix_default_slave' [C:/Ain_shams/GP/Synthesis/project_1/project_1.srcs/sources_1/imports/RTL/bus_matrix/AHB_BusMatrix_default_slave.v:31]
+INFO: [Synth 8-6155] done synthesizing module 'AHB_BusMatrix_default_slave' (31#1) [C:/Ain_shams/GP/Synthesis/project_1/project_1.srcs/sources_1/imports/RTL/bus_matrix/AHB_BusMatrix_default_slave.v:31]
+INFO: [Synth 8-6155] done synthesizing module 'AHB_DecoderStageS0' (32#1) [C:/Ain_shams/GP/Synthesis/project_1/project_1.srcs/sources_1/imports/RTL/bus_matrix/AHB_DecoderStageS0.v:36]
+INFO: [Synth 8-6157] synthesizing module 'AHB_OutputStage' [C:/Ain_shams/GP/Synthesis/project_1/project_1.srcs/sources_1/imports/RTL/bus_matrix/AHB_OutputStage.v:35]
+INFO: [Synth 8-6157] synthesizing module 'AHB_Arbiter' [C:/Ain_shams/GP/Synthesis/project_1/project_1.srcs/sources_1/imports/RTL/bus_matrix/AHB_Arbiter.v:35]
+INFO: [Synth 8-226] default block is never used [C:/Ain_shams/GP/Synthesis/project_1/project_1.srcs/sources_1/imports/RTL/bus_matrix/AHB_Arbiter.v:149]
+INFO: [Synth 8-226] default block is never used [C:/Ain_shams/GP/Synthesis/project_1/project_1.srcs/sources_1/imports/RTL/bus_matrix/AHB_Arbiter.v:152]
+INFO: [Synth 8-6155] done synthesizing module 'AHB_Arbiter' (33#1) [C:/Ain_shams/GP/Synthesis/project_1/project_1.srcs/sources_1/imports/RTL/bus_matrix/AHB_Arbiter.v:35]
+WARNING: [Synth 8-6014] Unused sequential element data_in_port_reg was removed.  [C:/Ain_shams/GP/Synthesis/project_1/project_1.srcs/sources_1/imports/RTL/bus_matrix/AHB_OutputStage.v:301]
+INFO: [Synth 8-6155] done synthesizing module 'AHB_OutputStage' (34#1) [C:/Ain_shams/GP/Synthesis/project_1/project_1.srcs/sources_1/imports/RTL/bus_matrix/AHB_OutputStage.v:35]
+WARNING: [Synth 8-3848] Net SCANOUTHCLK in module/entity AHB_BusMatrix does not have driver. [C:/Ain_shams/GP/Synthesis/project_1/project_1.srcs/sources_1/imports/RTL/bus_matrix/AHB_BusMatrix.v:262]
+INFO: [Synth 8-6155] done synthesizing module 'AHB_BusMatrix' (35#1) [C:/Ain_shams/GP/Synthesis/project_1/project_1.srcs/sources_1/imports/RTL/bus_matrix/AHB_BusMatrix.v:45]
+INFO: [Synth 8-6155] done synthesizing module 'AHB_BusMatrix_lite' (36#1) [C:/Ain_shams/GP/Synthesis/project_1/project_1.srcs/sources_1/imports/RTL/bus_matrix/AHB_BusMatrix_lite.v:33]
+INFO: [Synth 8-6155] done synthesizing module 'SYSTEM_TOP' (37#1) [C:/Ain_shams/GP/Synthesis/project_1/project_1.srcs/sources_1/imports/RTL/top/SYSTEM_TOP.v:1]
+WARNING: [Synth 8-3331] design AHB_BusMatrix_default_slave has unconnected port HTRANS[0]
+WARNING: [Synth 8-3331] design AHB_BusMatrix has unconnected port SCANOUTHCLK
+WARNING: [Synth 8-3331] design AHB_BusMatrix has unconnected port REMAP[3]
+WARNING: [Synth 8-3331] design AHB_BusMatrix has unconnected port REMAP[2]
+WARNING: [Synth 8-3331] design AHB_BusMatrix has unconnected port REMAP[1]
+WARNING: [Synth 8-3331] design AHB_BusMatrix has unconnected port REMAP[0]
+WARNING: [Synth 8-3331] design AHB_BusMatrix has unconnected port SCANENABLE
+WARNING: [Synth 8-3331] design AHB_BusMatrix has unconnected port SCANINHCLK
+WARNING: [Synth 8-3331] design cmsdk_iop_gpio has unconnected port IOWDATA[31]
+WARNING: [Synth 8-3331] design cmsdk_iop_gpio has unconnected port IOWDATA[30]
+WARNING: [Synth 8-3331] design cmsdk_iop_gpio has unconnected port IOWDATA[29]
+WARNING: [Synth 8-3331] design cmsdk_iop_gpio has unconnected port IOWDATA[28]
+WARNING: [Synth 8-3331] design cmsdk_iop_gpio has unconnected port IOWDATA[27]
+WARNING: [Synth 8-3331] design cmsdk_iop_gpio has unconnected port IOWDATA[26]
+WARNING: [Synth 8-3331] design cmsdk_iop_gpio has unconnected port IOWDATA[25]
+WARNING: [Synth 8-3331] design cmsdk_iop_gpio has unconnected port IOWDATA[24]
+WARNING: [Synth 8-3331] design cmsdk_iop_gpio has unconnected port IOWDATA[23]
+WARNING: [Synth 8-3331] design cmsdk_iop_gpio has unconnected port IOWDATA[22]
+WARNING: [Synth 8-3331] design cmsdk_iop_gpio has unconnected port IOWDATA[21]
+WARNING: [Synth 8-3331] design cmsdk_iop_gpio has unconnected port IOWDATA[20]
+WARNING: [Synth 8-3331] design cmsdk_iop_gpio has unconnected port IOWDATA[19]
+WARNING: [Synth 8-3331] design cmsdk_iop_gpio has unconnected port IOWDATA[18]
+WARNING: [Synth 8-3331] design cmsdk_iop_gpio has unconnected port IOWDATA[17]
+WARNING: [Synth 8-3331] design cmsdk_iop_gpio has unconnected port IOWDATA[16]
+WARNING: [Synth 8-3331] design cmsdk_ahb_to_iop has unconnected port HTRANS[0]
+WARNING: [Synth 8-3331] design cmsdk_ahb_to_iop has unconnected port HSIZE[2]
+WARNING: [Synth 8-3331] design APB_Bridge has unconnected port HBURST[2]
+WARNING: [Synth 8-3331] design APB_Bridge has unconnected port HBURST[1]
+WARNING: [Synth 8-3331] design APB_Bridge has unconnected port HBURST[0]
+WARNING: [Synth 8-3331] design APB_Bridge has unconnected port HMASTLOCK
+WARNING: [Synth 8-3331] design cmsdk_ahb_to_dsram has unconnected port HTRANS[0]
+WARNING: [Synth 8-3331] design cmsdk_ahb_to_dsram has unconnected port HSIZE[2]
+WARNING: [Synth 8-3331] design cmsdk_ahb_to_isram has unconnected port HTRANS[0]
+WARNING: [Synth 8-3331] design cmsdk_ahb_to_isram has unconnected port HSIZE[2]
+WARNING: [Synth 8-3331] design cortexm0ds_logic has unconnected port FCLK
+WARNING: [Synth 8-3331] design cortexm0ds_logic has unconnected port nTRST
+WARNING: [Synth 8-3331] design cortexm0ds_logic has unconnected port TDI
+WARNING: [Synth 8-3331] design cortexm0ds_logic has unconnected port WICENREQ
+WARNING: [Synth 8-3331] design cortexm0ds_logic has unconnected port SE
+---------------------------------------------------------------------------------
+Finished Synthesize : Time (s): cpu = 00:00:08 ; elapsed = 00:00:17 . Memory (MB): peak = 871.602 ; gain = 504.492
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Constraint Validation : Time (s): cpu = 00:00:08 ; elapsed = 00:00:18 . Memory (MB): peak = 871.602 ; gain = 504.492
+---------------------------------------------------------------------------------
+INFO: [Synth 8-5580] Multithreading enabled for synth_design using a maximum of 2 processes.
+---------------------------------------------------------------------------------
+Start Loading Part and Timing Information
+---------------------------------------------------------------------------------
+Loading part: xc7v585tffg1157-3
+INFO: [Device 21-403] Loading part xc7v585tffg1157-3
+---------------------------------------------------------------------------------
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:08 ; elapsed = 00:00:18 . Memory (MB): peak = 871.602 ; gain = 504.492
+---------------------------------------------------------------------------------
+INFO: [Synth 8-5845] Not enough pipeline registers after wide multiplier. Recommended levels of pipeline registers is 4 [C:/Ain_shams/GP/Synthesis/project_1/project_1.srcs/sources_1/imports/RTL/cortex/cortexm0ds_logic.v:3158]
+INFO: [Synth 8-5546] ROM "nxt_carry_0" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "nxt_carry_0" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5544] ROM "enable_16" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5546] ROM "enable_256" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-802] inferred FSM for state register 'apb_fsm_reg' in module 'APB_Bridge'
+INFO: [Synth 8-5544] ROM "UART0_PSEL" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "WDOG_PSEL" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "TIMER_PSEL" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "DUAL_TIMER_PSEL" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "UART1_PSEL" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5546] ROM "nxt_carry_0" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "nxt_carry_0" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5545] ROM "wdog_lock_wr_val" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
+INFO: [Synth 8-5544] ROM "next_burst_remain" won't be mapped to Block RAM because address size (2) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "next_burst_hold" won't be mapped to Block RAM because address size (2) smaller than threshold (5)
+WARNING: [Synth 8-327] inferring latch for variable 'Latch_Out_reg' [C:/Ain_shams/GP/Synthesis/project_1/project_1.srcs/sources_1/imports/RTL/ahb_peripherals/rcc/CLK_GATE.v:20]
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+             ST_APB_IDLE |                               00 |                               00
+            ST_APB_SETUP |                               01 |                               01
+         ST_APB_TRANSFER |                               10 |                               10
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'apb_fsm_reg' using encoding 'sequential' in module 'APB_Bridge'
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:19 ; elapsed = 00:00:33 . Memory (MB): peak = 1054.277 ; gain = 687.168
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+No constraint files found.
+---------------------------------------------------------------------------------
+Start RTL Component Statistics 
+---------------------------------------------------------------------------------
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input     34 Bit       Adders := 2     
+	   2 Input     32 Bit       Adders := 8     
+	   2 Input     31 Bit       Adders := 1     
+	   2 Input     30 Bit       Adders := 1     
+	   2 Input     24 Bit       Adders := 1     
+	   2 Input     16 Bit       Adders := 9     
+	   2 Input     12 Bit       Adders := 1     
+	   2 Input     10 Bit       Adders := 1     
+	   2 Input      9 Bit       Adders := 1     
+	   2 Input      8 Bit       Adders := 2     
+	   2 Input      7 Bit       Adders := 8     
+	   2 Input      4 Bit       Adders := 14    
+	   2 Input      2 Bit       Adders := 4     
++---XORs : 
+	   2 Input      1 Bit         XORs := 80    
++---Registers : 
+	               32 Bit    Registers := 17    
+	               20 Bit    Registers := 2     
+	               16 Bit    Registers := 21    
+	               14 Bit    Registers := 2     
+	               12 Bit    Registers := 1     
+	               10 Bit    Registers := 1     
+	                8 Bit    Registers := 21    
+	                7 Bit    Registers := 8     
+	                4 Bit    Registers := 23    
+	                3 Bit    Registers := 27    
+	                2 Bit    Registers := 14    
+	                1 Bit    Registers := 1446  
++---RAMs : 
+	             512K Bit         RAMs := 8     
++---Muxes : 
+	   8 Input    128 Bit        Muxes := 1     
+	   2 Input     32 Bit        Muxes := 32    
+	   7 Input     32 Bit        Muxes := 1     
+	   3 Input     32 Bit        Muxes := 3     
+	   4 Input     32 Bit        Muxes := 1     
+	   2 Input     16 Bit        Muxes := 6     
+	   3 Input     16 Bit        Muxes := 1     
+	   2 Input     14 Bit        Muxes := 2     
+	   2 Input     12 Bit        Muxes := 2     
+	   3 Input     10 Bit        Muxes := 1     
+	   2 Input      8 Bit        Muxes := 37    
+	   4 Input      8 Bit        Muxes := 1     
+	   2 Input      7 Bit        Muxes := 7     
+	   3 Input      7 Bit        Muxes := 1     
+	   8 Input      5 Bit        Muxes := 1     
+	   3 Input      4 Bit        Muxes := 1     
+	   2 Input      4 Bit        Muxes := 28    
+	   4 Input      4 Bit        Muxes := 7     
+	   5 Input      4 Bit        Muxes := 4     
+	   2 Input      3 Bit        Muxes := 8     
+	   5 Input      3 Bit        Muxes := 1     
+	   4 Input      3 Bit        Muxes := 1     
+	   3 Input      2 Bit        Muxes := 1     
+	   2 Input      2 Bit        Muxes := 16    
+	   5 Input      2 Bit        Muxes := 1     
+	   4 Input      2 Bit        Muxes := 2     
+	   2 Input      1 Bit        Muxes := 543   
+	   5 Input      1 Bit        Muxes := 6     
+	   3 Input      1 Bit        Muxes := 15    
+	   4 Input      1 Bit        Muxes := 7     
+	   8 Input      1 Bit        Muxes := 1     
+	   6 Input      1 Bit        Muxes := 9     
+	   9 Input      1 Bit        Muxes := 4     
+---------------------------------------------------------------------------------
+Finished RTL Component Statistics 
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start RTL Hierarchical Component Statistics 
+---------------------------------------------------------------------------------
+Hierarchical RTL Component report 
+Module cortexm0ds_logic 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input     34 Bit       Adders := 2     
+	   2 Input     32 Bit       Adders := 1     
+	   2 Input     31 Bit       Adders := 1     
+	   2 Input     30 Bit       Adders := 1     
+	   2 Input     24 Bit       Adders := 1     
+	   2 Input     12 Bit       Adders := 1     
+	   2 Input      9 Bit       Adders := 1     
++---XORs : 
+	   2 Input      1 Bit         XORs := 72    
++---Registers : 
+	                1 Bit    Registers := 1334  
++---Muxes : 
+	   2 Input      1 Bit        Muxes := 404   
+Module CLKDIV 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input     32 Bit       Adders := 2     
+	   2 Input      7 Bit       Adders := 2     
++---Registers : 
+	                7 Bit    Registers := 1     
+	                1 Bit    Registers := 1     
++---Muxes : 
+	   2 Input      7 Bit        Muxes := 2     
+	   2 Input      1 Bit        Muxes := 2     
+Module RESET_SYNC 
+Detailed RTL Component Info : 
++---Registers : 
+	                1 Bit    Registers := 2     
+Module cmsdk_ahb_to_isram 
+Detailed RTL Component Info : 
++---Registers : 
+	               14 Bit    Registers := 1     
+	                8 Bit    Registers := 4     
+	                4 Bit    Registers := 1     
+	                1 Bit    Registers := 3     
++---Muxes : 
+	   2 Input     32 Bit        Muxes := 1     
+	   2 Input     14 Bit        Muxes := 1     
+	   2 Input      8 Bit        Muxes := 4     
+Module cmsdk_fpga_isram 
+Detailed RTL Component Info : 
++---Registers : 
+	               16 Bit    Registers := 4     
+	                1 Bit    Registers := 1     
++---RAMs : 
+	             512K Bit         RAMs := 4     
++---Muxes : 
+	   2 Input     32 Bit        Muxes := 1     
+Module cmsdk_ahb_to_dsram 
+Detailed RTL Component Info : 
++---Registers : 
+	               14 Bit    Registers := 1     
+	                8 Bit    Registers := 4     
+	                4 Bit    Registers := 1     
+	                1 Bit    Registers := 3     
++---Muxes : 
+	   2 Input     32 Bit        Muxes := 1     
+	   2 Input     14 Bit        Muxes := 1     
+	   2 Input      8 Bit        Muxes := 4     
+Module cmsdk_fpga_dsram 
+Detailed RTL Component Info : 
++---Registers : 
+	               16 Bit    Registers := 4     
+	                1 Bit    Registers := 1     
++---RAMs : 
+	             512K Bit         RAMs := 4     
++---Muxes : 
+	   2 Input     32 Bit        Muxes := 1     
+Module cmsdk_apb_dualtimers_frc 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input     16 Bit       Adders := 2     
+	   2 Input      8 Bit       Adders := 1     
++---XORs : 
+	   2 Input      1 Bit         XORs := 2     
++---Registers : 
+	               32 Bit    Registers := 3     
+	                8 Bit    Registers := 1     
+	                4 Bit    Registers := 1     
+	                3 Bit    Registers := 1     
+	                2 Bit    Registers := 1     
+	                1 Bit    Registers := 8     
++---Muxes : 
+	   2 Input     32 Bit        Muxes := 5     
+	   2 Input     16 Bit        Muxes := 1     
+	   2 Input      8 Bit        Muxes := 1     
+	   2 Input      1 Bit        Muxes := 11    
+	   5 Input      1 Bit        Muxes := 1     
+	   3 Input      1 Bit        Muxes := 1     
+Module cmsdk_apb_dualtimers 
+Detailed RTL Component Info : 
++---Registers : 
+	               32 Bit    Registers := 1     
+	                2 Bit    Registers := 1     
+	                1 Bit    Registers := 1     
++---Muxes : 
+	   7 Input     32 Bit        Muxes := 1     
+	   2 Input     32 Bit        Muxes := 1     
+	   2 Input      8 Bit        Muxes := 1     
+	   2 Input      1 Bit        Muxes := 7     
+Module APB_Bridge 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input     16 Bit       Adders := 1     
+	   2 Input     10 Bit       Adders := 1     
+	   2 Input      7 Bit       Adders := 2     
++---XORs : 
+	   2 Input      1 Bit         XORs := 2     
++---Registers : 
+	               32 Bit    Registers := 4     
+	               16 Bit    Registers := 2     
+	               10 Bit    Registers := 1     
+	                7 Bit    Registers := 1     
+	                4 Bit    Registers := 2     
+	                3 Bit    Registers := 4     
+	                2 Bit    Registers := 1     
+	                1 Bit    Registers := 12    
++---Muxes : 
+	   8 Input    128 Bit        Muxes := 1     
+	   3 Input     32 Bit        Muxes := 2     
+	   3 Input     16 Bit        Muxes := 1     
+	   3 Input     10 Bit        Muxes := 1     
+	   2 Input      7 Bit        Muxes := 1     
+	   3 Input      7 Bit        Muxes := 1     
+	   8 Input      5 Bit        Muxes := 1     
+	   3 Input      4 Bit        Muxes := 1     
+	   2 Input      3 Bit        Muxes := 1     
+	   3 Input      2 Bit        Muxes := 1     
+	   2 Input      2 Bit        Muxes := 1     
+	   5 Input      2 Bit        Muxes := 1     
+	   4 Input      1 Bit        Muxes := 7     
+	   3 Input      1 Bit        Muxes := 12    
+	   8 Input      1 Bit        Muxes := 1     
+Module APB_decoder 
+Detailed RTL Component Info : 
++---Muxes : 
+	   2 Input      1 Bit        Muxes := 5     
+	   6 Input      1 Bit        Muxes := 5     
+Module cmsdk_apb_timer 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input     32 Bit       Adders := 1     
++---Registers : 
+	               32 Bit    Registers := 2     
+	                8 Bit    Registers := 1     
+	                4 Bit    Registers := 1     
+	                1 Bit    Registers := 4     
++---Muxes : 
+	   2 Input     32 Bit        Muxes := 4     
+	   3 Input     32 Bit        Muxes := 1     
+	   4 Input      8 Bit        Muxes := 1     
+	   2 Input      1 Bit        Muxes := 3     
+Module cmsdk_apb_watchdog_frc 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input     16 Bit       Adders := 2     
++---XORs : 
+	   2 Input      1 Bit         XORs := 2     
++---Registers : 
+	               32 Bit    Registers := 2     
+	                2 Bit    Registers := 2     
+	                1 Bit    Registers := 10    
++---Muxes : 
+	   2 Input     32 Bit        Muxes := 3     
+	   2 Input     16 Bit        Muxes := 1     
+	   2 Input      1 Bit        Muxes := 6     
+	   3 Input      1 Bit        Muxes := 1     
+Module cmsdk_apb_watchdog 
+Detailed RTL Component Info : 
++---Registers : 
+	               32 Bit    Registers := 1     
+	                2 Bit    Registers := 1     
+	                1 Bit    Registers := 2     
++---Muxes : 
+	   2 Input     32 Bit        Muxes := 2     
+	   2 Input      8 Bit        Muxes := 2     
+	   2 Input      1 Bit        Muxes := 10    
+Module cmsdk_apb_uart 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input     16 Bit       Adders := 1     
+	   2 Input      4 Bit       Adders := 5     
++---Registers : 
+	               20 Bit    Registers := 1     
+	               16 Bit    Registers := 1     
+	                8 Bit    Registers := 4     
+	                7 Bit    Registers := 2     
+	                4 Bit    Registers := 5     
+	                3 Bit    Registers := 1     
+	                1 Bit    Registers := 11    
++---Muxes : 
+	   2 Input     32 Bit        Muxes := 1     
+	   2 Input     16 Bit        Muxes := 1     
+	   2 Input     12 Bit        Muxes := 1     
+	   2 Input      8 Bit        Muxes := 1     
+	   2 Input      4 Bit        Muxes := 5     
+	   4 Input      4 Bit        Muxes := 1     
+	   2 Input      2 Bit        Muxes := 1     
+	   4 Input      2 Bit        Muxes := 1     
+	   2 Input      1 Bit        Muxes := 4     
+Module cmsdk_irq_sync 
+Detailed RTL Component Info : 
++---Registers : 
+	                3 Bit    Registers := 1     
+Module cmsdk_ahb_to_iop 
+Detailed RTL Component Info : 
++---Registers : 
+	               12 Bit    Registers := 1     
+	                2 Bit    Registers := 1     
+	                1 Bit    Registers := 3     
+Module cmsdk_iop_gpio 
+Detailed RTL Component Info : 
++---Registers : 
+	               16 Bit    Registers := 9     
+	                8 Bit    Registers := 2     
++---Muxes : 
+	   2 Input     32 Bit        Muxes := 1     
+	   4 Input     32 Bit        Muxes := 1     
+	   2 Input     16 Bit        Muxes := 1     
+	   2 Input      8 Bit        Muxes := 22    
+	   2 Input      1 Bit        Muxes := 1     
+Module mux_2x1 
+Detailed RTL Component Info : 
++---Muxes : 
+	   2 Input      1 Bit        Muxes := 1     
+Module AHB_InputStage 
+Detailed RTL Component Info : 
++---Registers : 
+	               32 Bit    Registers := 1     
+	                4 Bit    Registers := 2     
+	                3 Bit    Registers := 2     
+	                2 Bit    Registers := 1     
+	                1 Bit    Registers := 6     
++---Muxes : 
+	   2 Input     32 Bit        Muxes := 1     
+	   4 Input      4 Bit        Muxes := 1     
+	   2 Input      4 Bit        Muxes := 2     
+	   2 Input      3 Bit        Muxes := 3     
+	   2 Input      2 Bit        Muxes := 5     
+	   2 Input      1 Bit        Muxes := 6     
+Module AHB_BusMatrix_default_slave 
+Detailed RTL Component Info : 
++---Registers : 
+	                2 Bit    Registers := 1     
+	                1 Bit    Registers := 1     
++---Muxes : 
+	   2 Input      1 Bit        Muxes := 1     
+Module AHB_DecoderStageS0 
+Detailed RTL Component Info : 
++---Registers : 
+	                3 Bit    Registers := 1     
++---Muxes : 
+	   5 Input      3 Bit        Muxes := 1     
+	   4 Input      3 Bit        Muxes := 1     
+	   6 Input      1 Bit        Muxes := 4     
+Module AHB_Arbiter 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input      4 Bit       Adders := 1     
+	   2 Input      2 Bit       Adders := 1     
++---Registers : 
+	                4 Bit    Registers := 1     
+	                2 Bit    Registers := 1     
+	                1 Bit    Registers := 3     
++---Muxes : 
+	   2 Input      4 Bit        Muxes := 2     
+	   4 Input      4 Bit        Muxes := 1     
+	   5 Input      4 Bit        Muxes := 1     
+	   2 Input      2 Bit        Muxes := 2     
+	   2 Input      1 Bit        Muxes := 5     
+	   5 Input      1 Bit        Muxes := 1     
+	   9 Input      1 Bit        Muxes := 1     
+Module AHB_OutputStage 
+Detailed RTL Component Info : 
++---Registers : 
+	                1 Bit    Registers := 2     
++---Muxes : 
+	   2 Input     32 Bit        Muxes := 1     
+	   2 Input      4 Bit        Muxes := 2     
+	   2 Input      3 Bit        Muxes := 1     
+	   2 Input      1 Bit        Muxes := 3     
+---------------------------------------------------------------------------------
+Finished RTL Hierarchical Component Statistics
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Part Resource Summary
+---------------------------------------------------------------------------------
+Part Resources:
+DSPs: 1260 (col length:180)
+BRAMs: 1590 (col length: RAMB18 180 RAMB36 90)
+---------------------------------------------------------------------------------
+Finished Part Resource Summary
+---------------------------------------------------------------------------------
+No constraint files found.
+---------------------------------------------------------------------------------
+Start Cross Boundary and Area Optimization
+---------------------------------------------------------------------------------
+Warning: Parallel synthesis criteria is not met 
+DSP Report: Generating DSP Affpw6, operation Mode is: A*B.
+DSP Report: operator Affpw6 is absorbed into DSP Affpw6.
+DSP Report: operator Affpw6 is absorbed into DSP Affpw6.
+DSP Report: Generating DSP Affpw6, operation Mode is: A*B.
+DSP Report: operator Affpw6 is absorbed into DSP Affpw6.
+DSP Report: operator Affpw6 is absorbed into DSP Affpw6.
+DSP Report: Generating DSP Affpw6, operation Mode is: (PCIN>>17)+A*B.
+DSP Report: operator Affpw6 is absorbed into DSP Affpw6.
+DSP Report: operator Affpw6 is absorbed into DSP Affpw6.
+INFO: [Synth 8-5546] ROM "nxt_carry_0" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "nxt_carry_0" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "nxt_carry_0" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5545] ROM "wdog_lock_wr_val" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
+WARNING: [Synth 8-3331] design AHB_BusMatrix_default_slave has unconnected port HTRANS[0]
+WARNING: [Synth 8-3331] design AHB_BusMatrix has unconnected port SCANOUTHCLK
+WARNING: [Synth 8-3331] design AHB_BusMatrix has unconnected port REMAP[3]
+WARNING: [Synth 8-3331] design AHB_BusMatrix has unconnected port REMAP[2]
+WARNING: [Synth 8-3331] design AHB_BusMatrix has unconnected port REMAP[1]
+WARNING: [Synth 8-3331] design AHB_BusMatrix has unconnected port REMAP[0]
+WARNING: [Synth 8-3331] design AHB_BusMatrix has unconnected port SCANENABLE
+WARNING: [Synth 8-3331] design AHB_BusMatrix has unconnected port SCANINHCLK
+WARNING: [Synth 8-3331] design AHB_BusMatrix_lite has unconnected port SCANOUTHCLK
+WARNING: [Synth 8-3331] design cmsdk_iop_gpio has unconnected port IOWDATA[31]
+WARNING: [Synth 8-3331] design cmsdk_iop_gpio has unconnected port IOWDATA[30]
+WARNING: [Synth 8-3331] design cmsdk_iop_gpio has unconnected port IOWDATA[29]
+WARNING: [Synth 8-3331] design cmsdk_iop_gpio has unconnected port IOWDATA[28]
+WARNING: [Synth 8-3331] design cmsdk_iop_gpio has unconnected port IOWDATA[27]
+WARNING: [Synth 8-3331] design cmsdk_iop_gpio has unconnected port IOWDATA[26]
+WARNING: [Synth 8-3331] design cmsdk_iop_gpio has unconnected port IOWDATA[25]
+WARNING: [Synth 8-3331] design cmsdk_iop_gpio has unconnected port IOWDATA[24]
+WARNING: [Synth 8-3331] design cmsdk_iop_gpio has unconnected port IOWDATA[23]
+WARNING: [Synth 8-3331] design cmsdk_iop_gpio has unconnected port IOWDATA[22]
+WARNING: [Synth 8-3331] design cmsdk_iop_gpio has unconnected port IOWDATA[21]
+WARNING: [Synth 8-3331] design cmsdk_iop_gpio has unconnected port IOWDATA[20]
+WARNING: [Synth 8-3331] design cmsdk_iop_gpio has unconnected port IOWDATA[19]
+WARNING: [Synth 8-3331] design cmsdk_iop_gpio has unconnected port IOWDATA[18]
+WARNING: [Synth 8-3331] design cmsdk_iop_gpio has unconnected port IOWDATA[17]
+WARNING: [Synth 8-3331] design cmsdk_iop_gpio has unconnected port IOWDATA[16]
+WARNING: [Synth 8-3331] design cmsdk_ahb_to_iop has unconnected port HTRANS[0]
+WARNING: [Synth 8-3331] design cmsdk_ahb_to_iop has unconnected port HSIZE[2]
+WARNING: [Synth 8-3331] design APB_Bridge has unconnected port HBURST[2]
+WARNING: [Synth 8-3331] design APB_Bridge has unconnected port HBURST[1]
+WARNING: [Synth 8-3331] design APB_Bridge has unconnected port HBURST[0]
+WARNING: [Synth 8-3331] design APB_Bridge has unconnected port HMASTLOCK
+WARNING: [Synth 8-3331] design cmsdk_ahb_to_dsram has unconnected port HTRANS[0]
+WARNING: [Synth 8-3331] design cmsdk_ahb_to_dsram has unconnected port HSIZE[2]
+WARNING: [Synth 8-3331] design cmsdk_ahb_to_isram has unconnected port HTRANS[0]
+WARNING: [Synth 8-3331] design cmsdk_ahb_to_isram has unconnected port HSIZE[2]
+WARNING: [Synth 8-3331] design cortexm0ds_logic has unconnected port FCLK
+WARNING: [Synth 8-3331] design cortexm0ds_logic has unconnected port nTRST
+WARNING: [Synth 8-3331] design cortexm0ds_logic has unconnected port TDI
+WARNING: [Synth 8-3331] design cortexm0ds_logic has unconnected port WICENREQ
+WARNING: [Synth 8-3331] design cortexm0ds_logic has unconnected port SE
+RAM Pipeline Warning: Read Address Register Found For RAM BRAM1_reg. We will not be able to pipeline it. This may degrade performance. 
+RAM Pipeline Warning: Read Address Register Found For RAM BRAM2_reg. We will not be able to pipeline it. This may degrade performance. 
+RAM Pipeline Warning: Read Address Register Found For RAM BRAM3_reg. We will not be able to pipeline it. This may degrade performance. 
+RAM Pipeline Warning: Read Address Register Found For RAM BRAM0_reg. We will not be able to pipeline it. This may degrade performance. 
+RAM Pipeline Warning: Read Address Register Found For RAM BRAM1_reg. We will not be able to pipeline it. This may degrade performance. 
+RAM Pipeline Warning: Read Address Register Found For RAM BRAM2_reg. We will not be able to pipeline it. This may degrade performance. 
+RAM Pipeline Warning: Read Address Register Found For RAM BRAM3_reg. We will not be able to pipeline it. This may degrade performance. 
+RAM Pipeline Warning: Read Address Register Found For RAM BRAM0_reg. We will not be able to pipeline it. This may degrade performance. 
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (U0_CORTEXM0INTEGRATION/u_logic/Nyhpw6_reg)
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (U0_CORTEXM0INTEGRATION/u_logic/Ee3bx6_reg)
+INFO: [Synth 8-3333] propagating constant 1 across sequential element (U0_CORTEXM0INTEGRATION/u_logic/Rilpw6_reg)
+INFO: [Synth 8-3886] merging instance 'U0_CORTEXM0INTEGRATION/u_logic/T0ipw6_reg' (FDC) to 'U0_CORTEXM0INTEGRATION/u_logic/Nyhpw6_reg'
+INFO: [Synth 8-3886] merging instance 'AHB_BusMatrix_lite_instance/uAHB_BusMatrix/u_AHB_InputStage_0/reg_mastlock_reg' (FDCE) to 'AHB_BusMatrix_lite_instance/uAHB_BusMatrix/u_AHB_InputStage_0/reg_trans_reg[0]'
+INFO: [Synth 8-3886] merging instance 'AHB_BusMatrix_lite_instance/uAHB_BusMatrix/u_AHB_InputStage_0/reg_master_reg[0]' (FDCE) to 'AHB_BusMatrix_lite_instance/uAHB_BusMatrix/u_AHB_InputStage_0/reg_master_reg[1]'
+INFO: [Synth 8-3886] merging instance 'AHB_BusMatrix_lite_instance/uAHB_BusMatrix/u_AHB_InputStage_0/reg_master_reg[1]' (FDCE) to 'AHB_BusMatrix_lite_instance/uAHB_BusMatrix/u_AHB_InputStage_0/reg_master_reg[2]'
+INFO: [Synth 8-3886] merging instance 'AHB_BusMatrix_lite_instance/uAHB_BusMatrix/u_AHB_InputStage_0/reg_master_reg[2]' (FDCE) to 'AHB_BusMatrix_lite_instance/uAHB_BusMatrix/u_AHB_InputStage_0/reg_master_reg[3]'
+INFO: [Synth 8-3886] merging instance 'AHB_BusMatrix_lite_instance/uAHB_BusMatrix/u_AHB_InputStage_0/reg_master_reg[3]' (FDCE) to 'AHB_BusMatrix_lite_instance/uAHB_BusMatrix/u_AHB_InputStage_0/reg_prot_reg[1]'
+INFO: [Synth 8-3886] merging instance 'AHB_BusMatrix_lite_instance/uAHB_BusMatrix/u_AHB_InputStage_0/reg_burst_reg[0]' (FDCE) to 'AHB_BusMatrix_lite_instance/uAHB_BusMatrix/u_AHB_InputStage_0/reg_trans_reg[0]'
+INFO: [Synth 8-3886] merging instance 'AHB_BusMatrix_lite_instance/uAHB_BusMatrix/u_AHB_InputStage_0/reg_burst_reg[1]' (FDCE) to 'AHB_BusMatrix_lite_instance/uAHB_BusMatrix/u_AHB_InputStage_0/reg_trans_reg[0]'
+INFO: [Synth 8-3886] merging instance 'AHB_BusMatrix_lite_instance/uAHB_BusMatrix/u_AHB_InputStage_0/reg_burst_reg[2]' (FDCE) to 'AHB_BusMatrix_lite_instance/uAHB_BusMatrix/u_AHB_InputStage_0/reg_trans_reg[0]'
+INFO: [Synth 8-3886] merging instance 'AHB_BusMatrix_lite_instance/uAHB_BusMatrix/u_AHB_InputStage_0/reg_trans_reg[0]' (FDCE) to 'AHB_BusMatrix_lite_instance/uAHB_BusMatrix/u_AHB_InputStage_0/reg_size_reg[2]'
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (AHB_BusMatrix_lite_instance/uAHB_BusMatrix/u_AHB_InputStage_0/\reg_size_reg[2] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (AHB_BusMatrix_lite_instance/uAHB_BusMatrix/u_AHB_InputStage_0/burst_override_reg)
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (AHB_BusMatrix_lite_instance/uAHB_BusMatrix/u_AHB_InputStage_0/bound_reg)
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (U0_CORTEXM0INTEGRATION/u_logic/Y8lpw6_reg)
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (U0_CORTEXM0INTEGRATION/u_logic/Ryfax6_reg)
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (U0_CORTEXM0INTEGRATION/u_logic/Hpcbx6_reg)
+INFO: [Synth 8-3886] merging instance 'U0_CORTEXM0INTEGRATION/u_logic/Cjqpw6_reg' (FDC) to 'U0_CORTEXM0INTEGRATION/u_logic/Nyhpw6_reg'
+INFO: [Synth 8-3886] merging instance 'U0_CORTEXM0INTEGRATION/u_logic/B7lpw6_reg' (FDC) to 'U0_CORTEXM0INTEGRATION/u_logic/Nyhpw6_reg'
+INFO: [Synth 8-3886] merging instance 'U0_CORTEXM0INTEGRATION/u_logic/I0opw6_reg' (FDC) to 'U0_CORTEXM0INTEGRATION/u_logic/Nyhpw6_reg'
+INFO: [Synth 8-3886] merging instance 'U0_CORTEXM0INTEGRATION/u_logic/Ry2qw6_reg' (FDC) to 'U0_CORTEXM0INTEGRATION/u_logic/Nyhpw6_reg'
+INFO: [Synth 8-3886] merging instance 'U0_CORTEXM0INTEGRATION/u_logic/Nyhpw6_reg' (FDC) to 'U0_CORTEXM0INTEGRATION/u_logic/Ryfax6_reg'
+INFO: [Synth 8-3886] merging instance 'U0_CORTEXM0INTEGRATION/u_logic/Utqpw6_reg' (FDC) to 'U0_CORTEXM0INTEGRATION/u_logic/Ryfax6_reg'
+INFO: [Synth 8-3886] merging instance 'U0_CORTEXM0INTEGRATION/u_logic/Qynpw6_reg' (FDC) to 'U0_CORTEXM0INTEGRATION/u_logic/Ryfax6_reg'
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (U0_CORTEXM0INTEGRATION/u_logic/T82qw6_reg)
+INFO: [Synth 8-3886] merging instance 'U0_CORTEXM0INTEGRATION/u_logic/Oulpw6_reg' (FDCE) to 'U0_CORTEXM0INTEGRATION/u_logic/Kwlpw6_reg'
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (U0_CORTEXM0INTEGRATION/u_logic/Kwlpw6_reg)
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (U0_CORTEXM0INTEGRATION/u_logic/Gylpw6_reg)
+INFO: [Synth 8-3886] merging instance 'U0_CORTEXM0INTEGRATION/u_logic/Zslpw6_reg' (FDE) to 'U0_CORTEXM0INTEGRATION/u_logic/Gnqpw6_reg'
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (U0_CORTEXM0INTEGRATION/u_logic/Hlwpw6_reg)
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (U0_CORTEXM0INTEGRATION/u_logic/Ufbbx6_reg)
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (U0_CORTEXM0INTEGRATION/u_logic/Puwpw6_reg)
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (U0_CORTEXM0INTEGRATION/u_logic/Ldvpw6_reg)
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (U0_CORTEXM0INTEGRATION/u_logic/Jfdbx6_reg)
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (U0_CORTEXM0INTEGRATION/u_logic/Sddbx6_reg)
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (U0_CORTEXM0INTEGRATION/u_logic/Bcdbx6_reg)
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (U0_CORTEXM0INTEGRATION/u_logic/Kadbx6_reg)
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (U0_CORTEXM0INTEGRATION/u_logic/Stkpw6_reg)
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (U0_CORTEXM0INTEGRATION/u_logic/Kn2qw6_reg)
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (U0_CORTEXM0INTEGRATION/u_logic/J4cbx6_reg)
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (U0_CORTEXM0INTEGRATION/u_logic/S2cbx6_reg)
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (U0_CORTEXM0INTEGRATION/u_logic/Nfqpw6_reg)
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (U0_CORTEXM0INTEGRATION/u_logic/Wt3qw6_reg)
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (U0_CORTEXM0INTEGRATION/u_logic/C72qw6_reg)
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (U0_CORTEXM0INTEGRATION/u_logic/Zwnpw6_reg)
+INFO: [Synth 8-3886] merging instance 'U0_CORTEXM0INTEGRATION/u_logic/Krlpw6_reg' (FDE) to 'U0_CORTEXM0INTEGRATION/u_logic/Gpqpw6_reg'
+INFO: [Synth 8-3886] merging instance 'U0_CORTEXM0INTEGRATION/u_logic/Vplpw6_reg' (FDE) to 'U0_CORTEXM0INTEGRATION/u_logic/Nrqpw6_reg'
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (U0_CORTEXM0INTEGRATION/u_logic/Golpw6_reg)
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (U0_CORTEXM0INTEGRATION/u_logic/Okfax6_reg)
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (U0_CORTEXM0INTEGRATION/u_logic/Pifax6_reg)
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (U0_CORTEXM0INTEGRATION/u_logic/L5lpw6_reg)
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (U0_CORTEXM0INTEGRATION/u_logic/W6ipw6_reg)
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (U0_CORTEXM0INTEGRATION/u_logic/Li7ax6_reg)
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (U0_CORTEXM0INTEGRATION/u_logic/Bx2qw6_reg)
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (U0_CORTEXM0INTEGRATION/u_logic/Z73qw6_reg)
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (U0_CORTEXM0INTEGRATION/u_logic/D2opw6_reg)
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (U0_CORTEXM0INTEGRATION/u_logic/Zgfax6_reg)
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (U0_CORTEXM0INTEGRATION/u_logic/Yzlpw6_reg)
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (U0_CORTEXM0INTEGRATION/u_logic/Qa1qw6_reg)
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (U0_CORTEXM0INTEGRATION/u_logic/Qj1qw6_reg)
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (U0_CORTEXM0INTEGRATION/u_logic/L0ypw6_reg)
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (U0_CORTEXM0INTEGRATION/u_logic/Gw6bx6_reg)
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (U0_CORTEXM0INTEGRATION/u_logic/Wq8ax6_reg)
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (U0_CORTEXM0INTEGRATION/u_logic/Oh8ax6_reg)
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (U0_CORTEXM0INTEGRATION/u_logic/Xf8ax6_reg)
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (U0_CORTEXM0INTEGRATION/u_logic/E97ax6_reg)
+INFO: [Synth 8-3886] merging instance 'U0_CORTEXM0INTEGRATION/u_logic/Ymwpw6_reg' (FDE) to 'U0_CORTEXM0INTEGRATION/u_logic/J0gax6_reg'
+INFO: [Synth 8-3886] merging instance 'U0_CORTEXM0INTEGRATION/u_logic/Lhbbx6_reg' (FDE) to 'U0_CORTEXM0INTEGRATION/u_logic/J0gax6_reg'
+INFO: [Synth 8-3886] merging instance 'U0_CORTEXM0INTEGRATION/u_logic/Gwwpw6_reg' (FDE) to 'U0_CORTEXM0INTEGRATION/u_logic/J0gax6_reg'
+INFO: [Synth 8-3886] merging instance 'U0_CORTEXM0INTEGRATION/u_logic/Cfvpw6_reg' (FDE) to 'U0_CORTEXM0INTEGRATION/u_logic/J0gax6_reg'
+INFO: [Synth 8-3886] merging instance 'U0_CORTEXM0INTEGRATION/u_logic/Ahdbx6_reg' (FDE) to 'U0_CORTEXM0INTEGRATION/u_logic/J0gax6_reg'
+INFO: [Synth 8-3886] merging instance 'U0_CORTEXM0INTEGRATION/u_logic/H0ebx6_reg' (FDE) to 'U0_CORTEXM0INTEGRATION/u_logic/J0gax6_reg'
+INFO: [Synth 8-3886] merging instance 'U0_CORTEXM0INTEGRATION/u_logic/Ojebx6_reg' (FDE) to 'U0_CORTEXM0INTEGRATION/u_logic/J0gax6_reg'
+INFO: [Synth 8-3886] merging instance 'U0_CORTEXM0INTEGRATION/u_logic/Urgbx6_reg' (FDE) to 'U0_CORTEXM0INTEGRATION/u_logic/J0gax6_reg'
+INFO: [Synth 8-3886] merging instance 'U0_CORTEXM0INTEGRATION/u_logic/Jvkpw6_reg' (FDE) to 'U0_CORTEXM0INTEGRATION/u_logic/J0gax6_reg'
+INFO: [Synth 8-3886] merging instance 'U0_CORTEXM0INTEGRATION/u_logic/Bp2qw6_reg' (FDE) to 'U0_CORTEXM0INTEGRATION/u_logic/J0gax6_reg'
+INFO: [Synth 8-3886] merging instance 'U0_CORTEXM0INTEGRATION/u_logic/A6cbx6_reg' (FDE) to 'U0_CORTEXM0INTEGRATION/u_logic/J0gax6_reg'
+INFO: [Synth 8-3886] merging instance 'U0_CORTEXM0INTEGRATION/u_logic/Drcbx6_reg' (FDE) to 'U0_CORTEXM0INTEGRATION/u_logic/J0gax6_reg'
+INFO: [Synth 8-3886] merging instance 'U0_CORTEXM0INTEGRATION/u_logic/D2rpw6_reg' (FDE) to 'U0_CORTEXM0INTEGRATION/u_logic/J0gax6_reg'
+INFO: [Synth 8-3886] merging instance 'U0_CORTEXM0INTEGRATION/u_logic/Nv3qw6_reg' (FDE) to 'U0_CORTEXM0INTEGRATION/u_logic/J0gax6_reg'
+INFO: [Synth 8-3886] merging instance 'U0_CORTEXM0INTEGRATION/u_logic/Ra2qw6_reg' (FDE) to 'U0_CORTEXM0INTEGRATION/u_logic/J0gax6_reg'
+INFO: [Synth 8-3886] merging instance 'U0_CORTEXM0INTEGRATION/u_logic/Yzqpw6_reg' (FDE) to 'U0_CORTEXM0INTEGRATION/u_logic/J0gax6_reg'
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (U0_CORTEXM0INTEGRATION/u_logic/Gnqpw6_reg)
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (U0_CORTEXM0INTEGRATION/u_logic/Gpqpw6_reg)
+INFO: [Synth 8-3886] merging instance 'U0_CORTEXM0INTEGRATION/u_logic/Nrqpw6_reg' (FDE) to 'U0_CORTEXM0INTEGRATION/u_logic/J0gax6_reg'
+INFO: [Synth 8-3886] merging instance 'U0_CORTEXM0INTEGRATION/u_logic/Nmfax6_reg' (FDE) to 'U0_CORTEXM0INTEGRATION/u_logic/J0gax6_reg'
+INFO: [Synth 8-3886] merging instance 'U0_CORTEXM0INTEGRATION/u_logic/J0gax6_reg' (FDE) to 'U0_CORTEXM0INTEGRATION/u_logic/Fj8ax6_reg'
+INFO: [Synth 8-3886] merging instance 'U0_CORTEXM0INTEGRATION/u_logic/I4rpw6_reg' (FDE) to 'U0_CORTEXM0INTEGRATION/u_logic/Fj8ax6_reg'
+INFO: [Synth 8-3886] merging instance 'U0_CORTEXM0INTEGRATION/u_logic/M8ipw6_reg' (FDE) to 'U0_CORTEXM0INTEGRATION/u_logic/Fj8ax6_reg'
+INFO: [Synth 8-3886] merging instance 'U0_CORTEXM0INTEGRATION/u_logic/Bk7ax6_reg' (FDE) to 'U0_CORTEXM0INTEGRATION/u_logic/Fj8ax6_reg'
+INFO: [Synth 8-3886] merging instance 'U0_CORTEXM0INTEGRATION/u_logic/L03qw6_reg' (FDE) to 'U0_CORTEXM0INTEGRATION/u_logic/Fj8ax6_reg'
+INFO: [Synth 8-3886] merging instance 'U0_CORTEXM0INTEGRATION/u_logic/P93qw6_reg' (FDE) to 'U0_CORTEXM0INTEGRATION/u_logic/Fj8ax6_reg'
+INFO: [Synth 8-3886] merging instance 'U0_CORTEXM0INTEGRATION/u_logic/T3opw6_reg' (FDE) to 'U0_CORTEXM0INTEGRATION/u_logic/Fj8ax6_reg'
+INFO: [Synth 8-3886] merging instance 'U0_CORTEXM0INTEGRATION/u_logic/Q89bx6_reg' (FDE) to 'U0_CORTEXM0INTEGRATION/u_logic/Fj8ax6_reg'
+INFO: [Synth 8-3886] merging instance 'U0_CORTEXM0INTEGRATION/u_logic/O1mpw6_reg' (FDE) to 'U0_CORTEXM0INTEGRATION/u_logic/Fj8ax6_reg'
+INFO: [Synth 8-3886] merging instance 'U0_CORTEXM0INTEGRATION/u_logic/Gc1qw6_reg' (FDE) to 'U0_CORTEXM0INTEGRATION/u_logic/Fj8ax6_reg'
+INFO: [Synth 8-3886] merging instance 'U0_CORTEXM0INTEGRATION/u_logic/Gl1qw6_reg' (FDE) to 'U0_CORTEXM0INTEGRATION/u_logic/Fj8ax6_reg'
+INFO: [Synth 8-3886] merging instance 'U0_CORTEXM0INTEGRATION/u_logic/C2ypw6_reg' (FDE) to 'U0_CORTEXM0INTEGRATION/u_logic/Fj8ax6_reg'
+INFO: [Synth 8-3886] merging instance 'U0_CORTEXM0INTEGRATION/u_logic/Xx6bx6_reg' (FDE) to 'U0_CORTEXM0INTEGRATION/u_logic/Fj8ax6_reg'
+INFO: [Synth 8-3886] merging instance 'U0_CORTEXM0INTEGRATION/u_logic/Ns8ax6_reg' (FDE) to 'U0_CORTEXM0INTEGRATION/u_logic/Fj8ax6_reg'
+INFO: [Synth 8-3886] merging instance 'U0_CORTEXM0INTEGRATION/u_logic/Fj8ax6_reg' (FDE) to 'U0_CORTEXM0INTEGRATION/u_logic/Va7ax6_reg'
+INFO: [Synth 8-3886] merging instance 'U0_CORTEXM0INTEGRATION/u_logic/Liabx6_reg' (FDE) to 'U0_CORTEXM0INTEGRATION/u_logic/Va7ax6_reg'
+INFO: [Synth 8-3886] merging instance 'U0_CORTEXM0INTEGRATION/u_logic/Va7ax6_reg' (FDE) to 'U0_CORTEXM0INTEGRATION/u_logic/Gnqpw6_reg'
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (U0_CORTEXM0INTEGRATION/u_logic/Qsfax6_reg)
+INFO: [Synth 8-3886] merging instance 'U0_CORTEXM0INTEGRATION/u_logic/D1aax6_reg' (FDE) to 'U0_CORTEXM0INTEGRATION/u_logic/Z2aax6_reg'
+INFO: [Synth 8-3886] merging instance 'U0_CORTEXM0INTEGRATION/u_logic/Xwaax6_reg' (FDE) to 'U0_CORTEXM0INTEGRATION/u_logic/Z2aax6_reg'
+INFO: [Synth 8-3886] merging instance 'U0_CORTEXM0INTEGRATION/u_logic/Bvaax6_reg' (FDE) to 'U0_CORTEXM0INTEGRATION/u_logic/Z2aax6_reg'
+INFO: [Synth 8-3886] merging instance 'U0_CORTEXM0INTEGRATION/u_logic/N39ax6_reg' (FDE) to 'U0_CORTEXM0INTEGRATION/u_logic/J59ax6_reg'
+INFO: [Synth 8-3886] merging instance 'U0_CORTEXM0INTEGRATION/u_logic/Hz9ax6_reg' (FDE) to 'U0_CORTEXM0INTEGRATION/u_logic/J59ax6_reg'
+INFO: [Synth 8-3886] merging instance 'U0_CORTEXM0INTEGRATION/u_logic/Lx9ax6_reg' (FDE) to 'U0_CORTEXM0INTEGRATION/u_logic/J59ax6_reg'
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (U0_CORTEXM0INTEGRATION/u_logic/Fm7ax6_reg)
+INFO: [Synth 8-3886] merging instance 'U0_CORTEXM0INTEGRATION/u_logic/Ftaax6_reg' (FDE) to 'U0_CORTEXM0INTEGRATION/u_logic/Z2aax6_reg'
+INFO: [Synth 8-3886] merging instance 'U0_CORTEXM0INTEGRATION/u_logic/Jraax6_reg' (FDE) to 'U0_CORTEXM0INTEGRATION/u_logic/Z2aax6_reg'
+INFO: [Synth 8-3886] merging instance 'U0_CORTEXM0INTEGRATION/u_logic/Npaax6_reg' (FDE) to 'U0_CORTEXM0INTEGRATION/u_logic/Z2aax6_reg'
+INFO: [Synth 8-3886] merging instance 'U0_CORTEXM0INTEGRATION/u_logic/Pe9bx6_reg' (FDE) to 'U0_CORTEXM0INTEGRATION/u_logic/Z2aax6_reg'
+INFO: [Synth 8-3886] merging instance 'U0_CORTEXM0INTEGRATION/u_logic/Rnaax6_reg' (FDE) to 'U0_CORTEXM0INTEGRATION/u_logic/Z2aax6_reg'
+INFO: [Synth 8-3886] merging instance 'U0_CORTEXM0INTEGRATION/u_logic/Vlaax6_reg' (FDE) to 'U0_CORTEXM0INTEGRATION/u_logic/Z2aax6_reg'
+INFO: [Synth 8-3886] merging instance 'U0_CORTEXM0INTEGRATION/u_logic/J5jbx6_reg' (FDE) to 'U0_CORTEXM0INTEGRATION/u_logic/Z2aax6_reg'
+INFO: [Synth 8-3886] merging instance 'U0_CORTEXM0INTEGRATION/u_logic/Yjaax6_reg' (FDE) to 'U0_CORTEXM0INTEGRATION/u_logic/Z2aax6_reg'
+INFO: [Synth 8-3886] merging instance 'U0_CORTEXM0INTEGRATION/u_logic/Ux8bx6_reg' (FDE) to 'U0_CORTEXM0INTEGRATION/u_logic/Z2aax6_reg'
+INFO: [Synth 8-3886] merging instance 'U0_CORTEXM0INTEGRATION/u_logic/Biaax6_reg' (FDE) to 'U0_CORTEXM0INTEGRATION/u_logic/Z2aax6_reg'
+INFO: [Synth 8-3886] merging instance 'U0_CORTEXM0INTEGRATION/u_logic/Egaax6_reg' (FDE) to 'U0_CORTEXM0INTEGRATION/u_logic/Z2aax6_reg'
+INFO: [Synth 8-3886] merging instance 'U0_CORTEXM0INTEGRATION/u_logic/Nmabx6_reg' (FDE) to 'U0_CORTEXM0INTEGRATION/u_logic/Z2aax6_reg'
+INFO: [Synth 8-3886] merging instance 'U0_CORTEXM0INTEGRATION/u_logic/Heaax6_reg' (FDE) to 'U0_CORTEXM0INTEGRATION/u_logic/Z2aax6_reg'
+INFO: [Synth 8-3886] merging instance 'U0_CORTEXM0INTEGRATION/u_logic/Kcaax6_reg' (FDE) to 'U0_CORTEXM0INTEGRATION/u_logic/Z2aax6_reg'
+INFO: [Synth 8-3886] merging instance 'U0_CORTEXM0INTEGRATION/u_logic/Nlbbx6_reg' (FDE) to 'U0_CORTEXM0INTEGRATION/u_logic/Z2aax6_reg'
+INFO: [Synth 8-3886] merging instance 'U0_CORTEXM0INTEGRATION/u_logic/Naaax6_reg' (FDE) to 'U0_CORTEXM0INTEGRATION/u_logic/Z2aax6_reg'
+INFO: [Synth 8-3886] merging instance 'U0_CORTEXM0INTEGRATION/u_logic/Q8aax6_reg' (FDE) to 'U0_CORTEXM0INTEGRATION/u_logic/Z2aax6_reg'
+INFO: [Synth 8-3886] merging instance 'U0_CORTEXM0INTEGRATION/u_logic/Cndbx6_reg' (FDE) to 'U0_CORTEXM0INTEGRATION/u_logic/Z2aax6_reg'
+INFO: [Synth 8-3886] merging instance 'U0_CORTEXM0INTEGRATION/u_logic/J6ebx6_reg' (FDE) to 'U0_CORTEXM0INTEGRATION/u_logic/Z2aax6_reg'
+INFO: [Synth 8-3886] merging instance 'U0_CORTEXM0INTEGRATION/u_logic/Qlfbx6_reg' (FDE) to 'U0_CORTEXM0INTEGRATION/u_logic/Z2aax6_reg'
+INFO: [Synth 8-3886] merging instance 'U0_CORTEXM0INTEGRATION/u_logic/Wxgbx6_reg' (FDE) to 'U0_CORTEXM0INTEGRATION/u_logic/Z2aax6_reg'
+INFO: [Synth 8-3886] merging instance 'U0_CORTEXM0INTEGRATION/u_logic/T6aax6_reg' (FDE) to 'U0_CORTEXM0INTEGRATION/u_logic/Z2aax6_reg'
+INFO: [Synth 8-3886] merging instance 'U0_CORTEXM0INTEGRATION/u_logic/W4aax6_reg' (FDE) to 'U0_CORTEXM0INTEGRATION/u_logic/Z2aax6_reg'
+INFO: [Synth 8-3886] merging instance 'U0_CORTEXM0INTEGRATION/u_logic/Cccbx6_reg' (FDE) to 'U0_CORTEXM0INTEGRATION/u_logic/Z2aax6_reg'
+INFO: [Synth 8-3886] merging instance 'U0_CORTEXM0INTEGRATION/u_logic/Fvcbx6_reg' (FDE) to 'U0_CORTEXM0INTEGRATION/u_logic/Z2aax6_reg'
+INFO: [Synth 8-3886] merging instance 'U0_CORTEXM0INTEGRATION/u_logic/Khgax6_reg' (FDE) to 'U0_CORTEXM0INTEGRATION/u_logic/Z2aax6_reg'
+INFO: [Synth 8-3886] merging instance 'U0_CORTEXM0INTEGRATION/u_logic/Tchbx6_reg' (FDE) to 'U0_CORTEXM0INTEGRATION/u_logic/Z2aax6_reg'
+INFO: [Synth 8-3886] merging instance 'U0_CORTEXM0INTEGRATION/u_logic/Z2aax6_reg' (FDE) to 'U0_CORTEXM0INTEGRATION/u_logic/N4gax6_reg'
+INFO: [Synth 8-3886] merging instance 'U0_CORTEXM0INTEGRATION/u_logic/Vibax6_reg' (FDE) to 'U0_CORTEXM0INTEGRATION/u_logic/Zgbax6_reg'
+INFO: [Synth 8-3886] merging instance 'U0_CORTEXM0INTEGRATION/u_logic/Zgbax6_reg' (FDE) to 'U0_CORTEXM0INTEGRATION/u_logic/Hdbax6_reg'
+INFO: [Synth 8-3886] merging instance 'U0_CORTEXM0INTEGRATION/u_logic/Dfbax6_reg' (FDE) to 'U0_CORTEXM0INTEGRATION/u_logic/Hdbax6_reg'
+INFO: [Synth 8-3886] merging instance 'U0_CORTEXM0INTEGRATION/u_logic/Hdbax6_reg' (FDE) to 'U0_CORTEXM0INTEGRATION/u_logic/Tikbx6_reg'
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (U0_CORTEXM0INTEGRATION/u_logic/Tikbx6_reg)
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (U0_CORTEXM0INTEGRATION/u_logic/N4gax6_reg)
+INFO: [Synth 8-3886] merging instance 'U0_CORTEXM0INTEGRATION/u_logic/Pv9ax6_reg' (FDE) to 'U0_CORTEXM0INTEGRATION/u_logic/J59ax6_reg'
+INFO: [Synth 8-3886] merging instance 'U0_CORTEXM0INTEGRATION/u_logic/Tt9ax6_reg' (FDE) to 'U0_CORTEXM0INTEGRATION/u_logic/J59ax6_reg'
+INFO: [Synth 8-3886] merging instance 'U0_CORTEXM0INTEGRATION/u_logic/Xr9ax6_reg' (FDE) to 'U0_CORTEXM0INTEGRATION/u_logic/J59ax6_reg'
+INFO: [Synth 8-3886] merging instance 'U0_CORTEXM0INTEGRATION/u_logic/Tc9bx6_reg' (FDE) to 'U0_CORTEXM0INTEGRATION/u_logic/J59ax6_reg'
+INFO: [Synth 8-3886] merging instance 'U0_CORTEXM0INTEGRATION/u_logic/Bq9ax6_reg' (FDE) to 'U0_CORTEXM0INTEGRATION/u_logic/J59ax6_reg'
+INFO: [Synth 8-3886] merging instance 'U0_CORTEXM0INTEGRATION/u_logic/Fo9ax6_reg' (FDE) to 'U0_CORTEXM0INTEGRATION/u_logic/J59ax6_reg'
+INFO: [Common 17-14] Message 'Synth 8-3886' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (U0_CORTEXM0INTEGRATION/u_logic/Pkkbx6_reg)
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (U0_CORTEXM0INTEGRATION/u_logic/Q2gax6_reg)
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (U0_CORTEXM0INTEGRATION/u_logic/Bt2qw6_reg)
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (U0_CORTEXM0INTEGRATION/u_logic/Qehbx6_reg)
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (U0_CORTEXM0INTEGRATION/u_logic/Vj3qw6_reg)
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (U0_CORTEXM0INTEGRATION/u_logic/Xn7ax6_reg)
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (U0_CORTEXM0INTEGRATION/u_logic/P23qw6_reg)
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (U0_CORTEXM0INTEGRATION/u_logic/Pg3qw6_reg)
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (U0_CORTEXM0INTEGRATION/u_logic/Bf3qw6_reg)
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (U0_CORTEXM0INTEGRATION/u_logic/Vn9bx6_reg)
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (U0_CORTEXM0INTEGRATION/u_logic/Nd3qw6_reg)
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (U0_CORTEXM0INTEGRATION/u_logic/Ke1qw6_reg)
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (U0_CORTEXM0INTEGRATION/u_logic/Yf1qw6_reg)
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (U0_CORTEXM0INTEGRATION/u_logic/H4ypw6_reg)
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (U0_CORTEXM0INTEGRATION/u_logic/B79bx6_reg)
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (U0_CORTEXM0INTEGRATION/u_logic/Su8ax6_reg)
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (U0_CORTEXM0INTEGRATION/u_logic/Yvabx6_reg)
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (U0_CORTEXM0INTEGRATION/u_logic/Kl8ax6_reg)
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (U0_CORTEXM0INTEGRATION/u_logic/Q4dbx6_reg)
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (U0_CORTEXM0INTEGRATION/u_logic/Nlcbx6_reg)
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (U0_CORTEXM0INTEGRATION/u_logic/Q2ibx6_reg)
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (U0_CORTEXM0INTEGRATION/u_logic/No3qw6_reg)
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (U0_CORTEXM0INTEGRATION/u_logic/H7hbx6_reg)
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (U0_CORTEXM0INTEGRATION/u_logic/Bvfbx6_reg)
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (U0_CORTEXM0INTEGRATION/u_logic/Ufebx6_reg)
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (U0_CORTEXM0INTEGRATION/u_logic/Nwdbx6_reg)
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (U0_CORTEXM0INTEGRATION/u_logic/Ym3qw6_reg)
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (U0_CORTEXM0INTEGRATION/u_logic/Jl3qw6_reg)
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (U0_CORTEXM0INTEGRATION/u_logic/Yubbx6_reg)
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (U0_CORTEXM0INTEGRATION/u_logic/Dpwpw6_reg)
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (U0_CORTEXM0INTEGRATION/u_logic/Ad7ax6_reg)
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (U0_CORTEXM0INTEGRATION/u_logic/Wc2qw6_reg)
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (U0_CORTEXM0INTEGRATION/u_logic/Cq3qw6_reg)
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (U0_CORTEXM0INTEGRATION/u_logic/Vqgax6_reg)
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (U0_CORTEXM0INTEGRATION/u_logic/Ydgax6_reg)
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (U0_CORTEXM0INTEGRATION/u_logic/Gnqpw6_reg)
+WARNING: [Synth 8-3332] Sequential element (Evhpw6_reg) is unused and will be removed from module cortexm0ds_logic.
+WARNING: [Synth 8-3332] Sequential element (Hwhpw6_reg) is unused and will be removed from module cortexm0ds_logic.
+WARNING: [Synth 8-3332] Sequential element (Kxhpw6_reg) is unused and will be removed from module cortexm0ds_logic.
+WARNING: [Synth 8-3332] Sequential element (Bclpw6_reg) is unused and will be removed from module cortexm0ds_logic.
+WARNING: [Synth 8-3332] Sequential element (Rilpw6_reg) is unused and will be removed from module cortexm0ds_logic.
+WARNING: [Synth 8-3332] Sequential element (Golpw6_reg) is unused and will be removed from module cortexm0ds_logic.
+WARNING: [Synth 8-3332] Sequential element (Sdlpw6_reg) is unused and will be removed from module cortexm0ds_logic.
+WARNING: [Synth 8-3332] Sequential element (Kalpw6_reg) is unused and will be removed from module cortexm0ds_logic.
+WARNING: [Synth 8-3332] Sequential element (Jflpw6_reg) is unused and will be removed from module cortexm0ds_logic.
+WARNING: [Synth 8-3332] Sequential element (Xvqpw6_reg) is unused and will be removed from module cortexm0ds_logic.
+WARNING: [Synth 8-3332] Sequential element (Xxqpw6_reg) is unused and will be removed from module cortexm0ds_logic.
+WARNING: [Synth 8-3332] Sequential element (Qsfax6_reg) is unused and will be removed from module cortexm0ds_logic.
+WARNING: [Synth 8-3332] Sequential element (Qufax6_reg) is unused and will be removed from module cortexm0ds_logic.
+WARNING: [Synth 8-3332] Sequential element (Qwfax6_reg) is unused and will be removed from module cortexm0ds_logic.
+WARNING: [Synth 8-3332] Sequential element (Xkqpw6_reg) is unused and will be removed from module cortexm0ds_logic.
+WARNING: [Synth 8-3332] Sequential element (Gnqpw6_reg) is unused and will be removed from module cortexm0ds_logic.
+WARNING: [Synth 8-3332] Sequential element (Gpqpw6_reg) is unused and will be removed from module cortexm0ds_logic.
+WARNING: [Synth 8-3332] Sequential element (Opbax6_reg) is unused and will be removed from module cortexm0ds_logic.
+WARNING: [Synth 8-3332] Sequential element (Phcax6_reg) is unused and will be removed from module cortexm0ds_logic.
+WARNING: [Synth 8-3332] Sequential element (Tfcax6_reg) is unused and will be removed from module cortexm0ds_logic.
+WARNING: [Synth 8-3332] Sequential element (Xdcax6_reg) is unused and will be removed from module cortexm0ds_logic.
+WARNING: [Synth 8-3332] Sequential element (Lg9bx6_reg) is unused and will be removed from module cortexm0ds_logic.
+WARNING: [Synth 8-3332] Sequential element (Bccax6_reg) is unused and will be removed from module cortexm0ds_logic.
+WARNING: [Synth 8-3332] Sequential element (Facax6_reg) is unused and will be removed from module cortexm0ds_logic.
+WARNING: [Synth 8-3332] Sequential element (F7jbx6_reg) is unused and will be removed from module cortexm0ds_logic.
+WARNING: [Synth 8-3332] Sequential element (J8cax6_reg) is unused and will be removed from module cortexm0ds_logic.
+WARNING: [Synth 8-3332] Sequential element (Rz8bx6_reg) is unused and will be removed from module cortexm0ds_logic.
+WARNING: [Synth 8-3332] Sequential element (M6cax6_reg) is unused and will be removed from module cortexm0ds_logic.
+WARNING: [Synth 8-3332] Sequential element (P4cax6_reg) is unused and will be removed from module cortexm0ds_logic.
+WARNING: [Synth 8-3332] Sequential element (Koabx6_reg) is unused and will be removed from module cortexm0ds_logic.
+WARNING: [Synth 8-3332] Sequential element (S2cax6_reg) is unused and will be removed from module cortexm0ds_logic.
+WARNING: [Synth 8-3332] Sequential element (V0cax6_reg) is unused and will be removed from module cortexm0ds_logic.
+WARNING: [Synth 8-3332] Sequential element (Knbbx6_reg) is unused and will be removed from module cortexm0ds_logic.
+WARNING: [Synth 8-3332] Sequential element (Yybax6_reg) is unused and will be removed from module cortexm0ds_logic.
+WARNING: [Synth 8-3332] Sequential element (Bxbax6_reg) is unused and will be removed from module cortexm0ds_logic.
+WARNING: [Synth 8-3332] Sequential element (Zodbx6_reg) is unused and will be removed from module cortexm0ds_logic.
+WARNING: [Synth 8-3332] Sequential element (G8ebx6_reg) is unused and will be removed from module cortexm0ds_logic.
+WARNING: [Synth 8-3332] Sequential element (Nnfbx6_reg) is unused and will be removed from module cortexm0ds_logic.
+WARNING: [Synth 8-3332] Sequential element (Tzgbx6_reg) is unused and will be removed from module cortexm0ds_logic.
+WARNING: [Synth 8-3332] Sequential element (Evbax6_reg) is unused and will be removed from module cortexm0ds_logic.
+WARNING: [Synth 8-3332] Sequential element (Htbax6_reg) is unused and will be removed from module cortexm0ds_logic.
+WARNING: [Synth 8-3332] Sequential element (Zdcbx6_reg) is unused and will be removed from module cortexm0ds_logic.
+WARNING: [Synth 8-3332] Sequential element (Cxcbx6_reg) is unused and will be removed from module cortexm0ds_logic.
+WARNING: [Synth 8-3332] Sequential element (Hjgax6_reg) is unused and will be removed from module cortexm0ds_logic.
+WARNING: [Synth 8-3332] Sequential element (Wc2qw6_reg) is unused and will be removed from module cortexm0ds_logic.
+WARNING: [Synth 8-3332] Sequential element (Zm8ax6_reg) is unused and will be removed from module cortexm0ds_logic.
+WARNING: [Synth 8-3332] Sequential element (Hlcax6_reg) is unused and will be removed from module cortexm0ds_logic.
+WARNING: [Synth 8-3332] Sequential element (Iddax6_reg) is unused and will be removed from module cortexm0ds_logic.
+WARNING: [Synth 8-3332] Sequential element (Mbdax6_reg) is unused and will be removed from module cortexm0ds_logic.
+WARNING: [Synth 8-3332] Sequential element (Q9dax6_reg) is unused and will be removed from module cortexm0ds_logic.
+WARNING: [Synth 8-3332] Sequential element (Zl9bx6_reg) is unused and will be removed from module cortexm0ds_logic.
+WARNING: [Synth 8-3332] Sequential element (U7dax6_reg) is unused and will be removed from module cortexm0ds_logic.
+WARNING: [Synth 8-3332] Sequential element (Y5dax6_reg) is unused and will be removed from module cortexm0ds_logic.
+WARNING: [Synth 8-3332] Sequential element (Tcjbx6_reg) is unused and will be removed from module cortexm0ds_logic.
+WARNING: [Synth 8-3332] Sequential element (C4dax6_reg) is unused and will be removed from module cortexm0ds_logic.
+WARNING: [Synth 8-3332] Sequential element (F59bx6_reg) is unused and will be removed from module cortexm0ds_logic.
+WARNING: [Synth 8-3332] Sequential element (F2dax6_reg) is unused and will be removed from module cortexm0ds_logic.
+WARNING: [Synth 8-3332] Sequential element (I0dax6_reg) is unused and will be removed from module cortexm0ds_logic.
+WARNING: [Synth 8-3332] Sequential element (Buabx6_reg) is unused and will be removed from module cortexm0ds_logic.
+WARNING: [Synth 8-3332] Sequential element (Lycax6_reg) is unused and will be removed from module cortexm0ds_logic.
+WARNING: [Synth 8-3332] Sequential element (Owcax6_reg) is unused and will be removed from module cortexm0ds_logic.
+WARNING: [Synth 8-3332] Sequential element (Btbbx6_reg) is unused and will be removed from module cortexm0ds_logic.
+WARNING: [Synth 8-3332] Sequential element (Rucax6_reg) is unused and will be removed from module cortexm0ds_logic.
+WARNING: [Synth 8-3332] Sequential element (Uscax6_reg) is unused and will be removed from module cortexm0ds_logic.
+WARNING: [Synth 8-3332] Sequential element (Qudbx6_reg) is unused and will be removed from module cortexm0ds_logic.
+WARNING: [Synth 8-3332] Sequential element (Xdebx6_reg) is unused and will be removed from module cortexm0ds_logic.
+WARNING: [Synth 8-3332] Sequential element (Etfbx6_reg) is unused and will be removed from module cortexm0ds_logic.
+WARNING: [Synth 8-3332] Sequential element (K5hbx6_reg) is unused and will be removed from module cortexm0ds_logic.
+WARNING: [Synth 8-3332] Sequential element (Xqcax6_reg) is unused and will be removed from module cortexm0ds_logic.
+WARNING: [Synth 8-3332] Sequential element (Apcax6_reg) is unused and will be removed from module cortexm0ds_logic.
+WARNING: [Synth 8-3332] Sequential element (Qjcbx6_reg) is unused and will be removed from module cortexm0ds_logic.
+WARNING: [Synth 8-3332] Sequential element (T2dbx6_reg) is unused and will be removed from module cortexm0ds_logic.
+WARNING: [Synth 8-3332] Sequential element (Yogax6_reg) is unused and will be removed from module cortexm0ds_logic.
+WARNING: [Synth 8-3332] Sequential element (Pe7ax6_reg) is unused and will be removed from module cortexm0ds_logic.
+WARNING: [Synth 8-3332] Sequential element (Di3qw6_reg) is unused and will be removed from module cortexm0ds_logic.
+WARNING: [Synth 8-3332] Sequential element (Sqwpw6_reg) is unused and will be removed from module cortexm0ds_logic.
+WARNING: [Synth 8-3332] Sequential element (Gr2qw6_reg) is unused and will be removed from module cortexm0ds_logic.
+WARNING: [Synth 8-3332] Sequential element (Fm7ax6_reg) is unused and will be removed from module cortexm0ds_logic.
+WARNING: [Synth 8-3332] Sequential element (P0bax6_reg) is unused and will be removed from module cortexm0ds_logic.
+WARNING: [Synth 8-3332] Sequential element (L5lpw6_reg) is unused and will be removed from module cortexm0ds_logic.
+WARNING: [Synth 8-3332] Sequential element (Tyaax6_reg) is unused and will be removed from module cortexm0ds_logic.
+WARNING: [Synth 8-3332] Sequential element (A5ipw6_reg) is unused and will be removed from module cortexm0ds_logic.
+WARNING: [Synth 8-3332] Sequential element (Ksgax6_reg) is unused and will be removed from module cortexm0ds_logic.
+WARNING: [Synth 8-3332] Sequential element (Dugax6_reg) is unused and will be removed from module cortexm0ds_logic.
+WARNING: [Synth 8-3332] Sequential element (Qehbx6_reg) is unused and will be removed from module cortexm0ds_logic.
+WARNING: [Synth 8-3332] Sequential element (Vj3qw6_reg) is unused and will be removed from module cortexm0ds_logic.
+WARNING: [Synth 8-3332] Sequential element (Xn7ax6_reg) is unused and will be removed from module cortexm0ds_logic.
+WARNING: [Synth 8-3332] Sequential element (P23qw6_reg) is unused and will be removed from module cortexm0ds_logic.
+WARNING: [Synth 8-3332] Sequential element (Pg3qw6_reg) is unused and will be removed from module cortexm0ds_logic.
+WARNING: [Synth 8-3332] Sequential element (Bf3qw6_reg) is unused and will be removed from module cortexm0ds_logic.
+WARNING: [Synth 8-3332] Sequential element (Vn9bx6_reg) is unused and will be removed from module cortexm0ds_logic.
+WARNING: [Synth 8-3332] Sequential element (Nd3qw6_reg) is unused and will be removed from module cortexm0ds_logic.
+WARNING: [Synth 8-3332] Sequential element (Ke1qw6_reg) is unused and will be removed from module cortexm0ds_logic.
+WARNING: [Synth 8-3332] Sequential element (Yf1qw6_reg) is unused and will be removed from module cortexm0ds_logic.
+WARNING: [Synth 8-3332] Sequential element (K7vpw6_reg) is unused and will be removed from module cortexm0ds_logic.
+WARNING: [Synth 8-3332] Sequential element (Yzlpw6_reg) is unused and will be removed from module cortexm0ds_logic.
+WARNING: [Synth 8-3332] Sequential element (Cq3qw6_reg) is unused and will be removed from module cortexm0ds_logic.
+WARNING: [Synth 8-3332] Sequential element (Ahdax6_reg) is unused and will be removed from module cortexm0ds_logic.
+WARNING: [Synth 8-3332] Sequential element (B9eax6_reg) is unused and will be removed from module cortexm0ds_logic.
+WARNING: [Synth 8-3332] Sequential element (F7eax6_reg) is unused and will be removed from module cortexm0ds_logic.
+INFO: [Common 17-14] Message 'Synth 8-3332' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (cmsdk_apb_subsystem_instance/APB_Bridge_inst/\ahb_hsize_reg[2] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (AHB_BusMatrix_lite_instance/uAHB_BusMatrix/u_ahb_outputstage_1/hsel_lock_reg)
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (AHB_BusMatrix_lite_instance/uAHB_BusMatrix/u_ahb_outputstage_1/u_output_arb/reg_burst_hold_reg)
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (AHB_BusMatrix_lite_instance/uAHB_BusMatrix/u_ahb_outputstage_0/hsel_lock_reg)
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (AHB_BusMatrix_lite_instance/uAHB_BusMatrix/u_ahb_outputstage_0/u_output_arb/reg_burst_hold_reg)
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (AHB_BusMatrix_lite_instance/uAHB_BusMatrix/u_ahb_outputstage_2/u_output_arb/reg_burst_hold_reg)
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (AHB_BusMatrix_lite_instance/uAHB_BusMatrix/u_ahb_outputstage_3/hsel_lock_reg)
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (AHB_BusMatrix_lite_instance/uAHB_BusMatrix/u_ahb_outputstage_3/u_output_arb/reg_burst_hold_reg)
+---------------------------------------------------------------------------------
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:27 ; elapsed = 00:00:57 . Memory (MB): peak = 1119.590 ; gain = 752.480
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start ROM, RAM, DSP and Shift Register Reporting
+---------------------------------------------------------------------------------
+
+Block RAM: Preliminary Mapping  Report (see note below)
++--------------------------------------------------+------------+------------------------+---+---+------------------------+---+---+------------------+--------+--------+
+|Module Name                                       | RTL Object | PORT A (Depth x Width) | W | R | PORT B (Depth x Width) | W | R | Ports driving FF | RAMB18 | RAMB36 | 
++--------------------------------------------------+------------+------------------------+---+---+------------------------+---+---+------------------+--------+--------+
+|cmsdk_fpga_isram:                                 | BRAM1_reg  | 64 K x 8(WRITE_FIRST)  | W | R |                        |   |   | Port A           | 0      | 16     | 
+|cmsdk_fpga_isram:                                 | BRAM2_reg  | 64 K x 8(WRITE_FIRST)  | W | R |                        |   |   | Port A           | 0      | 16     | 
+|cmsdk_fpga_isram:                                 | BRAM3_reg  | 64 K x 8(WRITE_FIRST)  | W | R |                        |   |   | Port A           | 0      | 16     | 
+|Instruction_SRAM_TOP_instance/U0_cmsdk_fpga_isram | BRAM0_reg  | 64 K x 8(WRITE_FIRST)  | W | R |                        |   |   | Port A           | 0      | 16     | 
+|cmsdk_fpga_dsram:                                 | BRAM1_reg  | 64 K x 8(WRITE_FIRST)  | W | R |                        |   |   | Port A           | 0      | 16     | 
+|cmsdk_fpga_dsram:                                 | BRAM2_reg  | 64 K x 8(WRITE_FIRST)  | W | R |                        |   |   | Port A           | 0      | 16     | 
+|cmsdk_fpga_dsram:                                 | BRAM3_reg  | 64 K x 8(WRITE_FIRST)  | W | R |                        |   |   | Port A           | 0      | 16     | 
+|DATA_SRAM_TOP_instance/U0_cmsdk_fpga_dsram        | BRAM0_reg  | 64 K x 8(WRITE_FIRST)  | W | R |                        |   |   | Port A           | 0      | 16     | 
++--------------------------------------------------+------------+------------------------+---+---+------------------------+---+---+------------------+--------+--------+
+
+Note: The tale above is a preliminary report that shows the Block RAMs at the current stage of the synthesis flow. Some Block RAMs may be reimplemented as non Block RAM primitives later in the synthesis flow. Multiple instantiated Block RAMs are reported only once. 
+
+DSP: Preliminary Mapping  Report (see note below)
++-----------------+----------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
+|Module Name      | DSP Mapping    | A Size | B Size | C Size | D Size | P Size | AREG | BREG | CREG | DREG | ADREG | MREG | PREG | 
++-----------------+----------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
+|cortexm0ds_logic | A*B            | 15     | 15     | -      | -      | 15     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|cortexm0ds_logic | A*B            | 18     | 18     | -      | -      | 48     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|cortexm0ds_logic | (PCIN>>17)+A*B | 15     | 15     | -      | -      | 15     | 0    | 0    | -    | -    | -     | 0    | 0    | 
++-----------------+----------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
+
+Note: The table above is a preliminary report that shows the DSPs inferred at the current stage of the synthesis flow. Some DSP may be reimplemented as non DSP primitives later in the synthesis flow. Multiple instantiated DSPs are reported only once.
+---------------------------------------------------------------------------------
+Finished ROM, RAM, DSP and Shift Register Reporting
+---------------------------------------------------------------------------------
+INFO: [Synth 8-4480] The timing for the instance Instruction_SRAM_TOP_instance/U0_cmsdk_fpga_isram/i_2/BRAM1_reg_1_0 (implemented as a block RAM) might be sub-optimal as no optional output register could be merged into the block ram. Providing additional output register may help in improving timing.
+INFO: [Synth 8-4480] The timing for the instance Instruction_SRAM_TOP_instance/U0_cmsdk_fpga_isram/i_2/BRAM1_reg_1_1 (implemented as a block RAM) might be sub-optimal as no optional output register could be merged into the block ram. Providing additional output register may help in improving timing.
+INFO: [Synth 8-4480] The timing for the instance Instruction_SRAM_TOP_instance/U0_cmsdk_fpga_isram/i_2/BRAM1_reg_1_2 (implemented as a block RAM) might be sub-optimal as no optional output register could be merged into the block ram. Providing additional output register may help in improving timing.
+INFO: [Synth 8-4480] The timing for the instance Instruction_SRAM_TOP_instance/U0_cmsdk_fpga_isram/i_2/BRAM1_reg_1_3 (implemented as a block RAM) might be sub-optimal as no optional output register could be merged into the block ram. Providing additional output register may help in improving timing.
+INFO: [Synth 8-4480] The timing for the instance Instruction_SRAM_TOP_instance/U0_cmsdk_fpga_isram/i_2/BRAM1_reg_1_4 (implemented as a block RAM) might be sub-optimal as no optional output register could be merged into the block ram. Providing additional output register may help in improving timing.
+INFO: [Synth 8-4480] The timing for the instance Instruction_SRAM_TOP_instance/U0_cmsdk_fpga_isram/i_2/BRAM1_reg_1_5 (implemented as a block RAM) might be sub-optimal as no optional output register could be merged into the block ram. Providing additional output register may help in improving timing.
+INFO: [Synth 8-4480] The timing for the instance Instruction_SRAM_TOP_instance/U0_cmsdk_fpga_isram/i_2/BRAM1_reg_1_6 (implemented as a block RAM) might be sub-optimal as no optional output register could be merged into the block ram. Providing additional output register may help in improving timing.
+INFO: [Synth 8-4480] The timing for the instance Instruction_SRAM_TOP_instance/U0_cmsdk_fpga_isram/i_2/BRAM1_reg_1_7 (implemented as a block RAM) might be sub-optimal as no optional output register could be merged into the block ram. Providing additional output register may help in improving timing.
+INFO: [Synth 8-4480] The timing for the instance Instruction_SRAM_TOP_instance/U0_cmsdk_fpga_isram/i_3/BRAM2_reg_1_0 (implemented as a block RAM) might be sub-optimal as no optional output register could be merged into the block ram. Providing additional output register may help in improving timing.
+INFO: [Synth 8-4480] The timing for the instance Instruction_SRAM_TOP_instance/U0_cmsdk_fpga_isram/i_3/BRAM2_reg_1_1 (implemented as a block RAM) might be sub-optimal as no optional output register could be merged into the block ram. Providing additional output register may help in improving timing.
+INFO: [Synth 8-4480] The timing for the instance Instruction_SRAM_TOP_instance/U0_cmsdk_fpga_isram/i_3/BRAM2_reg_1_2 (implemented as a block RAM) might be sub-optimal as no optional output register could be merged into the block ram. Providing additional output register may help in improving timing.
+INFO: [Synth 8-4480] The timing for the instance Instruction_SRAM_TOP_instance/U0_cmsdk_fpga_isram/i_3/BRAM2_reg_1_3 (implemented as a block RAM) might be sub-optimal as no optional output register could be merged into the block ram. Providing additional output register may help in improving timing.
+INFO: [Synth 8-4480] The timing for the instance Instruction_SRAM_TOP_instance/U0_cmsdk_fpga_isram/i_3/BRAM2_reg_1_4 (implemented as a block RAM) might be sub-optimal as no optional output register could be merged into the block ram. Providing additional output register may help in improving timing.
+INFO: [Synth 8-4480] The timing for the instance Instruction_SRAM_TOP_instance/U0_cmsdk_fpga_isram/i_3/BRAM2_reg_1_5 (implemented as a block RAM) might be sub-optimal as no optional output register could be merged into the block ram. Providing additional output register may help in improving timing.
+INFO: [Synth 8-4480] The timing for the instance Instruction_SRAM_TOP_instance/U0_cmsdk_fpga_isram/i_3/BRAM2_reg_1_6 (implemented as a block RAM) might be sub-optimal as no optional output register could be merged into the block ram. Providing additional output register may help in improving timing.
+INFO: [Synth 8-4480] The timing for the instance Instruction_SRAM_TOP_instance/U0_cmsdk_fpga_isram/i_3/BRAM2_reg_1_7 (implemented as a block RAM) might be sub-optimal as no optional output register could be merged into the block ram. Providing additional output register may help in improving timing.
+INFO: [Synth 8-4480] The timing for the instance Instruction_SRAM_TOP_instance/U0_cmsdk_fpga_isram/i_4/BRAM3_reg_1_0 (implemented as a block RAM) might be sub-optimal as no optional output register could be merged into the block ram. Providing additional output register may help in improving timing.
+INFO: [Synth 8-4480] The timing for the instance Instruction_SRAM_TOP_instance/U0_cmsdk_fpga_isram/i_4/BRAM3_reg_1_1 (implemented as a block RAM) might be sub-optimal as no optional output register could be merged into the block ram. Providing additional output register may help in improving timing.
+INFO: [Synth 8-4480] The timing for the instance Instruction_SRAM_TOP_instance/U0_cmsdk_fpga_isram/i_4/BRAM3_reg_1_2 (implemented as a block RAM) might be sub-optimal as no optional output register could be merged into the block ram. Providing additional output register may help in improving timing.
+INFO: [Synth 8-4480] The timing for the instance Instruction_SRAM_TOP_instance/U0_cmsdk_fpga_isram/i_4/BRAM3_reg_1_3 (implemented as a block RAM) might be sub-optimal as no optional output register could be merged into the block ram. Providing additional output register may help in improving timing.
+INFO: [Synth 8-4480] The timing for the instance Instruction_SRAM_TOP_instance/U0_cmsdk_fpga_isram/i_4/BRAM3_reg_1_4 (implemented as a block RAM) might be sub-optimal as no optional output register could be merged into the block ram. Providing additional output register may help in improving timing.
+INFO: [Synth 8-4480] The timing for the instance Instruction_SRAM_TOP_instance/U0_cmsdk_fpga_isram/i_4/BRAM3_reg_1_5 (implemented as a block RAM) might be sub-optimal as no optional output register could be merged into the block ram. Providing additional output register may help in improving timing.
+INFO: [Synth 8-4480] The timing for the instance Instruction_SRAM_TOP_instance/U0_cmsdk_fpga_isram/i_4/BRAM3_reg_1_6 (implemented as a block RAM) might be sub-optimal as no optional output register could be merged into the block ram. Providing additional output register may help in improving timing.
+INFO: [Synth 8-4480] The timing for the instance Instruction_SRAM_TOP_instance/U0_cmsdk_fpga_isram/i_4/BRAM3_reg_1_7 (implemented as a block RAM) might be sub-optimal as no optional output register could be merged into the block ram. Providing additional output register may help in improving timing.
+INFO: [Synth 8-4480] The timing for the instance Instruction_SRAM_TOP_instance/U0_cmsdk_fpga_isram/i_0/BRAM0_reg_1_0 (implemented as a block RAM) might be sub-optimal as no optional output register could be merged into the block ram. Providing additional output register may help in improving timing.
+INFO: [Synth 8-4480] The timing for the instance Instruction_SRAM_TOP_instance/U0_cmsdk_fpga_isram/i_0/BRAM0_reg_1_1 (implemented as a block RAM) might be sub-optimal as no optional output register could be merged into the block ram. Providing additional output register may help in improving timing.
+INFO: [Synth 8-4480] The timing for the instance Instruction_SRAM_TOP_instance/U0_cmsdk_fpga_isram/i_0/BRAM0_reg_1_2 (implemented as a block RAM) might be sub-optimal as no optional output register could be merged into the block ram. Providing additional output register may help in improving timing.
+INFO: [Synth 8-4480] The timing for the instance Instruction_SRAM_TOP_instance/U0_cmsdk_fpga_isram/i_0/BRAM0_reg_1_3 (implemented as a block RAM) might be sub-optimal as no optional output register could be merged into the block ram. Providing additional output register may help in improving timing.
+INFO: [Synth 8-4480] The timing for the instance Instruction_SRAM_TOP_instance/U0_cmsdk_fpga_isram/i_0/BRAM0_reg_1_4 (implemented as a block RAM) might be sub-optimal as no optional output register could be merged into the block ram. Providing additional output register may help in improving timing.
+INFO: [Synth 8-4480] The timing for the instance Instruction_SRAM_TOP_instance/U0_cmsdk_fpga_isram/i_0/BRAM0_reg_1_5 (implemented as a block RAM) might be sub-optimal as no optional output register could be merged into the block ram. Providing additional output register may help in improving timing.
+INFO: [Synth 8-4480] The timing for the instance Instruction_SRAM_TOP_instance/U0_cmsdk_fpga_isram/i_0/BRAM0_reg_1_6 (implemented as a block RAM) might be sub-optimal as no optional output register could be merged into the block ram. Providing additional output register may help in improving timing.
+INFO: [Synth 8-4480] The timing for the instance Instruction_SRAM_TOP_instance/U0_cmsdk_fpga_isram/i_0/BRAM0_reg_1_7 (implemented as a block RAM) might be sub-optimal as no optional output register could be merged into the block ram. Providing additional output register may help in improving timing.
+INFO: [Synth 8-4480] The timing for the instance DATA_SRAM_TOP_instance/U0_cmsdk_fpga_dsram/i_2/BRAM1_reg_1_0 (implemented as a block RAM) might be sub-optimal as no optional output register could be merged into the block ram. Providing additional output register may help in improving timing.
+INFO: [Synth 8-4480] The timing for the instance DATA_SRAM_TOP_instance/U0_cmsdk_fpga_dsram/i_2/BRAM1_reg_1_1 (implemented as a block RAM) might be sub-optimal as no optional output register could be merged into the block ram. Providing additional output register may help in improving timing.
+INFO: [Synth 8-4480] The timing for the instance DATA_SRAM_TOP_instance/U0_cmsdk_fpga_dsram/i_2/BRAM1_reg_1_2 (implemented as a block RAM) might be sub-optimal as no optional output register could be merged into the block ram. Providing additional output register may help in improving timing.
+INFO: [Synth 8-4480] The timing for the instance DATA_SRAM_TOP_instance/U0_cmsdk_fpga_dsram/i_2/BRAM1_reg_1_3 (implemented as a block RAM) might be sub-optimal as no optional output register could be merged into the block ram. Providing additional output register may help in improving timing.
+INFO: [Synth 8-4480] The timing for the instance DATA_SRAM_TOP_instance/U0_cmsdk_fpga_dsram/i_2/BRAM1_reg_1_4 (implemented as a block RAM) might be sub-optimal as no optional output register could be merged into the block ram. Providing additional output register may help in improving timing.
+INFO: [Synth 8-4480] The timing for the instance DATA_SRAM_TOP_instance/U0_cmsdk_fpga_dsram/i_2/BRAM1_reg_1_5 (implemented as a block RAM) might be sub-optimal as no optional output register could be merged into the block ram. Providing additional output register may help in improving timing.
+INFO: [Synth 8-4480] The timing for the instance DATA_SRAM_TOP_instance/U0_cmsdk_fpga_dsram/i_2/BRAM1_reg_1_6 (implemented as a block RAM) might be sub-optimal as no optional output register could be merged into the block ram. Providing additional output register may help in improving timing.
+INFO: [Synth 8-4480] The timing for the instance DATA_SRAM_TOP_instance/U0_cmsdk_fpga_dsram/i_2/BRAM1_reg_1_7 (implemented as a block RAM) might be sub-optimal as no optional output register could be merged into the block ram. Providing additional output register may help in improving timing.
+INFO: [Synth 8-4480] The timing for the instance DATA_SRAM_TOP_instance/U0_cmsdk_fpga_dsram/i_3/BRAM2_reg_1_0 (implemented as a block RAM) might be sub-optimal as no optional output register could be merged into the block ram. Providing additional output register may help in improving timing.
+INFO: [Synth 8-4480] The timing for the instance DATA_SRAM_TOP_instance/U0_cmsdk_fpga_dsram/i_3/BRAM2_reg_1_1 (implemented as a block RAM) might be sub-optimal as no optional output register could be merged into the block ram. Providing additional output register may help in improving timing.
+INFO: [Synth 8-4480] The timing for the instance DATA_SRAM_TOP_instance/U0_cmsdk_fpga_dsram/i_3/BRAM2_reg_1_2 (implemented as a block RAM) might be sub-optimal as no optional output register could be merged into the block ram. Providing additional output register may help in improving timing.
+INFO: [Synth 8-4480] The timing for the instance DATA_SRAM_TOP_instance/U0_cmsdk_fpga_dsram/i_3/BRAM2_reg_1_3 (implemented as a block RAM) might be sub-optimal as no optional output register could be merged into the block ram. Providing additional output register may help in improving timing.
+INFO: [Synth 8-4480] The timing for the instance DATA_SRAM_TOP_instance/U0_cmsdk_fpga_dsram/i_3/BRAM2_reg_1_4 (implemented as a block RAM) might be sub-optimal as no optional output register could be merged into the block ram. Providing additional output register may help in improving timing.
+INFO: [Synth 8-4480] The timing for the instance DATA_SRAM_TOP_instance/U0_cmsdk_fpga_dsram/i_3/BRAM2_reg_1_5 (implemented as a block RAM) might be sub-optimal as no optional output register could be merged into the block ram. Providing additional output register may help in improving timing.
+INFO: [Synth 8-4480] The timing for the instance DATA_SRAM_TOP_instance/U0_cmsdk_fpga_dsram/i_3/BRAM2_reg_1_6 (implemented as a block RAM) might be sub-optimal as no optional output register could be merged into the block ram. Providing additional output register may help in improving timing.
+INFO: [Synth 8-4480] The timing for the instance DATA_SRAM_TOP_instance/U0_cmsdk_fpga_dsram/i_3/BRAM2_reg_1_7 (implemented as a block RAM) might be sub-optimal as no optional output register could be merged into the block ram. Providing additional output register may help in improving timing.
+INFO: [Synth 8-4480] The timing for the instance DATA_SRAM_TOP_instance/U0_cmsdk_fpga_dsram/i_4/BRAM3_reg_1_0 (implemented as a block RAM) might be sub-optimal as no optional output register could be merged into the block ram. Providing additional output register may help in improving timing.
+INFO: [Synth 8-4480] The timing for the instance DATA_SRAM_TOP_instance/U0_cmsdk_fpga_dsram/i_4/BRAM3_reg_1_1 (implemented as a block RAM) might be sub-optimal as no optional output register could be merged into the block ram. Providing additional output register may help in improving timing.
+INFO: [Synth 8-4480] The timing for the instance DATA_SRAM_TOP_instance/U0_cmsdk_fpga_dsram/i_4/BRAM3_reg_1_2 (implemented as a block RAM) might be sub-optimal as no optional output register could be merged into the block ram. Providing additional output register may help in improving timing.
+INFO: [Synth 8-4480] The timing for the instance DATA_SRAM_TOP_instance/U0_cmsdk_fpga_dsram/i_4/BRAM3_reg_1_3 (implemented as a block RAM) might be sub-optimal as no optional output register could be merged into the block ram. Providing additional output register may help in improving timing.
+INFO: [Synth 8-4480] The timing for the instance DATA_SRAM_TOP_instance/U0_cmsdk_fpga_dsram/i_4/BRAM3_reg_1_4 (implemented as a block RAM) might be sub-optimal as no optional output register could be merged into the block ram. Providing additional output register may help in improving timing.
+INFO: [Synth 8-4480] The timing for the instance DATA_SRAM_TOP_instance/U0_cmsdk_fpga_dsram/i_4/BRAM3_reg_1_5 (implemented as a block RAM) might be sub-optimal as no optional output register could be merged into the block ram. Providing additional output register may help in improving timing.
+INFO: [Synth 8-4480] The timing for the instance DATA_SRAM_TOP_instance/U0_cmsdk_fpga_dsram/i_4/BRAM3_reg_1_6 (implemented as a block RAM) might be sub-optimal as no optional output register could be merged into the block ram. Providing additional output register may help in improving timing.
+INFO: [Synth 8-4480] The timing for the instance DATA_SRAM_TOP_instance/U0_cmsdk_fpga_dsram/i_4/BRAM3_reg_1_7 (implemented as a block RAM) might be sub-optimal as no optional output register could be merged into the block ram. Providing additional output register may help in improving timing.
+INFO: [Synth 8-4480] The timing for the instance DATA_SRAM_TOP_instance/U0_cmsdk_fpga_dsram/i_0/BRAM0_reg_1_0 (implemented as a block RAM) might be sub-optimal as no optional output register could be merged into the block ram. Providing additional output register may help in improving timing.
+INFO: [Synth 8-4480] The timing for the instance DATA_SRAM_TOP_instance/U0_cmsdk_fpga_dsram/i_0/BRAM0_reg_1_1 (implemented as a block RAM) might be sub-optimal as no optional output register could be merged into the block ram. Providing additional output register may help in improving timing.
+INFO: [Synth 8-4480] The timing for the instance DATA_SRAM_TOP_instance/U0_cmsdk_fpga_dsram/i_0/BRAM0_reg_1_2 (implemented as a block RAM) might be sub-optimal as no optional output register could be merged into the block ram. Providing additional output register may help in improving timing.
+INFO: [Synth 8-4480] The timing for the instance DATA_SRAM_TOP_instance/U0_cmsdk_fpga_dsram/i_0/BRAM0_reg_1_3 (implemented as a block RAM) might be sub-optimal as no optional output register could be merged into the block ram. Providing additional output register may help in improving timing.
+INFO: [Synth 8-4480] The timing for the instance DATA_SRAM_TOP_instance/U0_cmsdk_fpga_dsram/i_0/BRAM0_reg_1_4 (implemented as a block RAM) might be sub-optimal as no optional output register could be merged into the block ram. Providing additional output register may help in improving timing.
+INFO: [Synth 8-4480] The timing for the instance DATA_SRAM_TOP_instance/U0_cmsdk_fpga_dsram/i_0/BRAM0_reg_1_5 (implemented as a block RAM) might be sub-optimal as no optional output register could be merged into the block ram. Providing additional output register may help in improving timing.
+INFO: [Synth 8-4480] The timing for the instance DATA_SRAM_TOP_instance/U0_cmsdk_fpga_dsram/i_0/BRAM0_reg_1_6 (implemented as a block RAM) might be sub-optimal as no optional output register could be merged into the block ram. Providing additional output register may help in improving timing.
+INFO: [Synth 8-4480] The timing for the instance DATA_SRAM_TOP_instance/U0_cmsdk_fpga_dsram/i_0/BRAM0_reg_1_7 (implemented as a block RAM) might be sub-optimal as no optional output register could be merged into the block ram. Providing additional output register may help in improving timing.
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+No constraint files found.
+---------------------------------------------------------------------------------
+Start Timing Optimization
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Timing Optimization : Time (s): cpu = 00:00:27 ; elapsed = 00:00:58 . Memory (MB): peak = 1119.590 ; gain = 752.480
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start ROM, RAM, DSP and Shift Register Reporting
+---------------------------------------------------------------------------------
+
+Block RAM: Final Mapping  Report
++--------------------------------------------------+------------+------------------------+---+---+------------------------+---+---+------------------+--------+--------+
+|Module Name                                       | RTL Object | PORT A (Depth x Width) | W | R | PORT B (Depth x Width) | W | R | Ports driving FF | RAMB18 | RAMB36 | 
++--------------------------------------------------+------------+------------------------+---+---+------------------------+---+---+------------------+--------+--------+
+|cmsdk_fpga_isram:                                 | BRAM1_reg  | 64 K x 8(WRITE_FIRST)  | W | R |                        |   |   | Port A           | 0      | 16     | 
+|cmsdk_fpga_isram:                                 | BRAM2_reg  | 64 K x 8(WRITE_FIRST)  | W | R |                        |   |   | Port A           | 0      | 16     | 
+|cmsdk_fpga_isram:                                 | BRAM3_reg  | 64 K x 8(WRITE_FIRST)  | W | R |                        |   |   | Port A           | 0      | 16     | 
+|Instruction_SRAM_TOP_instance/U0_cmsdk_fpga_isram | BRAM0_reg  | 64 K x 8(WRITE_FIRST)  | W | R |                        |   |   | Port A           | 0      | 16     | 
+|cmsdk_fpga_dsram:                                 | BRAM1_reg  | 64 K x 8(WRITE_FIRST)  | W | R |                        |   |   | Port A           | 0      | 16     | 
+|cmsdk_fpga_dsram:                                 | BRAM2_reg  | 64 K x 8(WRITE_FIRST)  | W | R |                        |   |   | Port A           | 0      | 16     | 
+|cmsdk_fpga_dsram:                                 | BRAM3_reg  | 64 K x 8(WRITE_FIRST)  | W | R |                        |   |   | Port A           | 0      | 16     | 
+|DATA_SRAM_TOP_instance/U0_cmsdk_fpga_dsram        | BRAM0_reg  | 64 K x 8(WRITE_FIRST)  | W | R |                        |   |   | Port A           | 0      | 16     | 
++--------------------------------------------------+------------+------------------------+---+---+------------------------+---+---+------------------+--------+--------+
+
+---------------------------------------------------------------------------------
+Finished ROM, RAM, DSP and Shift Register Reporting
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+---------------------------------------------------------------------------------
+Start Technology Mapping
+---------------------------------------------------------------------------------
+INFO: [Synth 8-4480] The timing for the instance Instruction_SRAM_TOP_instance/U0_cmsdk_fpga_isram/BRAM1_reg_1_0 (implemented as a block RAM) might be sub-optimal as no optional output register could be merged into the block ram. Providing additional output register may help in improving timing.
+INFO: [Synth 8-4480] The timing for the instance Instruction_SRAM_TOP_instance/U0_cmsdk_fpga_isram/BRAM1_reg_1_1 (implemented as a block RAM) might be sub-optimal as no optional output register could be merged into the block ram. Providing additional output register may help in improving timing.
+INFO: [Synth 8-4480] The timing for the instance Instruction_SRAM_TOP_instance/U0_cmsdk_fpga_isram/BRAM1_reg_1_2 (implemented as a block RAM) might be sub-optimal as no optional output register could be merged into the block ram. Providing additional output register may help in improving timing.
+INFO: [Synth 8-4480] The timing for the instance Instruction_SRAM_TOP_instance/U0_cmsdk_fpga_isram/BRAM1_reg_1_3 (implemented as a block RAM) might be sub-optimal as no optional output register could be merged into the block ram. Providing additional output register may help in improving timing.
+INFO: [Synth 8-4480] The timing for the instance Instruction_SRAM_TOP_instance/U0_cmsdk_fpga_isram/BRAM1_reg_1_4 (implemented as a block RAM) might be sub-optimal as no optional output register could be merged into the block ram. Providing additional output register may help in improving timing.
+INFO: [Synth 8-4480] The timing for the instance Instruction_SRAM_TOP_instance/U0_cmsdk_fpga_isram/BRAM1_reg_1_5 (implemented as a block RAM) might be sub-optimal as no optional output register could be merged into the block ram. Providing additional output register may help in improving timing.
+INFO: [Synth 8-4480] The timing for the instance Instruction_SRAM_TOP_instance/U0_cmsdk_fpga_isram/BRAM1_reg_1_6 (implemented as a block RAM) might be sub-optimal as no optional output register could be merged into the block ram. Providing additional output register may help in improving timing.
+INFO: [Synth 8-4480] The timing for the instance Instruction_SRAM_TOP_instance/U0_cmsdk_fpga_isram/BRAM1_reg_1_7 (implemented as a block RAM) might be sub-optimal as no optional output register could be merged into the block ram. Providing additional output register may help in improving timing.
+INFO: [Synth 8-4480] The timing for the instance Instruction_SRAM_TOP_instance/U0_cmsdk_fpga_isram/BRAM2_reg_1_0 (implemented as a block RAM) might be sub-optimal as no optional output register could be merged into the block ram. Providing additional output register may help in improving timing.
+INFO: [Synth 8-4480] The timing for the instance Instruction_SRAM_TOP_instance/U0_cmsdk_fpga_isram/BRAM2_reg_1_1 (implemented as a block RAM) might be sub-optimal as no optional output register could be merged into the block ram. Providing additional output register may help in improving timing.
+INFO: [Synth 8-4480] The timing for the instance Instruction_SRAM_TOP_instance/U0_cmsdk_fpga_isram/BRAM2_reg_1_2 (implemented as a block RAM) might be sub-optimal as no optional output register could be merged into the block ram. Providing additional output register may help in improving timing.
+INFO: [Synth 8-4480] The timing for the instance Instruction_SRAM_TOP_instance/U0_cmsdk_fpga_isram/BRAM2_reg_1_3 (implemented as a block RAM) might be sub-optimal as no optional output register could be merged into the block ram. Providing additional output register may help in improving timing.
+INFO: [Synth 8-4480] The timing for the instance Instruction_SRAM_TOP_instance/U0_cmsdk_fpga_isram/BRAM2_reg_1_4 (implemented as a block RAM) might be sub-optimal as no optional output register could be merged into the block ram. Providing additional output register may help in improving timing.
+INFO: [Synth 8-4480] The timing for the instance Instruction_SRAM_TOP_instance/U0_cmsdk_fpga_isram/BRAM2_reg_1_5 (implemented as a block RAM) might be sub-optimal as no optional output register could be merged into the block ram. Providing additional output register may help in improving timing.
+INFO: [Synth 8-4480] The timing for the instance Instruction_SRAM_TOP_instance/U0_cmsdk_fpga_isram/BRAM2_reg_1_6 (implemented as a block RAM) might be sub-optimal as no optional output register could be merged into the block ram. Providing additional output register may help in improving timing.
+INFO: [Synth 8-4480] The timing for the instance Instruction_SRAM_TOP_instance/U0_cmsdk_fpga_isram/BRAM2_reg_1_7 (implemented as a block RAM) might be sub-optimal as no optional output register could be merged into the block ram. Providing additional output register may help in improving timing.
+INFO: [Synth 8-4480] The timing for the instance Instruction_SRAM_TOP_instance/U0_cmsdk_fpga_isram/BRAM3_reg_1_0 (implemented as a block RAM) might be sub-optimal as no optional output register could be merged into the block ram. Providing additional output register may help in improving timing.
+INFO: [Synth 8-4480] The timing for the instance Instruction_SRAM_TOP_instance/U0_cmsdk_fpga_isram/BRAM3_reg_1_1 (implemented as a block RAM) might be sub-optimal as no optional output register could be merged into the block ram. Providing additional output register may help in improving timing.
+INFO: [Synth 8-4480] The timing for the instance Instruction_SRAM_TOP_instance/U0_cmsdk_fpga_isram/BRAM3_reg_1_2 (implemented as a block RAM) might be sub-optimal as no optional output register could be merged into the block ram. Providing additional output register may help in improving timing.
+INFO: [Synth 8-4480] The timing for the instance Instruction_SRAM_TOP_instance/U0_cmsdk_fpga_isram/BRAM3_reg_1_3 (implemented as a block RAM) might be sub-optimal as no optional output register could be merged into the block ram. Providing additional output register may help in improving timing.
+INFO: [Synth 8-4480] The timing for the instance Instruction_SRAM_TOP_instance/U0_cmsdk_fpga_isram/BRAM3_reg_1_4 (implemented as a block RAM) might be sub-optimal as no optional output register could be merged into the block ram. Providing additional output register may help in improving timing.
+INFO: [Synth 8-4480] The timing for the instance Instruction_SRAM_TOP_instance/U0_cmsdk_fpga_isram/BRAM3_reg_1_5 (implemented as a block RAM) might be sub-optimal as no optional output register could be merged into the block ram. Providing additional output register may help in improving timing.
+INFO: [Synth 8-4480] The timing for the instance Instruction_SRAM_TOP_instance/U0_cmsdk_fpga_isram/BRAM3_reg_1_6 (implemented as a block RAM) might be sub-optimal as no optional output register could be merged into the block ram. Providing additional output register may help in improving timing.
+INFO: [Synth 8-4480] The timing for the instance Instruction_SRAM_TOP_instance/U0_cmsdk_fpga_isram/BRAM3_reg_1_7 (implemented as a block RAM) might be sub-optimal as no optional output register could be merged into the block ram. Providing additional output register may help in improving timing.
+INFO: [Synth 8-4480] The timing for the instance Instruction_SRAM_TOP_instance/U0_cmsdk_fpga_isram/BRAM0_reg_1_0 (implemented as a block RAM) might be sub-optimal as no optional output register could be merged into the block ram. Providing additional output register may help in improving timing.
+INFO: [Synth 8-4480] The timing for the instance Instruction_SRAM_TOP_instance/U0_cmsdk_fpga_isram/BRAM0_reg_1_1 (implemented as a block RAM) might be sub-optimal as no optional output register could be merged into the block ram. Providing additional output register may help in improving timing.
+INFO: [Synth 8-4480] The timing for the instance Instruction_SRAM_TOP_instance/U0_cmsdk_fpga_isram/BRAM0_reg_1_2 (implemented as a block RAM) might be sub-optimal as no optional output register could be merged into the block ram. Providing additional output register may help in improving timing.
+INFO: [Synth 8-4480] The timing for the instance Instruction_SRAM_TOP_instance/U0_cmsdk_fpga_isram/BRAM0_reg_1_3 (implemented as a block RAM) might be sub-optimal as no optional output register could be merged into the block ram. Providing additional output register may help in improving timing.
+INFO: [Synth 8-4480] The timing for the instance Instruction_SRAM_TOP_instance/U0_cmsdk_fpga_isram/BRAM0_reg_1_4 (implemented as a block RAM) might be sub-optimal as no optional output register could be merged into the block ram. Providing additional output register may help in improving timing.
+INFO: [Synth 8-4480] The timing for the instance Instruction_SRAM_TOP_instance/U0_cmsdk_fpga_isram/BRAM0_reg_1_5 (implemented as a block RAM) might be sub-optimal as no optional output register could be merged into the block ram. Providing additional output register may help in improving timing.
+INFO: [Synth 8-4480] The timing for the instance Instruction_SRAM_TOP_instance/U0_cmsdk_fpga_isram/BRAM0_reg_1_6 (implemented as a block RAM) might be sub-optimal as no optional output register could be merged into the block ram. Providing additional output register may help in improving timing.
+INFO: [Synth 8-4480] The timing for the instance Instruction_SRAM_TOP_instance/U0_cmsdk_fpga_isram/BRAM0_reg_1_7 (implemented as a block RAM) might be sub-optimal as no optional output register could be merged into the block ram. Providing additional output register may help in improving timing.
+INFO: [Synth 8-4480] The timing for the instance DATA_SRAM_TOP_instance/U0_cmsdk_fpga_dsram/BRAM1_reg_1_0 (implemented as a block RAM) might be sub-optimal as no optional output register could be merged into the block ram. Providing additional output register may help in improving timing.
+INFO: [Synth 8-4480] The timing for the instance DATA_SRAM_TOP_instance/U0_cmsdk_fpga_dsram/BRAM1_reg_1_1 (implemented as a block RAM) might be sub-optimal as no optional output register could be merged into the block ram. Providing additional output register may help in improving timing.
+INFO: [Synth 8-4480] The timing for the instance DATA_SRAM_TOP_instance/U0_cmsdk_fpga_dsram/BRAM1_reg_1_2 (implemented as a block RAM) might be sub-optimal as no optional output register could be merged into the block ram. Providing additional output register may help in improving timing.
+INFO: [Synth 8-4480] The timing for the instance DATA_SRAM_TOP_instance/U0_cmsdk_fpga_dsram/BRAM1_reg_1_3 (implemented as a block RAM) might be sub-optimal as no optional output register could be merged into the block ram. Providing additional output register may help in improving timing.
+INFO: [Common 17-14] Message 'Synth 8-4480' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
+---------------------------------------------------------------------------------
+Finished Technology Mapping : Time (s): cpu = 00:00:28 ; elapsed = 00:01:01 . Memory (MB): peak = 1119.590 ; gain = 752.480
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+---------------------------------------------------------------------------------
+Start IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished IO Insertion : Time (s): cpu = 00:00:28 ; elapsed = 00:01:01 . Memory (MB): peak = 1119.590 ; gain = 752.480
+---------------------------------------------------------------------------------
+
+Report Check Netlist: 
++------+------------------+-------+---------+-------+------------------+
+|      |Item              |Errors |Warnings |Status |Description       |
++------+------------------+-------+---------+-------+------------------+
+|1     |multi_driven_nets |      0|        0|Passed |Multi driven nets |
++------+------------------+-------+---------+-------+------------------+
+---------------------------------------------------------------------------------
+Start Renaming Generated Instances
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:28 ; elapsed = 00:01:01 . Memory (MB): peak = 1119.590 ; gain = 752.480
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:28 ; elapsed = 00:01:01 . Memory (MB): peak = 1119.590 ; gain = 752.480
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Writing Synthesis Report
+---------------------------------------------------------------------------------
+
+Report BlackBoxes: 
++-+--------------+----------+
+| |BlackBox name |Instances |
++-+--------------+----------+
++-+--------------+----------+
+
+Report Cell Usage: 
++------+---------+------+
+|      |Cell     |Count |
++------+---------+------+
+|1     |BUFG     |     1|
+|2     |CARRY4   |    98|
+|3     |DSP48E1  |     3|
+|4     |LUT1     |   285|
+|5     |LUT2     |   641|
+|6     |LUT3     |   528|
+|7     |LUT4     |   677|
+|8     |LUT5     |   866|
+|9     |LUT6     |  2473|
+|10    |MUXF7    |     3|
+|11    |MUXF8    |     1|
+|12    |RAMB36E1 |   128|
+|13    |FDCE     |  1273|
+|14    |FDPE     |   214|
+|15    |FDRE     |   662|
+|16    |FDSE     |    80|
+|17    |LD       |     1|
+|18    |IBUF     |     5|
+|19    |IOBUF    |    16|
+|20    |OBUF     |     4|
++------+---------+------+
+
+Report Instance Areas: 
++------+--------------------------------------+----------------------------+------+
+|      |Instance                              |Module                      |Cells |
++------+--------------------------------------+----------------------------+------+
+|1     |top                                   |                            |  7959|
+|2     |  U0_CORTEXM0INTEGRATION              |CORTEXM0INTEGRATION         |  4144|
+|3     |    u_logic                           |cortexm0ds_logic            |  4144|
+|4     |  RCC_instance                        |RCC                         |    90|
+|5     |    GATE                              |CLK_GATE                    |     3|
+|6     |    PCLK_Divider                      |CLKDIV__1                   |    27|
+|7     |    WDOGCLK_Divider                   |CLKDIV__2                   |    27|
+|8     |    TIMCLK_Divider                    |CLKDIV                      |    27|
+|9     |    WDOG_RESET                        |RESET_SYNC__1               |     3|
+|10    |    APB_RESET                         |RESET_SYNC                  |     3|
+|11    |  Instruction_SRAM_TOP_instance       |Instruction_SRAM_TOP        |   256|
+|12    |    U0_cmsdk_ahb_to_isram             |cmsdk_ahb_to_isram          |   155|
+|13    |    U0_cmsdk_fpga_isram               |cmsdk_fpga_isram            |   101|
+|14    |  DATA_SRAM_TOP_instance              |DATA_SRAM_TOP               |   256|
+|15    |    U0_cmsdk_ahb_to_dsram             |cmsdk_ahb_to_dsram          |   155|
+|16    |    U0_cmsdk_fpga_dsram               |cmsdk_fpga_dsram            |   101|
+|17    |  cmsdk_apb_subsystem_instance        |cmsdk_apb_subsystem         |  2404|
+|18    |    \Dual_timer_instance.DUAL_TIMER   |cmsdk_apb_dualtimers        |   757|
+|19    |      u_apb_timer_frc_1               |cmsdk_apb_dualtimers_frc__1 |   322|
+|20    |      u_apb_timer_frc_2               |cmsdk_apb_dualtimers_frc    |   322|
+|21    |    APB_Bridge_inst                   |APB_Bridge                  |   347|
+|22    |    APB_decoder_inst                  |APB_decoder                 |     5|
+|23    |    TIMER                             |cmsdk_apb_timer             |   236|
+|24    |    WATCHDOG                          |cmsdk_apb_watchdog          |   347|
+|25    |      u_apb_watchdog_frc              |cmsdk_apb_watchdog_frc      |   229|
+|26    |    UART0                             |cmsdk_apb_uart__1           |   289|
+|27    |    UART1                             |cmsdk_apb_uart              |   289|
+|28    |    MUX                               |cmsdk_apb_slave_mux         |    54|
+|29    |    u_irq_sync_0                      |cmsdk_irq_sync__1           |     5|
+|30    |    u_irq_sync_1                      |cmsdk_irq_sync__2           |     5|
+|31    |    u_irq_sync_2                      |cmsdk_irq_sync__3           |     5|
+|32    |    u_irq_sync_3                      |cmsdk_irq_sync__4           |     5|
+|33    |    u_irq_sync_4                      |cmsdk_irq_sync__5           |     5|
+|34    |    u_irq_sync_5                      |cmsdk_irq_sync__6           |     5|
+|35    |    u_irq_sync_6                      |cmsdk_irq_sync__7           |     5|
+|36    |    u_irq_sync_7                      |cmsdk_irq_sync__8           |     5|
+|37    |    u_irq_sync_8                      |cmsdk_irq_sync__9           |     5|
+|38    |    u_irq_sync_9                      |cmsdk_irq_sync__10          |     5|
+|39    |    u_irq_sync_10                     |cmsdk_irq_sync__11          |     5|
+|40    |    u_irq_sync_11                     |cmsdk_irq_sync__12          |     5|
+|41    |    u_irq_sync_12                     |cmsdk_irq_sync__13          |     5|
+|42    |    u_irq_sync_13                     |cmsdk_irq_sync__14          |     5|
+|43    |    u_irq_sync_14                     |cmsdk_irq_sync__15          |     5|
+|44    |    u_irq_sync_15                     |cmsdk_irq_sync              |     5|
+|45    |  cmsdk_ahb_gpio_instance             |GPIO_HW                     |   527|
+|46    |    GPIO                              |cmsdk_ahb_gpio              |   447|
+|47    |      u_ahb_to_gpio                   |cmsdk_ahb_to_iop            |    18|
+|48    |      u_iop_gpio                      |cmsdk_iop_gpio              |   429|
+|49    |    \genblk1[0].mux_input_i           |mux_2x1__1                  |     1|
+|50    |    \genblk1[1].mux_input_i           |mux_2x1__2                  |     1|
+|51    |    \genblk1[2].mux_input_i           |mux_2x1__3                  |     1|
+|52    |    \genblk1[3].mux_input_i           |mux_2x1__4                  |     1|
+|53    |    \genblk1[4].mux_input_i           |mux_2x1__5                  |     1|
+|54    |    \genblk1[5].mux_input_i           |mux_2x1__6                  |     1|
+|55    |    \genblk1[6].mux_input_i           |mux_2x1__7                  |     1|
+|56    |    \genblk1[7].mux_input_i           |mux_2x1__8                  |     1|
+|57    |    \genblk1[8].mux_input_i           |mux_2x1__9                  |     1|
+|58    |    \genblk1[9].mux_input_i           |mux_2x1__10                 |     1|
+|59    |    \genblk1[10].mux_input_i          |mux_2x1__11                 |     1|
+|60    |    \genblk1[11].mux_input_i          |mux_2x1__12                 |     1|
+|61    |    \genblk1[12].mux_input_i          |mux_2x1__13                 |     1|
+|62    |    \genblk1[13].mux_input_i          |mux_2x1__14                 |     1|
+|63    |    \genblk1[14].mux_input_i          |mux_2x1__15                 |     1|
+|64    |    \genblk1[15].mux_input_i          |mux_2x1__16                 |     1|
+|65    |    \genblk2[0].mux_sel_i             |mux_2x1__17                 |     1|
+|66    |    \genblk2[1].mux_sel_i             |mux_2x1__18                 |     1|
+|67    |    \genblk2[2].mux_sel_i             |mux_2x1__19                 |     1|
+|68    |    \genblk2[3].mux_sel_i             |mux_2x1__20                 |     1|
+|69    |    \genblk2[4].mux_sel_i             |mux_2x1__21                 |     1|
+|70    |    \genblk2[5].mux_sel_i             |mux_2x1__22                 |     1|
+|71    |    \genblk2[6].mux_sel_i             |mux_2x1__23                 |     1|
+|72    |    \genblk2[7].mux_sel_i             |mux_2x1__24                 |     1|
+|73    |    \genblk2[8].mux_sel_i             |mux_2x1__25                 |     1|
+|74    |    \genblk2[9].mux_sel_i             |mux_2x1__26                 |     1|
+|75    |    \genblk2[10].mux_sel_i            |mux_2x1__27                 |     1|
+|76    |    \genblk2[11].mux_sel_i            |mux_2x1__28                 |     1|
+|77    |    \genblk2[12].mux_sel_i            |mux_2x1__29                 |     1|
+|78    |    \genblk2[13].mux_sel_i            |mux_2x1__30                 |     1|
+|79    |    \genblk2[14].mux_sel_i            |mux_2x1__31                 |     1|
+|80    |    \genblk2[15].mux_sel_i            |mux_2x1                     |     1|
+|81    |    \genblk3[0].tri_buffer_i          |tri_state_buffer__1         |     1|
+|82    |    \genblk3[1].tri_buffer_i          |tri_state_buffer__2         |     1|
+|83    |    \genblk3[2].tri_buffer_i          |tri_state_buffer__3         |     1|
+|84    |    \genblk3[3].tri_buffer_i          |tri_state_buffer__4         |     1|
+|85    |    \genblk3[4].tri_buffer_i          |tri_state_buffer__5         |     1|
+|86    |    \genblk3[5].tri_buffer_i          |tri_state_buffer__6         |     1|
+|87    |    \genblk3[6].tri_buffer_i          |tri_state_buffer__7         |     1|
+|88    |    \genblk3[7].tri_buffer_i          |tri_state_buffer__8         |     1|
+|89    |    \genblk3[8].tri_buffer_i          |tri_state_buffer__9         |     1|
+|90    |    \genblk3[9].tri_buffer_i          |tri_state_buffer__10        |     1|
+|91    |    \genblk3[10].tri_buffer_i         |tri_state_buffer__11        |     1|
+|92    |    \genblk3[11].tri_buffer_i         |tri_state_buffer__12        |     1|
+|93    |    \genblk3[12].tri_buffer_i         |tri_state_buffer__13        |     1|
+|94    |    \genblk3[13].tri_buffer_i         |tri_state_buffer__14        |     1|
+|95    |    \genblk3[14].tri_buffer_i         |tri_state_buffer__15        |     1|
+|96    |    \genblk3[15].tri_buffer_i         |tri_state_buffer            |     1|
+|97    |  AHB_BusMatrix_lite_instance         |AHB_BusMatrix_lite          |   271|
+|98    |    uAHB_BusMatrix                    |AHB_BusMatrix               |   271|
+|99    |      u_AHB_InputStage_0              |AHB_InputStage              |    80|
+|100   |      u_ahb_decoderstages0            |AHB_DecoderStageS0          |    88|
+|101   |        u_AHB_BusMatrix_default_slave |AHB_BusMatrix_default_slave |     5|
+|102   |      u_ahb_outputstage_0             |AHB_OutputStage__1          |    26|
+|103   |        u_output_arb                  |AHB_Arbiter__1              |     3|
+|104   |      u_ahb_outputstage_1             |AHB_OutputStage__2          |    26|
+|105   |        u_output_arb                  |AHB_Arbiter__2              |     3|
+|106   |      u_ahb_outputstage_2             |AHB_OutputStage__3          |    29|
+|107   |        u_output_arb                  |AHB_Arbiter__3              |     3|
+|108   |      u_ahb_outputstage_3             |AHB_OutputStage             |    22|
+|109   |        u_output_arb                  |AHB_Arbiter                 |     3|
++------+--------------------------------------+----------------------------+------+
+---------------------------------------------------------------------------------
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:28 ; elapsed = 00:01:01 . Memory (MB): peak = 1119.590 ; gain = 752.480
+---------------------------------------------------------------------------------
+Synthesis finished with 0 errors, 0 critical warnings and 420 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:28 ; elapsed = 00:01:02 . Memory (MB): peak = 1119.590 ; gain = 752.480
+Synthesis Optimization Complete : Time (s): cpu = 00:00:28 ; elapsed = 00:01:02 . Memory (MB): peak = 1119.590 ; gain = 752.480
+INFO: [Project 1-571] Translating synthesized netlist
+INFO: [Netlist 29-17] Analyzing 255 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Project 1-570] Preparing netlist for logic optimization
+INFO: [Opt 31-138] Pushed 1 inverter(s) to 1 load pin(s).
+INFO: [Project 1-111] Unisim Transformation Summary:
+  A total of 17 instances were transformed.
+  IOBUF => IOBUF (IBUF, OBUFT): 16 instances
+  LD => LDCE (inverted pins: G): 1 instances
+
+INFO: [Common 17-83] Releasing license: Synthesis
+424 Infos, 183 Warnings, 0 Critical Warnings and 0 Errors encountered.
+synth_design completed successfully
+synth_design: Time (s): cpu = 00:00:40 ; elapsed = 00:01:28 . Memory (MB): peak = 1119.590 ; gain = 813.555
+WARNING: [Constraints 18-5210] No constraint will be written out.
+INFO: [Common 17-1381] The checkpoint 'C:/Ain_shams/GP/Synthesis/project_1/project_1.runs/synth_1/SYSTEM_TOP.dcp' has been generated.
+INFO: [runtcl-4] Executing : report_utilization -file SYSTEM_TOP_utilization_synth.rpt -pb SYSTEM_TOP_utilization_synth.pb
+report_utilization: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.165 . Memory (MB): peak = 1119.590 ; gain = 0.000
+INFO: [Common 17-206] Exiting Vivado at Tue Feb 27 16:11:59 2024...

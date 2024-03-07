@@ -1,0 +1,203 @@
+Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
+---------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2018.2 (win64) Build 2258646 Thu Jun 14 20:03:12 MDT 2018
+| Date         : Tue Mar  5 17:18:53 2024
+| Host         : Marwan-0018 running 64-bit major release  (build 9200)
+| Command      : report_control_sets -verbose -file SYSTEM_TOP_control_sets_placed.rpt
+| Design       : SYSTEM_TOP
+| Device       : xcku115
+---------------------------------------------------------------------------------------
+
+Control Set Information
+
+Table of Contents
+-----------------
+1. Summary
+2. Histogram
+3. Flip-Flop Distribution
+4. Detailed Control Set Information
+
+1. Summary
+----------
+
++----------------------------------------------------------+-------+
+|                          Status                          | Count |
++----------------------------------------------------------+-------+
+| Number of unique control sets                            |   133 |
+| Unused register locations in slices containing registers |   108 |
++----------------------------------------------------------+-------+
+
+
+2. Histogram
+------------
+
++--------+--------------+
+| Fanout | Control Sets |
++--------+--------------+
+|      2 |            3 |
+|      4 |           11 |
+|      6 |            3 |
+|      8 |           14 |
+|     10 |           16 |
+|     14 |           10 |
+|    16+ |           76 |
++--------+--------------+
+
+
+3. Flip-Flop Distribution
+-------------------------
+
++--------------+-----------------------+------------------------+-----------------+--------------+
+| Clock Enable | Synchronous Set/Reset | Asynchronous Set/Reset | Total Registers | Total Slices |
++--------------+-----------------------+------------------------+-----------------+--------------+
+| No           | No                    | No                     |             206 |           69 |
+| No           | No                    | Yes                    |            1140 |          251 |
+| No           | Yes                   | No                     |               0 |            0 |
+| Yes          | No                    | No                     |            1120 |          194 |
+| Yes          | No                    | Yes                    |            1834 |          275 |
+| Yes          | Yes                   | No                     |             160 |           28 |
++--------------+-----------------------+------------------------+-----------------+--------------+
+
+
+4. Detailed Control Set Information
+-----------------------------------
+
++----------------------------------------------+-------------------------------------------------------------------------------------------------------+-----------------------------------------------+------------------+----------------+
+|                 Clock Signal                 |                                             Enable Signal                                             |                Set/Reset Signal               | Slice Load Count | Bel Load Count |
++----------------------------------------------+-------------------------------------------------------------------------------------------------------+-----------------------------------------------+------------------+----------------+
+| ~RCC_instance/PCLK_Divider/OUT_CLK_BUFGCE    |                                                                                                       |                                               |                1 |              2 |
+|  RCC_instance/PCLK_Divider/OUT_CLK_BUFGCE    | cmsdk_apb_subsystem_instance/UART1/p_0_in3_in                                                         | RCC_instance/APB_RESET/SYNC_RESET             |                0 |              2 |
+|  RCC_instance/PCLK_Divider/OUT_CLK_BUFGCE    | cmsdk_apb_subsystem_instance/UART0/p_0_in3_in                                                         | RCC_instance/APB_RESET/SYNC_RESET             |                0 |              2 |
+|  HCLK_IBUF_BUFG                              | U0_CORTEXM0INTEGRATION/u_logic/Zszax6_i_1_n_0                                                         | U0_CORTEXM0INTEGRATION_i_1_n_0                |                1 |              4 |
+|  HCLK_IBUF_BUFG                              | U0_CORTEXM0INTEGRATION/u_logic/Y5liu6                                                                 | U0_CORTEXM0INTEGRATION_i_1_n_0                |                2 |              4 |
+|  RCC_instance/WDOGCLK_Divider/OUT_CLK_BUFGCE |                                                                                                       | HRESETn_IBUF_inst/O                           |                1 |              4 |
+|  RCC_instance/PCLK_Divider/OUT_CLK_BUFGCE    | cmsdk_apb_subsystem_instance/APB_Bridge_inst/FSM_sequential_apb_fsm[1]_i_1_n_0                        | RCC_instance/APB_RESET/SYNC_RESET             |                1 |              4 |
+|  HCLK_IBUF_BUFG                              | U0_CORTEXM0INTEGRATION/u_logic/Tl4bx6_i_1_n_0                                                         | U0_CORTEXM0INTEGRATION_i_1_n_0                |                1 |              4 |
+|  RCC_instance/GATE/GATED_CLK_BUFGCE          | cmsdk_apb_subsystem_instance/WATCHDOG/u_apb_watchdog_frc/wdog_ctrl_en                                 | RCC_instance/APB_RESET/SYNC_RESET             |                2 |              4 |
+|  RCC_instance/GATE/GATED_CLK_BUFGCE          | cmsdk_apb_subsystem_instance/WATCHDOG/wdog_itop_wr_en                                                 | RCC_instance/APB_RESET/SYNC_RESET             |                1 |              4 |
+|  HCLK_IBUF_BUFG                              | U0_CORTEXM0INTEGRATION/u_logic/Hy8iu6                                                                 | U0_CORTEXM0INTEGRATION_i_1_n_0                |                2 |              4 |
+|  RCC_instance/GATE/GATED_CLK_BUFGCE          | cmsdk_apb_subsystem_instance/Dual_timer_instance.DUAL_TIMER/timer_itop_wr_en                          | RCC_instance/APB_RESET/SYNC_RESET             |                1 |              4 |
+|  HCLK_IBUF_BUFG                              | AHB_BusMatrix_lite_instance/uAHB_BusMatrix/u_ahb_outputstage_2/HREADYMUXM                             | HRESETn_IBUF_inst/O                           |                2 |              4 |
+|  HCLK_IBUF_BUFG                              | cmsdk_apb_subsystem_instance/APB_Bridge_inst/ahb_fsm[1]_i_1_n_0                                       | HRESETn_IBUF_inst/O                           |                1 |              4 |
+|  RCC_instance/PCLK_Divider/OUT_CLK_BUFGCE    | cmsdk_apb_subsystem_instance/TIMER/ext_in_enable                                                      | RCC_instance/APB_RESET/SYNC_RESET             |                1 |              6 |
+|  HCLK_IBUF_BUFG                              | U0_CORTEXM0INTEGRATION/u_logic/I2zax6_i_1_n_0                                                         | U0_CORTEXM0INTEGRATION_i_1_n_0                |                2 |              6 |
+|  HCLK_IBUF_BUFG                              | AHB_BusMatrix_lite_instance/uAHB_BusMatrix/u_AHB_InputStage_0/HREADYOUTS                              | HRESETn_IBUF_inst/O                           |                2 |              6 |
+|  RCC_instance/PCLK_Divider/OUT_CLK_BUFGCE    | cmsdk_apb_subsystem_instance/UART1/rx_state_update                                                    | RCC_instance/APB_RESET/SYNC_RESET             |                1 |              8 |
+|  HCLK_IBUF_BUFG                              | U0_CORTEXM0INTEGRATION/u_logic/Dzvpw6_i_1_n_0                                                         |                                               |                0 |              8 |
+|  HCLK_IBUF_BUFG                              | U0_CORTEXM0INTEGRATION/u_logic/Vpgbx6_i_1_n_0                                                         | U0_CORTEXM0INTEGRATION_i_1_n_0                |                4 |              8 |
+|  HCLK_IBUF_BUFG                              | U0_CORTEXM0INTEGRATION/u_logic/Rskax6_i_1_n_0                                                         |                                               |                2 |              8 |
+|  HCLK_IBUF_BUFG                              | U0_CORTEXM0INTEGRATION/u_logic/Iixpw6_i_1_n_0                                                         |                                               |                1 |              8 |
+|  RCC_instance/PCLK_Divider/OUT_CLK_BUFGCE    | cmsdk_apb_subsystem_instance/UART1/reg_baud_cntr_f0                                                   | RCC_instance/APB_RESET/SYNC_RESET             |                1 |              8 |
+|  RCC_instance/PCLK_Divider/OUT_CLK_BUFGCE    | cmsdk_apb_subsystem_instance/UART0/update_rx_tick_cnt                                                 | RCC_instance/APB_RESET/SYNC_RESET             |                1 |              8 |
+|  RCC_instance/PCLK_Divider/OUT_CLK_BUFGCE    | cmsdk_apb_subsystem_instance/UART1/tx_state_update                                                    | RCC_instance/APB_RESET/SYNC_RESET             |                1 |              8 |
+|  RCC_instance/PCLK_Divider/OUT_CLK_BUFGCE    | cmsdk_apb_subsystem_instance/UART1/update_rx_tick_cnt                                                 | RCC_instance/APB_RESET/SYNC_RESET             |                1 |              8 |
+|  RCC_instance/GATE/GATED_CLK_BUFGCE          | cmsdk_apb_subsystem_instance/TIMER/write_enable00                                                     | RCC_instance/APB_RESET/SYNC_RESET             |                1 |              8 |
+|  HCLK_IBUF_BUFG                              | AHB_BusMatrix_lite_instance/uAHB_BusMatrix/u_AHB_InputStage_0/HREADYOUTS                              | U0_CORTEXM0INTEGRATION_i_1_n_0                |                4 |              8 |
+|  RCC_instance/PCLK_Divider/OUT_CLK_BUFGCE    | cmsdk_apb_subsystem_instance/UART0/rx_state_update                                                    | RCC_instance/APB_RESET/SYNC_RESET             |                2 |              8 |
+|  RCC_instance/PCLK_Divider/OUT_CLK_BUFGCE    | cmsdk_apb_subsystem_instance/UART0/reg_baud_cntr_f0                                                   | RCC_instance/APB_RESET/SYNC_RESET             |                1 |              8 |
+|  RCC_instance/PCLK_Divider/OUT_CLK_BUFGCE    | cmsdk_apb_subsystem_instance/UART0/tx_state_update                                                    | RCC_instance/APB_RESET/SYNC_RESET             |                2 |              8 |
+|  HCLK_IBUF_BUFG                              | U0_CORTEXM0INTEGRATION/u_logic/Ztmiu6                                                                 | U0_CORTEXM0INTEGRATION/u_logic/De6bx6_i_1_n_0 |                2 |             10 |
+|  HCLK_IBUF_BUFG                              | U0_CORTEXM0INTEGRATION/u_logic/Csmiu6                                                                 | U0_CORTEXM0INTEGRATION/u_logic/Eotax6_i_1_n_0 |                2 |             10 |
+|  HCLK_IBUF_BUFG                              | U0_CORTEXM0INTEGRATION/u_logic/Cmlax6_i_1_n_0                                                         | U0_CORTEXM0INTEGRATION/u_logic/Whmax6_i_1_n_0 |                2 |             10 |
+|  HCLK_IBUF_BUFG                              | U0_CORTEXM0INTEGRATION/u_logic/Jsmiu6                                                                 | U0_CORTEXM0INTEGRATION/u_logic/Lpwax6_i_1_n_0 |                3 |             10 |
+|  HCLK_IBUF_BUFG                              | U0_CORTEXM0INTEGRATION/u_logic/Etmiu6                                                                 | U0_CORTEXM0INTEGRATION/u_logic/Cbwpw6_i_1_n_0 |                1 |             10 |
+|  HCLK_IBUF_BUFG                              | U0_CORTEXM0INTEGRATION/u_logic/Gumiu6                                                                 | U0_CORTEXM0INTEGRATION/u_logic/C7wpw6_i_1_n_0 |                2 |             10 |
+|  HCLK_IBUF_BUFG                              | U0_CORTEXM0INTEGRATION/u_logic/A5qax6_i_1_n_0                                                         | U0_CORTEXM0INTEGRATION/u_logic/U0rax6_i_1_n_0 |                0 |             10 |
+|  HCLK_IBUF_BUFG                              | U0_CORTEXM0INTEGRATION/u_logic/Kloax6_i_1_n_0                                                         | U0_CORTEXM0INTEGRATION/u_logic/Ehpax6_i_1_n_0 |                4 |             10 |
+|  HCLK_IBUF_BUFG                              | U0_CORTEXM0INTEGRATION/u_logic/Ltmiu6                                                                 | U0_CORTEXM0INTEGRATION/u_logic/C9wpw6_i_1_n_0 |                2 |             10 |
+|  HCLK_IBUF_BUFG                              | U0_CORTEXM0INTEGRATION/u_logic/Numiu6                                                                 | U0_CORTEXM0INTEGRATION/u_logic/C5wpw6_i_1_n_0 |                4 |             10 |
+|  HCLK_IBUF_BUFG                              | U0_CORTEXM0INTEGRATION/u_logic/Qsmiu6                                                                 | U0_CORTEXM0INTEGRATION/u_logic/Cdwpw6_i_1_n_0 |                0 |             10 |
+|  HCLK_IBUF_BUFG                              | U0_CORTEXM0INTEGRATION/u_logic/S5nax6_i_1_n_0                                                         | U0_CORTEXM0INTEGRATION/u_logic/Nznax6_i_1_n_0 |                3 |             10 |
+|  HCLK_IBUF_BUFG                              | U0_CORTEXM0INTEGRATION/u_logic/Stmiu6                                                                 | U0_CORTEXM0INTEGRATION/u_logic/O4sax6_i_1_n_0 |                0 |             10 |
+|  HCLK_IBUF_BUFG                              | U0_CORTEXM0INTEGRATION/u_logic/Xsmiu6                                                                 | U0_CORTEXM0INTEGRATION/u_logic/V5vax6_i_1_n_0 |                1 |             10 |
+|  HCLK_IBUF_BUFG                              | U0_CORTEXM0INTEGRATION/u_logic/Ydkiu6                                                                 | U0_CORTEXM0INTEGRATION/u_logic/Cfwpw6_i_1_n_0 |                1 |             10 |
+|  HCLK_IBUF_BUFG                              | U0_CORTEXM0INTEGRATION/u_logic/Zgzpw6_i_1_n_0                                                         | U0_CORTEXM0INTEGRATION/u_logic/Tg0qw6_i_1_n_0 |                1 |             10 |
+|  RCC_instance/PCLK_Divider/OUT_CLK_BUFGCE    | cmsdk_apb_subsystem_instance/UART1/p_0_in19_out                                                       | RCC_instance/APB_RESET/SYNC_RESET             |                0 |             14 |
+|  RCC_instance/GATE/GATED_CLK_BUFGCE          | cmsdk_apb_subsystem_instance/Dual_timer_instance.DUAL_TIMER/u_apb_timer_frc_1/ctrl_en                 | RCC_instance/APB_RESET/SYNC_RESET             |                2 |             14 |
+|  RCC_instance/PCLK_Divider/OUT_CLK_BUFGCE    | cmsdk_apb_subsystem_instance/UART1/reg_baud_tick_reg_n_0                                              | RCC_instance/APB_RESET/SYNC_RESET             |                2 |             14 |
+|  RCC_instance/GATE/GATED_CLK_BUFGCE          | cmsdk_apb_subsystem_instance/Dual_timer_instance.DUAL_TIMER/u_apb_timer_frc_2/ctrl_en                 | RCC_instance/APB_RESET/SYNC_RESET             |                4 |             14 |
+|  RCC_instance/GATE/GATED_CLK_BUFGCE          | cmsdk_apb_subsystem_instance/UART1/write_enable08                                                     | RCC_instance/APB_RESET/SYNC_RESET             |                0 |             14 |
+|  RCC_instance/WDOGCLK_Divider/OUT_CLK_BUFGCE |                                                                                                       | RCC_instance/WDOG_RESET/SYNC_RESET            |                1 |             14 |
+|  RCC_instance/PCLK_Divider/OUT_CLK_BUFGCE    | cmsdk_apb_subsystem_instance/UART0/p_0_in19_out                                                       | RCC_instance/APB_RESET/SYNC_RESET             |                0 |             14 |
+|  RCC_instance/PCLK_Divider/OUT_CLK_BUFGCE    | cmsdk_apb_subsystem_instance/UART0/reg_baud_tick_reg_n_0                                              | RCC_instance/APB_RESET/SYNC_RESET             |                2 |             14 |
+|  RCC_instance/PCLK_Divider/OUT_CLK_BUFGCE    | cmsdk_apb_subsystem_instance/APB_Bridge_inst/apb_beat_cnt[6]_i_1_n_0                                  | RCC_instance/APB_RESET/SYNC_RESET             |                2 |             14 |
+|  RCC_instance/GATE/GATED_CLK_BUFGCE          | cmsdk_apb_subsystem_instance/UART0/write_enable08                                                     | RCC_instance/APB_RESET/SYNC_RESET             |                1 |             14 |
+|  RCC_instance/TIMCLK_Divider/OUT_CLK_BUFGCE  | cmsdk_apb_subsystem_instance/Dual_timer_instance.DUAL_TIMER/u_apb_timer_frc_2/prescale_cnt[7]_i_1_n_0 | RCC_instance/APB_RESET/SYNC_RESET             |                1 |             16 |
+|  HCLK_IBUF_BUFG                              | U0_CORTEXM0INTEGRATION/u_logic/Z9abx6_i_1_n_0                                                         | U0_CORTEXM0INTEGRATION_i_1_n_0                |                4 |             16 |
+|  RCC_instance/TIMCLK_Divider/OUT_CLK_BUFGCE  | cmsdk_apb_subsystem_instance/Dual_timer_instance.DUAL_TIMER/u_apb_timer_frc_1/prescale_cnt[7]_i_1_n_0 | RCC_instance/APB_RESET/SYNC_RESET             |                2 |             16 |
+|  RCC_instance/GATE/GATED_CLK_BUFGCE          | cmsdk_apb_subsystem_instance/UART1/write_enable00                                                     | RCC_instance/APB_RESET/SYNC_RESET             |                2 |             16 |
+|  HCLK_IBUF_BUFG                              | DATA_SRAM_TOP_instance/U0_cmsdk_ahb_to_dsram/buf_data_reg022_out                                      |                                               |                1 |             16 |
+|  HCLK_IBUF_BUFG                              | U0_CORTEXM0INTEGRATION/u_logic/R1abx6_i_1_n_0                                                         | U0_CORTEXM0INTEGRATION_i_1_n_0                |                5 |             16 |
+|  HCLK_IBUF_BUFG                              | DATA_SRAM_TOP_instance/U0_cmsdk_ahb_to_dsram/buf_data_reg020_out                                      |                                               |                1 |             16 |
+|  HCLK_IBUF_BUFG                              | DATA_SRAM_TOP_instance/U0_cmsdk_ahb_to_dsram/buf_data_reg0                                            |                                               |                6 |             16 |
+|  HCLK_IBUF_BUFG                              | DATA_SRAM_TOP_instance/U0_cmsdk_ahb_to_dsram/buf_data_reg018_out                                      |                                               |                5 |             16 |
+|  RCC_instance/PCLK_Divider/OUT_CLK_BUFGCE    | cmsdk_apb_subsystem_instance/UART1/rxbuf_sample                                                       | RCC_instance/APB_RESET/SYNC_RESET             |                2 |             16 |
+|  HCLK_IBUF_BUFG                              | cmsdk_ahb_gpio_instance/GPIO/u_iop_gpio/reg_dout_padded_reg0253_out                                   | HRESETn_IBUF_inst/O                           |                6 |             16 |
+|  RCC_instance/PCLK_Divider/OUT_CLK_BUFGCE    | cmsdk_apb_subsystem_instance/UART1/tx_shift_buf0                                                      | RCC_instance/APB_RESET/SYNC_RESET             |                0 |             16 |
+|  HCLK_IBUF_BUFG                              | cmsdk_ahb_gpio_instance/GPIO/u_iop_gpio/reg_dout_padded_reg0                                          | HRESETn_IBUF_inst/O                           |                6 |             16 |
+|  RCC_instance/PCLK_Divider/OUT_CLK_BUFGCE    | cmsdk_apb_subsystem_instance/UART0/rxbuf_sample                                                       | RCC_instance/APB_RESET/SYNC_RESET             |                1 |             16 |
+|  RCC_instance/PCLK_Divider/OUT_CLK_BUFGCE    | cmsdk_apb_subsystem_instance/UART0/tx_shift_buf0                                                      | RCC_instance/APB_RESET/SYNC_RESET             |                0 |             16 |
+|  HCLK_IBUF_BUFG                              | Instruction_SRAM_TOP_instance/U0_cmsdk_ahb_to_isram/buf_data_reg0                                     |                                               |                5 |             16 |
+|  HCLK_IBUF_BUFG                              | U0_CORTEXM0INTEGRATION/u_logic/Pz9bx6_i_1_n_0                                                         | U0_CORTEXM0INTEGRATION_i_1_n_0                |                5 |             16 |
+|  HCLK_IBUF_BUFG                              | Instruction_SRAM_TOP_instance/U0_cmsdk_ahb_to_isram/buf_data_reg022_out                               |                                               |                2 |             16 |
+|  HCLK_IBUF_BUFG                              | U0_CORTEXM0INTEGRATION/u_logic/L8zax6_i_1_n_0                                                         | U0_CORTEXM0INTEGRATION_i_1_n_0                |                4 |             16 |
+|  HCLK_IBUF_BUFG                              | Instruction_SRAM_TOP_instance/U0_cmsdk_ahb_to_isram/buf_data_reg020_out                               |                                               |                2 |             16 |
+|  HCLK_IBUF_BUFG                              | Instruction_SRAM_TOP_instance/U0_cmsdk_ahb_to_isram/buf_data_reg018_out                               |                                               |                5 |             16 |
+|  RCC_instance/GATE/GATED_CLK_BUFGCE          | cmsdk_apb_subsystem_instance/TIMER/read_enable                                                        | RCC_instance/APB_RESET/SYNC_RESET             |                5 |             16 |
+|  HCLK_IBUF_BUFG                              | U0_CORTEXM0INTEGRATION/u_logic/Nv9bx6_i_1_n_0                                                         | U0_CORTEXM0INTEGRATION_i_1_n_0                |                3 |             16 |
+|  RCC_instance/GATE/GATED_CLK_BUFGCE          | cmsdk_apb_subsystem_instance/UART1/read_enable                                                        | RCC_instance/APB_RESET/SYNC_RESET             |                3 |             16 |
+|  HCLK_IBUF_BUFG                              | U0_CORTEXM0INTEGRATION/u_logic/Mfyax6_i_1_n_0                                                         | U0_CORTEXM0INTEGRATION_i_1_n_0                |                3 |             16 |
+|  RCC_instance/GATE/GATED_CLK_BUFGCE          | cmsdk_apb_subsystem_instance/UART0/write_enable00                                                     | RCC_instance/APB_RESET/SYNC_RESET             |                2 |             16 |
+|  HCLK_IBUF_BUFG                              | U0_CORTEXM0INTEGRATION/u_logic/Bcabx6_i_1_n_0                                                         | U0_CORTEXM0INTEGRATION_i_1_n_0                |                3 |             16 |
+|  HCLK_IBUF_BUFG                              | U0_CORTEXM0INTEGRATION/u_logic/X7abx6_i_1_n_0                                                         | U0_CORTEXM0INTEGRATION_i_1_n_0                |                1 |             16 |
+|  RCC_instance/GATE/GATED_CLK_BUFGCE          | cmsdk_apb_subsystem_instance/UART0/read_enable                                                        | RCC_instance/APB_RESET/SYNC_RESET             |                3 |             16 |
+|  RCC_instance/PCLK_Divider/OUT_CLK_BUFGCE    | cmsdk_apb_subsystem_instance/UART1/reg_baud_cntr_i[15]_i_1_n_0                                        | RCC_instance/APB_RESET/SYNC_RESET             |                5 |             32 |
+|  RCC_instance/PCLK_Divider/OUT_CLK_BUFGCE    | cmsdk_apb_subsystem_instance/UART0/reg_baud_cntr_i[15]_i_1_n_0                                        | RCC_instance/APB_RESET/SYNC_RESET             |                5 |             32 |
+|  HCLK_IBUF_BUFG                              | cmsdk_ahb_gpio_instance/GPIO/u_iop_gpio/p_0_in                                                        | HRESETn_IBUF_inst/O                           |               15 |             32 |
+|  RCC_instance/PCLK_Divider/OUT_CLK_BUFGCE    |                                                                                                       | HRESETn_IBUF_inst/O                           |                5 |             36 |
+|  HCLK_IBUF_BUFG                              | DATA_SRAM_TOP_instance/U0_cmsdk_ahb_to_dsram/ahb_write                                                | HRESETn_IBUF_inst/O                           |                8 |             36 |
+|  HCLK_IBUF_BUFG                              | Instruction_SRAM_TOP_instance/U0_cmsdk_ahb_to_isram/ahb_write                                         | HRESETn_IBUF_inst/O                           |                5 |             36 |
+|  HCLK_IBUF_BUFG                              | cmsdk_apb_subsystem_instance/APB_Bridge_inst/ahb_hsize                                                | HRESETn_IBUF_inst/O                           |                6 |             38 |
+|  RCC_instance/TIMCLK_Divider/OUT_CLK_BUFGCE  |                                                                                                       | RCC_instance/APB_RESET/SYNC_RESET             |               12 |             40 |
+|  RCC_instance/GATE/GATED_CLK_BUFGCE          | cmsdk_apb_subsystem_instance/UART0/write_enable10                                                     | RCC_instance/APB_RESET/SYNC_RESET             |                3 |             40 |
+|  RCC_instance/GATE/GATED_CLK_BUFGCE          | cmsdk_apb_subsystem_instance/UART1/write_enable10                                                     | RCC_instance/APB_RESET/SYNC_RESET             |                1 |             40 |
+|  HCLK_IBUF_BUFG                              | U0_CORTEXM0INTEGRATION/u_logic/Wnxax6_i_1_n_0                                                         |                                               |               21 |             48 |
+|  HCLK_IBUF_BUFG                              | U0_CORTEXM0INTEGRATION/u_logic/Zgzpw6_i_1_n_0                                                         |                                               |                4 |             50 |
+|  HCLK_IBUF_BUFG                              | U0_CORTEXM0INTEGRATION/u_logic/Ydkiu6                                                                 |                                               |                6 |             50 |
+|  HCLK_IBUF_BUFG                              | U0_CORTEXM0INTEGRATION/u_logic/Qsmiu6                                                                 |                                               |               10 |             54 |
+|  HCLK_IBUF_BUFG                              | U0_CORTEXM0INTEGRATION/u_logic/Gumiu6                                                                 |                                               |               12 |             54 |
+|  HCLK_IBUF_BUFG                              | U0_CORTEXM0INTEGRATION/u_logic/Cmlax6_i_1_n_0                                                         |                                               |               13 |             54 |
+|  HCLK_IBUF_BUFG                              | U0_CORTEXM0INTEGRATION/u_logic/Ltmiu6                                                                 |                                               |                9 |             54 |
+|  HCLK_IBUF_BUFG                              | U0_CORTEXM0INTEGRATION/u_logic/Etmiu6                                                                 |                                               |               10 |             54 |
+|  HCLK_IBUF_BUFG                              | U0_CORTEXM0INTEGRATION/u_logic/Numiu6                                                                 |                                               |                6 |             54 |
+|  HCLK_IBUF_BUFG                              | U0_CORTEXM0INTEGRATION/u_logic/Stmiu6                                                                 |                                               |                6 |             54 |
+|  HCLK_IBUF_BUFG                              | U0_CORTEXM0INTEGRATION/u_logic/Ztmiu6                                                                 |                                               |                9 |             54 |
+|  HCLK_IBUF_BUFG                              | U0_CORTEXM0INTEGRATION/u_logic/Jsmiu6                                                                 |                                               |                2 |             54 |
+|  HCLK_IBUF_BUFG                              | U0_CORTEXM0INTEGRATION/u_logic/Xsmiu6                                                                 |                                               |                8 |             54 |
+|  HCLK_IBUF_BUFG                              | U0_CORTEXM0INTEGRATION/u_logic/A5qax6_i_1_n_0                                                         |                                               |                7 |             54 |
+|  HCLK_IBUF_BUFG                              | U0_CORTEXM0INTEGRATION/u_logic/Csmiu6                                                                 |                                               |               14 |             54 |
+|  HCLK_IBUF_BUFG                              | U0_CORTEXM0INTEGRATION/u_logic/S5nax6_i_1_n_0                                                         |                                               |                6 |             54 |
+|  HCLK_IBUF_BUFG                              | U0_CORTEXM0INTEGRATION/u_logic/Kloax6_i_1_n_0                                                         |                                               |               14 |             54 |
+|  RCC_instance/TIMCLK_Divider/OUT_CLK_BUFGCE  | cmsdk_apb_subsystem_instance/Dual_timer_instance.DUAL_TIMER/u_apb_timer_frc_1/carry_reg               | RCC_instance/APB_RESET/SYNC_RESET             |               18 |             58 |
+|  RCC_instance/TIMCLK_Divider/OUT_CLK_BUFGCE  | cmsdk_apb_subsystem_instance/Dual_timer_instance.DUAL_TIMER/u_apb_timer_frc_2/carry_reg               | RCC_instance/APB_RESET/SYNC_RESET             |               16 |             58 |
+|  RCC_instance/PCLK_Divider/OUT_CLK_BUFGCE    |                                                                                                       | RCC_instance/APB_RESET/SYNC_RESET             |               16 |             60 |
+|  RCC_instance/GATE/GATED_CLK_BUFGCE          | cmsdk_apb_subsystem_instance/Dual_timer_instance.DUAL_TIMER/u_apb_timer_frc_1/load_val0               | RCC_instance/APB_RESET/SYNC_RESET             |                4 |             64 |
+|  RCC_instance/GATE/GATED_CLK_BUFGCE          | cmsdk_apb_subsystem_instance/Dual_timer_instance.DUAL_TIMER/u_apb_timer_frc_1/load_period_en          | RCC_instance/APB_RESET/SYNC_RESET             |                8 |             64 |
+|  RCC_instance/GATE/GATED_CLK_BUFGCE          | cmsdk_apb_subsystem_instance/TIMER/write_enable08                                                     | RCC_instance/APB_RESET/SYNC_RESET             |                0 |             64 |
+|  RCC_instance/GATE/GATED_CLK_BUFGCE          | cmsdk_apb_subsystem_instance/WATCHDOG/u_apb_watchdog_frc/wdog_load0                                   | RCC_instance/APB_RESET/SYNC_RESET             |                3 |             64 |
+|  RCC_instance/PCLK_Divider/OUT_CLK_BUFGCE    | cmsdk_apb_subsystem_instance/TIMER/reg_curr_val                                                       | RCC_instance/APB_RESET/SYNC_RESET             |               14 |             64 |
+|  RCC_instance/GATE/GATED_CLK_BUFGCE          | cmsdk_apb_subsystem_instance/Dual_timer_instance.DUAL_TIMER/u_apb_timer_frc_2/load_val0               | RCC_instance/APB_RESET/SYNC_RESET             |                0 |             64 |
+|  HCLK_IBUF_BUFG                              | cmsdk_apb_subsystem_instance/APB_Bridge_inst/HRDATA[31]_i_1_n_0                                       | HRESETn_IBUF_inst/O                           |                8 |             64 |
+|  RCC_instance/GATE/GATED_CLK_BUFGCE          | cmsdk_apb_subsystem_instance/Dual_timer_instance.DUAL_TIMER/u_apb_timer_frc_2/load_period_en          | RCC_instance/APB_RESET/SYNC_RESET             |                5 |             64 |
+|  HCLK_IBUF_BUFG                              | cmsdk_apb_subsystem_instance/APB_Bridge_inst/latch_ahb_hwdata                                         |                                               |                7 |             64 |
+|  RCC_instance/WDOGCLK_Divider/OUT_CLK_BUFGCE | cmsdk_apb_subsystem_instance/WATCHDOG/u_apb_watchdog_frc/reg_carry                                    | RCC_instance/WDOG_RESET/SYNC_RESET            |               12 |             68 |
+|  HCLK_IBUF_BUFG                              | AHB_BusMatrix_lite_instance/uAHB_BusMatrix/u_AHB_InputStage_0/load_reg                                | HRESETn_IBUF_inst/O                           |               11 |             70 |
+|  RCC_instance/PCLK_Divider/OUT_CLK_BUFGCE    | cmsdk_apb_subsystem_instance/APB_Bridge_inst/apb_prdata                                               | RCC_instance/APB_RESET/SYNC_RESET             |                7 |             78 |
+|  RCC_instance/PCLK_Divider/OUT_CLK_BUFGCE    | cmsdk_apb_subsystem_instance/APB_Bridge_inst/PADDR[15]_i_1_n_0                                        | RCC_instance/APB_RESET/SYNC_RESET             |                9 |             92 |
+|  RCC_instance/GATE/GATED_CLK_BUFGCE          |                                                                                                       | RCC_instance/APB_RESET/SYNC_RESET             |               44 |            152 |
+|  HCLK_IBUF_BUFG                              |                                                                                                       |                                               |               68 |            204 |
+|  HCLK_IBUF_BUFG                              |                                                                                                       | U0_CORTEXM0INTEGRATION_i_1_n_0                |              108 |            392 |
+|  HCLK_IBUF_BUFG                              |                                                                                                       | HRESETn_IBUF_inst/O                           |               64 |            442 |
++----------------------------------------------+-------------------------------------------------------------------------------------------------------+-----------------------------------------------+------------------+----------------+
+
+

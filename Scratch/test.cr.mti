@@ -1,0 +1,15 @@
+C:/Ain_shams/GP/Testbench/uart_tb.sv {1 {vlog -work work -vopt -sv -stats=none C:/Ain_shams/GP/Testbench/uart_tb.sv
+QuestaSim-64 vlog 2021.1 Compiler 2021.01 Jan 19 2021
+-- Compiling module uart_tb
+
+Top level modules:
+	uart_tb
+
+} {} {}} C:/Ain_shams/GP/RTL/ahb_peripherals/apb_subsystem/uart/cmsdk_apb_uart.v {1 {vlog -work work -vopt -stats=none C:/Ain_shams/GP/RTL/ahb_peripherals/apb_subsystem/uart/cmsdk_apb_uart.v
+QuestaSim-64 vlog 2021.1 Compiler 2021.01 Jan 19 2021
+-- Compiling module cmsdk_apb_uart
+
+Top level modules:
+	cmsdk_apb_uart
+
+} {} {}}

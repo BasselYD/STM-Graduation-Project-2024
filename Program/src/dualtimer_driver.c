@@ -1,0 +1,288 @@
+#include "../include/dualtimer_driver.h"
+
+
+//////////////////////////////////Dualtimer driver
+
+//Dual timer 1 set load register
+void CMSDK_DUALTIMER_BOTH_SET_TIMER1_LOAD (CMSDK_DUALTIMER_BOTH_TypeDef *DUALTIMER_BOTH ,uint32_t value){
+	DUALTIMER_BOTH -> Timer1Load = value ;
+}
+
+//Dual timer 1 read load register
+uint32_t CMSDK_DUALTIMER_BOTH_READ_TIMER1_LOAD (CMSDK_DUALTIMER_BOTH_TypeDef *DUALTIMER_BOTH ){
+	return DUALTIMER_BOTH -> Timer1Load ;
+}
+
+//Dual timer 1 read value register
+uint32_t CMSDK_DUALTIMER_BOTH_READ_TIMER1_VALUE (CMSDK_DUALTIMER_BOTH_TypeDef *DUALTIMER_BOTH ){
+	return DUALTIMER_BOTH -> Timer1Value ;
+}
+
+
+//Dual timer 1 set one shoot mode
+void CMSDK_DUALTIMER_BOTH_EN_TIMER1_ONESHOT (CMSDK_DUALTIMER_BOTH_TypeDef *DUALTIMER_BOTH ){
+	DUALTIMER_BOTH -> Timer1Control |= DUALTIMER1_CTRL_ONESHOOT_Msk  ;
+}
+
+
+//Dual timer 1 set wrapping mode
+void CMSDK_DUALTIMER_BOTH_DIS_TIMER1_ONESHOT (CMSDK_DUALTIMER_BOTH_TypeDef *DUALTIMER_BOTH ){
+	DUALTIMER_BOTH -> Timer1Control &= ~DUALTIMER1_CTRL_ONESHOOT_Msk  ;
+}
+
+//Dual timer 1 set to 32 bits
+void CMSDK_DUALTIMER_BOTH_SET_TIMER1_MAX (CMSDK_DUALTIMER_BOTH_TypeDef *DUALTIMER_BOTH ){
+	DUALTIMER_BOTH -> Timer1Control |= DUALTIMER1_CTRL_SIZE_Msk  ;
+}
+
+
+//Dual timer 1 set to 16 bits
+void CMSDK_DUALTIMER_BOTH_SET_TIMER1_HALF (CMSDK_DUALTIMER_BOTH_TypeDef *DUALTIMER_BOTH ){
+	DUALTIMER_BOTH -> Timer1Control &= ~ DUALTIMER1_CTRL_SIZE_Msk  ;
+}
+
+//Dual timer 1 enable interrupt
+void CMSDK_DUALTIMER_BOTH_EN_TIMER1_INTERRUPT (CMSDK_DUALTIMER_BOTH_TypeDef *DUALTIMER_BOTH ){
+	DUALTIMER_BOTH -> Timer1Control |=  DUALTIMER1_CTRL_INTEN_Msk  ;
+}
+
+
+//Dual timer 1 disable interrupt
+void CMSDK_DUALTIMER_BOTH_DIS_TIMER1_INTERRUPT (CMSDK_DUALTIMER_BOTH_TypeDef *DUALTIMER_BOTH ){
+	DUALTIMER_BOTH -> Timer1Control &= ~  DUALTIMER1_CTRL_INTEN_Msk  ;
+}
+
+//Dual timer 1 set prescale to 256
+void CMSDK_DUALTIMER_BOTH_SET_TIMER1_PRESCALE_256 (CMSDK_DUALTIMER_BOTH_TypeDef *DUALTIMER_BOTH ){
+	DUALTIMER_BOTH -> Timer1Control |= (0b10 << DUALTIMER1_CTRL_PRESCALE_Pos)  ;
+}
+
+//Dual timer 1 set prescale to 16
+void CMSDK_DUALTIMER_BOTH_SET_TIMER1_PRESCALE_16 (CMSDK_DUALTIMER_BOTH_TypeDef *DUALTIMER_BOTH ){
+	DUALTIMER_BOTH -> Timer1Control |= (0b01 << DUALTIMER1_CTRL_PRESCALE_Pos)  ;
+}
+
+
+//Dual timer 1 disable prescale
+void CMSDK_DUALTIMER_BOTH_DIS_TIMER1_PRESCALE (CMSDK_DUALTIMER_BOTH_TypeDef *DUALTIMER_BOTH ){
+	DUALTIMER_BOTH -> Timer1Control &= (0b00 << DUALTIMER1_CTRL_PRESCALE_Pos)  ;
+}
+
+//Dual timer 1 set periodic mode
+void CMSDK_DUALTIMER_BOTH_SET_TIMER1_PERIODIC (CMSDK_DUALTIMER_BOTH_TypeDef *DUALTIMER_BOTH ){
+	DUALTIMER_BOTH -> Timer1Control |= DUALTIMER1_CTRL_ONESHOOT_Msk  ;
+}
+
+
+//Dual timer 1 set free running mode
+void CMSDK_DUALTIMER_BOTH_SET_TIMER1_FREERUNNUNG (CMSDK_DUALTIMER_BOTH_TypeDef *DUALTIMER_BOTH ){
+	DUALTIMER_BOTH -> Timer1Control |= DUALTIMER1_CTRL_MODE_Msk  ;
+}
+
+//Dual timer 1 enable timer
+void CMSDK_DUALTIMER_BOTH_SET_TIMER1_EN (CMSDK_DUALTIMER_BOTH_TypeDef *DUALTIMER_BOTH ){
+	DUALTIMER_BOTH -> Timer1Control &= ~DUALTIMER1_CTRL_MODE_Msk  ;
+}
+
+//Dual timer 1 disable timer
+void CMSDK_DUALTIMER_BOTH_SET_TIMER1_DIS (CMSDK_DUALTIMER_BOTH_TypeDef *DUALTIMER_BOTH ){
+	DUALTIMER_BOTH -> Timer1Control &= ~DUALTIMER1_CTRL_EN_Msk  ;
+}
+
+
+//Dual timer 1 read control bits
+uint32_t CMSDK_DUALTIMER_BOTH_READ_TIMER1_CTRL (CMSDK_DUALTIMER_BOTH_TypeDef *DUALTIMER_BOTH ){
+	return DUALTIMER_BOTH -> Timer1Control ;
+}
+
+//Dual timer 1 interrupt clear
+void CMSDK_DUALTIMER_BOTH_TIMER1_CLR_INTERUPT (CMSDK_DUALTIMER_BOTH_TypeDef *DUALTIMER_BOTH ){
+	DUALTIMER_BOTH -> Timer1IntClr = DUALTIMER1_INTCLR_Msk  ;
+}
+
+//Dual timer 1 read raw interrupt status
+uint32_t CMSDK_DUALTIMER_BOTH_READ_TIMER1_RIS (CMSDK_DUALTIMER_BOTH_TypeDef *DUALTIMER_BOTH ){
+	return DUALTIMER_BOTH -> Timer1RIS & DUALTIMER1_RAWINTSTAT_Msk  ;
+}
+
+//Dual timer 1 read masked interrupt status
+uint32_t CMSDK_DUALTIMER_BOTH_READ_TIMER1_MIS (CMSDK_DUALTIMER_BOTH_TypeDef *DUALTIMER_BOTH ){
+	return DUALTIMER_BOTH -> Timer1MIS & DUALTIMER1_MASKINTSTAT_Msk  ;
+}
+
+//Dual timer 1 set back ground load
+void CMSDK_DUALTIMER_BOTH_SET_TIMER1_BGLOAD (CMSDK_DUALTIMER_BOTH_TypeDef *DUALTIMER_BOTH ,uint32_t value ){
+	DUALTIMER_BOTH -> Timer1BGLoad = value ;
+}
+
+//Dual timer 1 read background load
+uint32_t CMSDK_DUALTIMER_BOTH_GET_TIMER1_BGLOAD (CMSDK_DUALTIMER_BOTH_TypeDef *DUALTIMER_BOTH ){
+	return DUALTIMER_BOTH -> Timer1BGLoad;
+}
+
+// Dual timer 2 set load register
+void CMSDK_DUALTIMER_BOTH_SET_TIMER2_LOAD(CMSDK_DUALTIMER_BOTH_TypeDef *DUALTIMER_BOTH, uint32_t value){
+    DUALTIMER_BOTH->Timer2Load = value;
+}
+
+// Dual timer 2 read load register
+uint32_t CMSDK_DUALTIMER_BOTH_READ_TIMER2_LOAD(CMSDK_DUALTIMER_BOTH_TypeDef *DUALTIMER_BOTH){
+    return DUALTIMER_BOTH->Timer2Load;
+}
+
+// Dual timer 2 read value register
+uint32_t CMSDK_DUALTIMER_BOTH_READ_TIMER2_VALUE(CMSDK_DUALTIMER_BOTH_TypeDef *DUALTIMER_BOTH){
+    return DUALTIMER_BOTH->Timer2Value;
+}
+
+// Dual timer 2 set one-shot mode
+void CMSDK_DUALTIMER_BOTH_EN_TIMER2_ONESHOT(CMSDK_DUALTIMER_BOTH_TypeDef *DUALTIMER_BOTH){
+    DUALTIMER_BOTH->Timer2Control |= DUALTIMER2_CTRL_ONESHOOT_Msk;
+}
+
+// Dual timer 2 set wrapping mode
+void CMSDK_DUALTIMER_BOTH_DIS_TIMER2_ONESHOT(CMSDK_DUALTIMER_BOTH_TypeDef *DUALTIMER_BOTH){
+    DUALTIMER_BOTH->Timer2Control &= ~DUALTIMER2_CTRL_ONESHOOT_Msk;
+}
+
+// Dual timer 2 set to 32 bits
+void CMSDK_DUALTIMER_BOTH_SET_TIMER2_MAX(CMSDK_DUALTIMER_BOTH_TypeDef *DUALTIMER_BOTH){
+    DUALTIMER_BOTH->Timer2Control |= DUALTIMER2_CTRL_SIZE_Msk;
+}
+
+// Dual timer 2 set to 16 bits
+void CMSDK_DUALTIMER_BOTH_SET_TIMER2_HALF(CMSDK_DUALTIMER_BOTH_TypeDef *DUALTIMER_BOTH){
+    DUALTIMER_BOTH->Timer2Control &= ~DUALTIMER2_CTRL_SIZE_Msk;
+}
+
+// Dual timer 2 enable interrupt
+void CMSDK_DUALTIMER_BOTH_EN_TIMER2_INTERRUPT(CMSDK_DUALTIMER_BOTH_TypeDef *DUALTIMER_BOTH){
+    DUALTIMER_BOTH->Timer2Control |= DUALTIMER2_CTRL_INTEN_Msk;
+}
+
+// Dual timer 2 disable interrupt
+void CMSDK_DUALTIMER_BOTH_DIS_TIMER2_INTERRUPT(CMSDK_DUALTIMER_BOTH_TypeDef *DUALTIMER_BOTH){
+    DUALTIMER_BOTH->Timer2Control &= ~DUALTIMER2_CTRL_INTEN_Msk;
+}
+
+// Dual timer 2 set prescale to 256
+void CMSDK_DUALTIMER_BOTH_SET_TIMER2_PRESCALE_256(CMSDK_DUALTIMER_BOTH_TypeDef *DUALTIMER_BOTH){
+    DUALTIMER_BOTH->Timer2Control |= (0b10 << DUALTIMER2_CTRL_PRESCALE_Pos);
+}
+
+// Dual timer 2 set prescale to 16
+void CMSDK_DUALTIMER_BOTH_SET_TIMER2_PRESCALE_16(CMSDK_DUALTIMER_BOTH_TypeDef *DUALTIMER_BOTH){
+    DUALTIMER_BOTH->Timer2Control |= (0b01 << DUALTIMER2_CTRL_PRESCALE_Pos);
+}
+
+// Dual timer 2 disable prescale
+void CMSDK_DUALTIMER_BOTH_DIS_TIMER2_PRESCALE(CMSDK_DUALTIMER_BOTH_TypeDef *DUALTIMER_BOTH){
+    DUALTIMER_BOTH->Timer2Control &= ~(0b11 << DUALTIMER2_CTRL_PRESCALE_Pos);
+}
+
+// Dual timer 2 set periodic mode
+void CMSDK_DUALTIMER_BOTH_SET_TIMER2_PERIODIC(CMSDK_DUALTIMER_BOTH_TypeDef *DUALTIMER_BOTH){
+    DUALTIMER_BOTH->Timer2Control |= DUALTIMER2_CTRL_MODE_Msk;
+}
+
+// Dual timer 2 set free running mode
+void CMSDK_DUALTIMER_BOTH_SET_TIMER2_FREERUNNING(CMSDK_DUALTIMER_BOTH_TypeDef *DUALTIMER_BOTH){
+    DUALTIMER_BOTH->Timer2Control &=~ DUALTIMER2_CTRL_MODE_Msk;
+}
+
+// Dual timer 2 enable timer
+void CMSDK_DUALTIMER_BOTH_SET_TIMER2_EN(CMSDK_DUALTIMER_BOTH_TypeDef *DUALTIMER_BOTH){
+    DUALTIMER_BOTH->Timer2Control |= DUALTIMER2_CTRL_EN_Msk;
+}
+
+// Dual timer 2 disable timer
+void CMSDK_DUALTIMER_BOTH_SET_TIMER2_DIS(CMSDK_DUALTIMER_BOTH_TypeDef *DUALTIMER_BOTH){
+    DUALTIMER_BOTH->Timer2Control &= ~DUALTIMER2_CTRL_EN_Msk;
+}
+
+// Dual timer 2 read control bits
+uint32_t CMSDK_DUALTIMER_BOTH_READ_TIMER2_CTRL(CMSDK_DUALTIMER_BOTH_TypeDef *DUALTIMER_BOTH){
+    return DUALTIMER_BOTH->Timer2Control;
+}
+
+// Dual timer 2 interrupt clear
+void CMSDK_DUALTIMER_BOTH_TIMER2_CLR_INTERUPT(CMSDK_DUALTIMER_BOTH_TypeDef *DUALTIMER_BOTH){
+    DUALTIMER_BOTH->Timer2IntClr = DUALTIMER2_INTCLR_Msk;
+}
+
+// Dual timer 2 read raw interrupt status
+uint32_t CMSDK_DUALTIMER_BOTH_READ_TIMER2_RIS(CMSDK_DUALTIMER_BOTH_TypeDef *DUALTIMER_BOTH){
+    return DUALTIMER_BOTH->Timer2RIS & DUALTIMER2_RAWINTSTAT_Msk;
+}
+
+// Dual timer 2 read masked interrupt status
+uint32_t CMSDK_DUALTIMER_BOTH_READ_TIMER2_MIS(CMSDK_DUALTIMER_BOTH_TypeDef *DUALTIMER_BOTH){
+    return DUALTIMER_BOTH->Timer2MIS & DUALTIMER2_MASKINTSTAT_Msk;
+}
+
+// Dual timer 2 set background load
+void CMSDK_DUALTIMER_BOTH_SET_TIMER2_BGLOAD(CMSDK_DUALTIMER_BOTH_TypeDef *DUALTIMER_BOTH, uint32_t value){
+    DUALTIMER_BOTH->Timer2BGLoad = value;
+}
+
+// Dual timer 2 read background load
+uint32_t CMSDK_DUALTIMER_BOTH_READ_TIMER2_BGLOAD(CMSDK_DUALTIMER_BOTH_TypeDef *DUALTIMER_BOTH){
+    return DUALTIMER_BOTH->Timer2BGLoad;
+}
+
+
+//Dual timer full configuration
+
+void CMSDK_DUALTIMER_CONFIG (CMSDK_DUALTIMER_BOTH_TypeDef *DUALTIMER_BOTH, CMSDK_DUALTIMER_Configuration *CONFIG)
+{
+
+    uint32_t cntrl_a = 0; //Timer 1 control signal
+    
+    if(CONFIG->irq_en1 == 1) {cntrl_a |= DUALTIMER1_CTRL_INTEN_Msk;}
+    if(CONFIG->enable1 ==1  ) {cntrl_a |= DUALTIMER1_CTRL_EN_Msk;}
+    if(CONFIG->oneshot1 == 1) {cntrl_a |= DUALTIMER1_CTRL_ONESHOOT_Msk;}
+    if(CONFIG->freerunning1 == 1) {cntrl_a |= DUALTIMER1_CTRL_MODE_Msk;}
+    if(CONFIG->prescale1 == 2) {cntrl_a |=0b10 << DUALTIMER1_CTRL_PRESCALE_Pos;}
+    else if (CONFIG->prescale1 == 1) {cntrl_a |=0b01 << DUALTIMER1_CTRL_PRESCALE_Pos;}
+    else {cntrl_a |=0b00 << DUALTIMER1_CTRL_PRESCALE_Pos;}
+    if(CONFIG->bits1 == 1) {cntrl_a |= DUALTIMER1_CTRL_SIZE_Msk;}
+
+    DUALTIMER_BOTH -> Timer1Control |= cntrl_a ;
+
+    uint32_t cntrl_b = 0; //Timer 2 control signal
+
+    if(CONFIG->irq_en2 == 1) {cntrl_b |= DUALTIMER2_CTRL_INTEN_Msk;}
+    if(CONFIG->oneshot2 == 1) {cntrl_b |= DUALTIMER2_CTRL_ONESHOOT_Msk;}
+    if(CONFIG->enable2 ==1  ) {cntrl_b |= DUALTIMER2_CTRL_EN_Msk;}
+    if(CONFIG->freerunning2 == 1) {cntrl_b |= DUALTIMER2_CTRL_MODE_Msk;}
+    if(CONFIG->prescale2 == 2) {cntrl_b |=0b10 << DUALTIMER2_CTRL_PRESCALE_Pos;}
+    else if (CONFIG->prescale2 == 1) {cntrl_b |=0b01 << DUALTIMER2_CTRL_PRESCALE_Pos;}
+    else {cntrl_b |=0b00 << DUALTIMER2_CTRL_PRESCALE_Pos;}
+    if(CONFIG->bits2 == 1) {cntrl_b |= DUALTIMER2_CTRL_SIZE_Msk;}
+
+    DUALTIMER_BOTH -> Timer2Control |= cntrl_b ;
+}
+
+
+//Dual timer combined IRQ handler
+void CMSDK_DUALTIMER_IRQ_HANDLER_COMBINED (void){
+    if(CMSDK_DUALTIMER_BOTH_READ_TIMER1_MIS (CMSDK_DUALTIMER) == 1){
+        CMSDK_DUALTIMER_BOTH_TIMER1_CLR_INTERUPT (CMSDK_DUALTIMER);
+        CMSDK_DUALTIMER_BOTH_SET_TIMER1_LOAD (CMSDK_DUALTIMER , RELOAD_16);
+        CMSDK_DUALTIMER_BOTH_SET_TIMER1_BGLOAD (CMSDK_DUALTIMER , RELOAD_16);  
+    }
+     if(CMSDK_DUALTIMER_BOTH_READ_TIMER2_MIS (CMSDK_DUALTIMER) == 1){
+        CMSDK_DUALTIMER_BOTH_TIMER2_CLR_INTERUPT (CMSDK_DUALTIMER);
+        CMSDK_DUALTIMER_BOTH_SET_TIMER2_LOAD (CMSDK_DUALTIMER , RELOAD_16);
+        CMSDK_DUALTIMER_BOTH_SET_TIMER2_BGLOAD (CMSDK_DUALTIMER , RELOAD_16);  
+    }
+}
+
+
+
+
+
+
+
+
+
