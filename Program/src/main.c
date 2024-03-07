@@ -113,7 +113,6 @@ int main(void) {
     CMSDK_GPIO_SetDataOut(CMSDK_GPIO0, 0x5); 
     CMSDK_GPIO_readpin(CMSDK_GPIO0);
     CMSDK_uart_ReceiveChar(CMSDK_UART1);
-
 }
 
 void __attribute__((used)) Reset_Handler(void)
