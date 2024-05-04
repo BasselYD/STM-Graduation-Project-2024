@@ -1,8 +1,8 @@
-module APB_decoder #(parameter Include_dual_timer = 1) 
+module APB_decoder #(parameter Include_dual_timer = 1 , Include_SPI = 1) 
   (
     input PSEL,
     input [3:0] PADDR,  
-    output reg UART0_PSEL, WDOG_PSEL, TIMER_PSEL, DUAL_TIMER_PSEL,UART1_PSEL
+    output reg UART0_PSEL, WDOG_PSEL, TIMER_PSEL, DUAL_TIMER_PSEL,UART1_PSEL,SPI_PSEL
   );
 
 
@@ -12,6 +12,7 @@ begin
   WDOG_PSEL = 'b0 ;
   TIMER_PSEL = 'b0 ;
   DUAL_TIMER_PSEL = 'b0 ;
+  SPI_PSEL  = 'b0;
   UART1_PSEL = 'b0 ;
   if(PSEL)
   begin
@@ -26,6 +27,14 @@ begin
           else
           DUAL_TIMER_PSEL = 'b0;
         end
+
+        4'b0011 : begin
+          if(Include_SPI)
+          SPI_PSEL = 'b1;
+          else
+          SPI_PSEL = 'b0;
+        end
+
         default :
         begin
           UART0_PSEL = 'b0 ;
@@ -33,6 +42,7 @@ begin
           UART1_PSEL = 'b0 ;
           TIMER_PSEL = 'b0 ;
           DUAL_TIMER_PSEL = 'b0 ;
+          SPI_PSEL  = 'b0;
         end
     endcase
   end
@@ -43,6 +53,7 @@ begin
     WDOG_PSEL = 'b0 ;
     TIMER_PSEL = 'b0 ;
     DUAL_TIMER_PSEL = 'b0 ;
+    SPI_PSEL  = 'b0;
   end
 
 end

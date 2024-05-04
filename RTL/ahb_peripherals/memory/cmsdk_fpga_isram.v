@@ -30,7 +30,7 @@ module cmsdk_fpga_isram #(
 // Parameters
 // --------------------------------------------------------------------------
   parameter AW = 16,
-   parameter MEMFILE = "C:/Ain_shams/GP/Program/Scratch/main.mem"
+   parameter MEMFILE = "C:/STM-Graduation-Project-2024/Program/main.bin"
  )
  (
   // Inputs
@@ -101,7 +101,7 @@ reg [7:0] fileimage [0:((MEM_SIZE)-1)];
         BRAM3[i] = 8'h00;
       end
 
-      $readmemh(MEMFILE, fileimage);
+      $readmemb(MEMFILE, fileimage);
             // Copy from single array to splitted array
           for (i=0;i<(MEM_SIZE/4); i= i+1)
           begin

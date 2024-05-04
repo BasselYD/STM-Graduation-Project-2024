@@ -1,5 +1,6 @@
-module SYSTEM_TOP #(parameter AW       = 16,
+module SYSTEM_TOP #(parameter AW       			 = 16,
 							  Include_dual_timer = 1,
+							  Include_SPI        = 1,
 							  MEMFILE = "../Program/Scratch/main.bin")
 ( 
 
@@ -11,8 +12,18 @@ module SYSTEM_TOP #(parameter AW       = 16,
 	output wire       	TXD1,		
 	input  wire       	RXD1,		
 	output wire       	TXD1_EN,		
-	input  wire			EXTIN, 		
-	inout wire [15:0]   SYSTEM_OUT);
+	input  wire			EXTIN, 	
+
+	inout               MOSI,
+	inout               MISO,
+	inout				SCK,
+	inout				SS0,
+	output				SS1,
+	output				SS2,
+	output				SS3,
+
+	inout wire [15:0]   SYSTEM_OUT
+);
 	
 	
     // Input port SI0 (inputs from cortex)
@@ -109,7 +120,7 @@ module SYSTEM_TOP #(parameter AW       = 16,
 
 	wire [31:0] irq ;
 
-	wire [13:0] subsystem_interrupt ;
+	wire [15:0] subsystem_interrupt ;
 
 	wire [15:0] GPIOINT ;
 	wire COMBINT;
@@ -120,8 +131,8 @@ module SYSTEM_TOP #(parameter AW       = 16,
 	wire APB_ACTIVE ;
 
 	// GPIO interrupts
-	assign irq[15:0]  = GPIOINT ;
-	assign irq[16] = COMBINT;
+	assign irq[15:0] = GPIOINT ;
+	assign irq[16]   =  subsystem_interrupt[15];   //spi  transmit interrupt
 
 	// APB interrupts
 	assign irq[17]  = subsystem_interrupt[0] ;   // Timer interrupt
@@ -139,7 +150,7 @@ module SYSTEM_TOP #(parameter AW       = 16,
 	assign irq[29]  = subsystem_interrupt[12] ;  // Uart 1 receive overflow interrupt
 	assign irq[30]  = subsystem_interrupt[13] ;  // Uart 1 combined interrupt
 
-	assign irq[31] = 1'b0;
+	assign irq[31]  = subsystem_interrupt[14];    //spi  receiver interrupt
 
 
 /***************************** SYSTEM INSTANTIATION **********************************/
@@ -257,7 +268,7 @@ DATA_SRAM_TOP #(.AW(AW)) DATA_SRAM_TOP_instance(
 );
 
 //APB subsystem
-cmsdk_apb_subsystem #(.Include_dual_timer(Include_dual_timer))  cmsdk_apb_subsystem_instance(
+cmsdk_apb_subsystem #(.Include_dual_timer(Include_dual_timer),.Include_SPI(Include_SPI))  cmsdk_apb_subsystem_instance(
 	    .HCLK(HCLK),
 	    .HRESETn(HRESETn),
 	    .HSEL(HSELM2),
@@ -284,7 +295,14 @@ cmsdk_apb_subsystem #(.Include_dual_timer(Include_dual_timer))  cmsdk_apb_subsys
 		.TXD1 (TXD1),
 	    .RXD1 (RXD1),  
 	    .TXD1_EN(TXD1_EN),
-	    .EXTIN(EXTIN),  
+	    .EXTIN(EXTIN),
+		.MOSI(MOSI), 
+		.MISO(MISO), 
+		.SCK(SCK), 
+		.SS0(SS0),
+		.SS1(SS1),
+		.SS2(SS2),
+		.SS3(SS3),
 	    .subsystem_interrupt(subsystem_interrupt), 
 	    .watchdog_interrupt(watchdog_interrupt),   
 	    .watchdog_reset(watchdog_reset)            
