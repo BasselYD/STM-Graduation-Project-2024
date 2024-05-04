@@ -41,11 +41,11 @@
   <routing_data_width>32</routing_data_width>
   <routing_address_width>32</routing_address_width>
   <user_signal_width>0</user_signal_width>
-  <bus_matrix_name>AHB_BusMatrix</bus_matrix_name>
-  <input_stage_name>AHB_InputStage</input_stage_name>
-  <matrix_decode_name>AHB_DecoderStage</matrix_decode_name>
-  <output_arbiter_name>AHB_Arbiter</output_arbiter_name>
-  <output_stage_name>AHB_OutputStage</output_stage_name>
+  <bus_matrix_name>AHB_BusMatrix_DMA</bus_matrix_name>
+  <input_stage_name>AHB_InputStage_DMA</input_stage_name>
+  <matrix_decode_name>AHB_DecoderStage_DMA</matrix_decode_name>
+  <output_arbiter_name>AHB_Arbiter_DMA</output_arbiter_name>
+  <output_stage_name>AHB_OutputStage_DMA</output_stage_name>
 
 
   <!-- Slave interface definitions -->
@@ -54,15 +54,30 @@
     <sparse_connect interface="M0"/>
     <sparse_connect interface= "M1"/>
     <sparse_connect interface= "M2"/>
-	<sparse_connect interface= "M3"/>
+	  <sparse_connect interface= "M3"/>
+    <sparse_connect interface= "M4"/>
 
 	<address_region interface="M0" mem_lo="00000000" mem_hi='000FFFFF' remapping='none'/>
     <address_region interface="M1" mem_lo="20000000" mem_hi="200FFFFF" remapping='none'/>
     <address_region interface="M2" mem_lo="40000000" mem_hi="40005FFF" remapping='none'/>
     <address_region interface="M3" mem_lo="40010000" mem_hi="40010FFF" remapping='none'/>
-
+    <address_region interface="M4" mem_lo="40011000" mem_hi="40015FFF" remapping='none'/>
 	
   </slave_interface>
+
+
+  <slave_interface name="S1">
+    <sparse_connect interface= "M0"/>
+    <sparse_connect interface= "M1"/>
+    <sparse_connect interface= "M2"/>
+	  <sparse_connect interface= "M3"/>
+
+	  <address_region interface="M0" mem_lo="00000000" mem_hi='000FFFFF' remapping='none'/>
+    <address_region interface="M1" mem_lo="20000000" mem_hi="200FFFFF" remapping='none'/>
+    <address_region interface="M2" mem_lo="40000000" mem_hi="40005FFF" remapping='none'/>
+    <address_region interface="M3" mem_lo="40010000" mem_hi="40010FFF" remapping='none'/>
+  </slave_interface>
+
 
 
   <!-- Master interface definitions -->
@@ -71,7 +86,7 @@
   <master_interface name="M1"/>
   <master_interface name="M2"/>
   <master_interface name="M3"/>
-
+  <master_interface name="M4"/>
 
   <!-- - - - - *** DO NOT MODIFY BELOW THIS LINE *** - - - - - - - - - - - -->
 

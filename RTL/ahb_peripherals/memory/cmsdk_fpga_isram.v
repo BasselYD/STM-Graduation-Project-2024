@@ -30,7 +30,7 @@ module cmsdk_fpga_isram #(
 // Parameters
 // --------------------------------------------------------------------------
   parameter AW = 16,
-   parameter MEMFILE = "C:/Ain_shams/GP/Program/Scratch/main.mem"
+   parameter MEMFILE = "C:/STM-Graduation-Project-2024/Program/main.bin"
  )
  (
   // Inputs
@@ -93,23 +93,12 @@ reg [7:0] fileimage [0:((MEM_SIZE)-1)];
   integer i;
   initial begin
     //  Initialize memory content to avoid X value on bus
-    for (i = 0; i <= AWT; i=i+1)
-      begin
-        BRAM0[i] = 8'h00;
-        BRAM1[i] = 8'h00;
-        BRAM2[i] = 8'h00;
-        BRAM3[i] = 8'h00;
-      end
+    
 
-      $readmemh(MEMFILE, fileimage);
-            // Copy from single array to splitted array
-          for (i=0;i<(MEM_SIZE/4); i= i+1)
-          begin
-            BRAM3[i] = fileimage[i*4+3];
-            BRAM2[i] = fileimage[i*4+2];
-            BRAM1[i] = fileimage[i*4+1];
-            BRAM0[i] = fileimage[i*4];
-      
-          end
+      $readmemb ("C:/Users/basse/Desktop/Version 4 - All/STM-Graduation-Project-2024/Program/group_0.bin",BRAM0);
+      $readmemb ("C:/Users/basse/Desktop/Version 4 - All/STM-Graduation-Project-2024/Program/group_1.bin",BRAM1);
+      $readmemb ("C:/Users/basse/Desktop/Version 4 - All/STM-Graduation-Project-2024/Program/group_2.bin",BRAM2);
+      $readmemb ("C:/Users/basse/Desktop/Version 4 - All/STM-Graduation-Project-2024/Program/group_3.bin",BRAM3);
+
   end
 endmodule

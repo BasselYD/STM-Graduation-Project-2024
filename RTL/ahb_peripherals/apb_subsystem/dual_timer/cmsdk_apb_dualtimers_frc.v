@@ -190,7 +190,9 @@ module cmsdk_apb_dualtimers_frc (
   assign int_enable = ctrl_75 [5];
   assign timer_pre  = ctrl_30 [3:2];
   assign timer_size = ctrl_30 [1];
-  assign one_shot   = ctrl_30 [0];
+   // synthesis attribute keep of one_shot is true
+   // synthesis attribute keep of ctrl_30[0] is true
+  assign one_shot   = ~(~ctrl_30 [0]);
 
 //------------------------------------------------------------------------------
 // Load Register

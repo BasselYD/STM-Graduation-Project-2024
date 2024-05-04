@@ -23,7 +23,7 @@
 //-----------------------------------------------------------------------------
 // Abstract : APB sub system
 //-----------------------------------------------------------------------------
-module cmsdk_apb_subsystem #(parameter Include_dual_timer = 1) (
+ module cmsdk_apb_subsystem #(parameter Include_dual_timer = 1, Include_SPI = 1) (
   //AHB inputs
   input HCLK,
   input HRESETn,
@@ -64,7 +64,18 @@ module cmsdk_apb_subsystem #(parameter Include_dual_timer = 1) (
   output TXD1_EN,
   output watchdog_interrupt,
   output watchdog_reset,
-  output reg [13:0] subsystem_interrupt
+  inout  MOSI,
+  inout  MISO,
+  inout  SCK,
+  inout  SS0,
+  output SS1,
+  output SS2,
+  output SS3,
+  output reg [16:0] subsystem_interrupt,
+  output wire        RTS0 ,
+  input wire         CTS0 ,
+  output wire        RTS1 ,
+  input wire         CTS1
 );
 
 wire PSEL;                        //APB select signal output from bridge
@@ -78,10 +89,17 @@ wire UART1_PSEL;                  //Second uart selector
 wire WDOG_PSEL;                   //Watchdog selector
 wire TIMER_PSEL;                  //Timer selector
 wire DUAL_TIMER_PSEL;             //Dual timer selector
+wire SPI_PSEL;                    //SPI selector
 
 wire [31:0] TIMER_PRDATA;         //Timer read data 
 wire TIMER_SLVERR;                //Timer error signal
 wire TIMERINT;                    //Timer interrupt signal
+
+wire [31:0] SPI_PRDATA;           //SPI read data 
+wire SPI_SLVERR;                  //SPI error signal
+wire SPI_TXINT;                   //SPI transmitter interrupt
+wire SPI_RXINT;                   //SPI receive interrupt
+wire SPIINT;                      //SPI combined interrupt
 
 wire [31:0] WDOG_PRDATA;          //Watchdog read data 
 wire WDOG_SLVERR;                 //Watchdog error signal
@@ -128,9 +146,11 @@ wire TXOVRINT1_IRQ;               //Synchronized uart 1 overflow interrupt trans
 wire RXOVRINT1_IRQ;               //Synchronized uart 1 overflow interrupt receiver
 wire UARTINT1_IRQ;                //Synchronized uart 1 combined interrupt
 
+
 wire TIMER_READY;                 //Timer ready signal
 wire UART0_READY;                 //Uart0 ready signal
 wire UART1_READY;                 //Uart1 ready signal
+wire SPI_READY;                   //SPI ready signal
 
 wire PSLVERR;                     //Muxed slave error signal
 wire PREADY;                      //Muxed slave ready signal
@@ -176,14 +196,15 @@ APB_Bridge_inst(
 
 /*Adress decoder to make sure memory mapping is achieved for all peripherals*/
 
-APB_decoder #(.Include_dual_timer(1)) APB_decoder_inst (
+APB_decoder #(.Include_dual_timer(Include_dual_timer), .Include_SPI(Include_SPI)) APB_decoder_inst (
   .PADDR(PADDR[15:12]),
   .PSEL(PSEL),
   .UART0_PSEL(UART0_PSEL),
   .UART1_PSEL(UART1_PSEL),
   .WDOG_PSEL(WDOG_PSEL),
   .TIMER_PSEL(TIMER_PSEL),
-  .DUAL_TIMER_PSEL(DUAL_TIMER_PSEL)
+  .DUAL_TIMER_PSEL(DUAL_TIMER_PSEL),
+  .SPI_PSEL(SPI_PSEL)
 );
 
 /*Timer module instantiation*/
@@ -223,37 +244,106 @@ cmsdk_apb_watchdog WATCHDOG (
 .PSLVERR(WDOG_SLVERR)
 );
 
-generate if(Include_dual_timer == 1)
-begin : Dual_timer_instance
-/*Dual timer module instantiation*/
-cmsdk_apb_dualtimers DUAL_TIMER(
-.PCLK(PCLKG),     
+generate 
+  if(Include_dual_timer == 1)
+    begin : Dual_timer_instance
+      /*Dual timer module instantiation*/
+      cmsdk_apb_dualtimers DUAL_TIMER(
+        .PCLK(PCLKG),     
+        .PRESETn(PRESETn),
+        .PENABLE(PENABLE),
+        .PSEL(DUAL_TIMER_PSEL),
+        .PADDR(PADDR[11:2]),
+        .PWRITE(PWRITE),
+        .PWDATA(PWDATA),
+        .TIMCLK(TIMCLK),    //Connectod to PCLK till further notice
+        .TIMCLKEN1(1'b1), //Assigned one till further notice
+        .TIMCLKEN2(1'b1), //Assigned one till further notice
+        .ECOREVNUM(4'h0), //Grounded till further notice
+        .PRDATA(DUAL_TIMER_PRDATA),   
+        .PSLVERR(DUAL_TIMER_SLVERR),
+        .TIMINT1(DUAL_TIMER_INT1),  
+        .TIMINT2(DUAL_TIMER_INT2),
+        .TIMINTC(DUAL_TIMER_INTC)
+      );
+    end : Dual_timer_instance
+
+  else begin : grounding_signals
+    assign  DUAL_TIMER_PRDATA = 32'b0;
+    assign  DUAL_TIMER_SLVERR = 1'b0;
+    assign  DUAL_TIMER_INT1 = 1'b0;
+    assign  DUAL_TIMER_INT2 = 1'b0;
+    assign  DUAL_TIMER_INTC = 1'b0;
+  end : grounding_signals
+endgenerate
+
+
+
+generate if(Include_SPI == 1)
+begin : SPI_instance
+//SPI module instantiation
+APB_SPI_interface SPI
+(
+.PCLK(PCLK),     
 .PRESETn(PRESETn),
 .PENABLE(PENABLE),
-.PSEL(DUAL_TIMER_PSEL),
+.PSEL(SPI_PSEL),
 .PADDR(PADDR[11:2]),
 .PWRITE(PWRITE),
 .PWDATA(PWDATA),
-.TIMCLK(TIMCLK),    //Connectod to PCLK till further notice
-.TIMCLKEN1(1'b1), //Assigned one till further notice
-.TIMCLKEN2(1'b1), //Assigned one till further notice
-.ECOREVNUM(4'h0), //Grounded till further notice
-.PRDATA(DUAL_TIMER_PRDATA),   
-.PSLVERR(DUAL_TIMER_SLVERR),
-.TIMINT1(DUAL_TIMER_INT1),  
-.TIMINT2(DUAL_TIMER_INT2),
-.TIMINTC(DUAL_TIMER_INTC)
+.PRDATA(SPI_PRDATA),   
+.PSLVERR(SPI_SLVERR),
+.PREADY(SPI_READY),
+.TXINT(SPI_TXINT),
+.RXINT(SPI_RXINT),
+.COMBINT(SPIINT),
+.MOSI(MOSI), 
+.MISO(MISO), 
+.SCK(SCK), 
+.SS0(SS0),
+.SS1(SS1),
+.SS2(SS2),
+.SS3(SS3)
 );
-end : Dual_timer_instance
+end : SPI_instance
 else
-begin : grounding_signals
-assign  DUAL_TIMER_PRDATA = 32'b0;
-assign  DUAL_TIMER_SLVERR = 1'b1;
-assign  DUAL_TIMER_INT1 = 1'b0;
-assign  DUAL_TIMER_INT2 = 1'b0;
-assign  DUAL_TIMER_INTC = 1'b0;
-end : grounding_signals
+begin : grounding_spi_signals
+assign  SPI_PRDATA = 32'b0;
+assign  SPI_SLVERR = 1'b0;
+assign  SPI_READY = 1'b0;
+assign  SPI_TXINT = 1'b0;
+assign  SPI_RXINT = 1'b0;
+assign  SPIINT = 1'b0;
+assign  SS1 = 1'b0;
+assign  SS2 = 1'b0;
+assign  SS3 = 1'b0;
+end : grounding_spi_signals
 endgenerate
+
+
+/*APB_SPI_interface SPI
+(
+.PCLK(PCLK),     
+.PRESETn(PRESETn),
+.PENABLE(PENABLE),
+.PSEL(SPI_PSEL),
+.PADDR(PADDR[11:2]),
+.PWRITE(PWRITE),
+.PWDATA(PWDATA),
+.PRDATA(SPI_PRDATA),   
+.PSLVERR(SPI_SLVERR),
+.PREADY(SPI_READY),
+.TXINT(SPI_TXINT),
+.RXINT(SPI_RXINT),
+.COMBINT(SPIINT),
+.MOSI(MOSI), 
+.MISO(MISO), 
+.SCK(SCK), 
+.SS0(SS0),
+.SS1(SS1),
+.SS2(SS2),
+.SS3(SS3)
+);*/
 
 /*First uart module instantiation*/
 cmsdk_apb_uart UART0 (
@@ -277,7 +367,9 @@ cmsdk_apb_uart UART0 (
 .RXINT(RXINT0),   
 .TXOVRINT(TXOVRINT0),
 .RXOVRINT(RXOVRINT0),
-.UARTINT(UARTINT0)
+.UARTINT(UARTINT0),
+.RTS(RTS0) ,
+.CTS(CTS0)
 );
 
 
@@ -303,7 +395,9 @@ cmsdk_apb_uart UART1 (
 .RXINT(RXINT1),   
 .TXOVRINT(TXOVRINT1),
 .RXOVRINT(RXOVRINT1),
-.UARTINT(UARTINT1)
+.UARTINT(UARTINT1),
+.RTS(RTS1) ,
+.CTS(CTS1)
 );
 
 cmsdk_apb_slave_mux MUX(
@@ -327,6 +421,10 @@ cmsdk_apb_slave_mux MUX(
 .PREADY4(UART1_READY), 
 .PRDATA4(UART1_PRDATA),
 .PSLVERR4(UART1_SLVERR),
+.PSEL5(SPI_PSEL),
+.PREADY5(SPI_READY), 
+.PRDATA5(SPI_PRDATA),
+.PSLVERR5(SPI_SLVERR),
 .PREADY(PREADY),
 .PRDATA(PRDATA),
 .PSLVERR(PSLVERR)
@@ -450,6 +548,27 @@ cmsdk_irq_sync u_irq_sync_15 (
 .IRQOUT(UARTINT1_IRQ)
 );
 
+cmsdk_irq_sync u_irq_sync_16 (
+.RSTn  (HRESETn),
+.CLK   (HCLK),
+.IRQIN (SPI_RXINT),
+.IRQOUT(SPI_RXINT_IRQ)
+);
+
+cmsdk_irq_sync u_irq_sync_17 (
+.RSTn  (HRESETn),
+.CLK   (HCLK),
+.IRQIN (SPI_TXINT),
+.IRQOUT(SPI_TXINT_IRQ)
+);
+
+
+cmsdk_irq_sync u_irq_sync_20 (
+.RSTn  (HRESETn),
+.CLK   (HCLK),
+.IRQIN (SPIINT),
+.IRQOUT(SPIINT_IRQ)
+);
 always @(*)
 begin
   subsystem_interrupt[0]  = TIMERINT_IRQ;             //Timer interrupt
@@ -466,6 +585,10 @@ begin
   subsystem_interrupt[11] = TXOVRINT1_IRQ;            //Uart 1 transmit overflow interrupt
   subsystem_interrupt[12] = RXOVRINT1_IRQ;            //Uart 1 receiver overflow interrupt
   subsystem_interrupt[13] = UARTINT1_IRQ;             //Uart 1 combined interrupt
+  subsystem_interrupt[14] = SPI_RXINT_IRQ;            //spi  receiver interrupt
+  subsystem_interrupt[15] = SPI_TXINT_IRQ;            //spi  transmit interrupt
+  subsystem_interrupt[16] = SPIINT_IRQ;               //spi  combined interrupt
+
 end
 endmodule
   
