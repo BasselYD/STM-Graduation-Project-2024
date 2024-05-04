@@ -1,0 +1,289 @@
+C:/Users/basse/Desktop/STM-Graduation-Project-2024/RTL/ahb_peripherals/apb_subsystem/subsystem_top/cmsdk_irq_sync.v {0 {vlog -work work C:/Users/basse/Desktop/STM-Graduation-Project-2024/RTL/ahb_peripherals/apb_subsystem/subsystem_top/cmsdk_irq_sync.v
+Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+** Error: (vlog-42) Unsupported ModelSim library format for "work". (Format: 4)
+
+** Error: Verilog Compiler exiting
+
+} {3.0 4.0 5.0 6.0} {}} C:/Users/basse/Desktop/STM-Graduation-Project-2024/RTL/ahb_peripherals/rcc/CLK_GATE.v {0 {vlog -work work C:/Users/basse/Desktop/STM-Graduation-Project-2024/RTL/ahb_peripherals/rcc/CLK_GATE.v
+Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+** Error: (vlog-42) Unsupported ModelSim library format for "work". (Format: 4)
+
+** Error: Verilog Compiler exiting
+
+} {3.0 4.0 5.0 6.0} {}} C:/Users/basse/Desktop/STM-Graduation-Project-2024/RTL/ahb_peripherals/apb_subsystem/watchdog/cmsdk_apb_watchdog.v {0 {vlog -work work C:/Users/basse/Desktop/STM-Graduation-Project-2024/RTL/ahb_peripherals/apb_subsystem/watchdog/cmsdk_apb_watchdog.v
+Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+** Error: (vlog-42) Unsupported ModelSim library format for "work". (Format: 4)
+
+** Error: Verilog Compiler exiting
+
+} {3.0 4.0 5.0 6.0} {}} C:/Users/basse/Desktop/STM-Graduation-Project-2024/Testbench/watchdog_tb.sv {0 {vlog -work work -sv C:/Users/basse/Desktop/STM-Graduation-Project-2024/Testbench/watchdog_tb.sv
+Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+** Error: (vlog-42) Unsupported ModelSim library format for "work". (Format: 4)
+
+** Error: Verilog Compiler exiting
+
+} {3.0 4.0 5.0 6.0} {}} C:/Users/basse/Desktop/STM-Graduation-Project-2024/RTL/ahb_peripherals/apb_subsystem/subsystem_top/APB_decoder.v {0 {vlog -work work C:/Users/basse/Desktop/STM-Graduation-Project-2024/RTL/ahb_peripherals/apb_subsystem/subsystem_top/APB_decoder.v
+Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+** Error: (vlog-42) Unsupported ModelSim library format for "work". (Format: 4)
+
+** Error: Verilog Compiler exiting
+
+} {3.0 4.0 5.0 6.0} {}} C:/Users/basse/Desktop/STM-Graduation-Project-2024/RTL/ahb_peripherals/memory/cmsdk_ahb_to_isram.v {0 {vlog -work work C:/Users/basse/Desktop/STM-Graduation-Project-2024/RTL/ahb_peripherals/memory/cmsdk_ahb_to_isram.v
+Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+** Error: (vlog-42) Unsupported ModelSim library format for "work". (Format: 4)
+
+** Error: Verilog Compiler exiting
+
+} {3.0 4.0 5.0 6.0} {}} C:/Users/basse/Desktop/STM-Graduation-Project-2024/RTL/ahb_peripherals/apb_subsystem/dual_timer/cmsdk_apb_dualtimers.v {0 {vlog -work work C:/Users/basse/Desktop/STM-Graduation-Project-2024/RTL/ahb_peripherals/apb_subsystem/dual_timer/cmsdk_apb_dualtimers.v
+Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+** Error: (vlog-42) Unsupported ModelSim library format for "work". (Format: 4)
+
+** Error: Verilog Compiler exiting
+
+} {3.0 4.0 5.0 6.0} {}} C:/Users/basse/Desktop/STM-Graduation-Project-2024/Testbench/uart_tb.sv {0 {vlog -work work -sv C:/Users/basse/Desktop/STM-Graduation-Project-2024/Testbench/uart_tb.sv
+Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+** Error: (vlog-42) Unsupported ModelSim library format for "work". (Format: 4)
+
+** Error: Verilog Compiler exiting
+
+} {3.0 4.0 5.0 6.0} {}} C:/Users/basse/Desktop/STM-Graduation-Project-2024/RTL/bus_matrix/AHB_InputStage.v {0 {vlog -work work C:/Users/basse/Desktop/STM-Graduation-Project-2024/RTL/bus_matrix/AHB_InputStage.v
+Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+** Error: (vlog-42) Unsupported ModelSim library format for "work". (Format: 4)
+
+** Error: Verilog Compiler exiting
+
+} {3.0 4.0 5.0 6.0} {}} C:/Users/basse/Desktop/STM-Graduation-Project-2024/RTL/ahb_peripherals/apb_subsystem/timer/cmsdk_apb_timer.v {0 {vlog -work work C:/Users/basse/Desktop/STM-Graduation-Project-2024/RTL/ahb_peripherals/apb_subsystem/timer/cmsdk_apb_timer.v
+Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+** Error: (vlog-42) Unsupported ModelSim library format for "work". (Format: 4)
+
+** Error: Verilog Compiler exiting
+
+} {3.0 4.0 5.0 6.0} {}} C:/Users/basse/Desktop/STM-Graduation-Project-2024/RTL/bus_matrix/AHB_DecoderStageS0.v {0 {vlog -work work C:/Users/basse/Desktop/STM-Graduation-Project-2024/RTL/bus_matrix/AHB_DecoderStageS0.v
+Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+** Error: (vlog-42) Unsupported ModelSim library format for "work". (Format: 4)
+
+** Error: Verilog Compiler exiting
+
+} {3.0 4.0 5.0 6.0} {}} C:/Users/basse/Desktop/STM-Graduation-Project-2024/RTL/ahb_peripherals/gpio/tri_state_buffer.v {0 {vlog -work work C:/Users/basse/Desktop/STM-Graduation-Project-2024/RTL/ahb_peripherals/gpio/tri_state_buffer.v
+Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+** Error: (vlog-42) Unsupported ModelSim library format for "work". (Format: 4)
+
+** Error: Verilog Compiler exiting
+
+} {3.0 4.0 5.0 6.0} {}} C:/Users/basse/Desktop/STM-Graduation-Project-2024/RTL/ahb_peripherals/rcc/RESET_SYNC.v {0 {vlog -work work C:/Users/basse/Desktop/STM-Graduation-Project-2024/RTL/ahb_peripherals/rcc/RESET_SYNC.v
+Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+** Error: (vlog-42) Unsupported ModelSim library format for "work". (Format: 4)
+
+** Error: Verilog Compiler exiting
+
+} {3.0 4.0 5.0 6.0} {}} C:/Users/basse/Desktop/STM-Graduation-Project-2024/RTL/ahb_peripherals/apb_subsystem/subsystem_top/cmsdk_apb_slave_mux.v {0 {vlog -work work C:/Users/basse/Desktop/STM-Graduation-Project-2024/RTL/ahb_peripherals/apb_subsystem/subsystem_top/cmsdk_apb_slave_mux.v
+Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+** Error: (vlog-42) Unsupported ModelSim library format for "work". (Format: 4)
+
+** Error: Verilog Compiler exiting
+
+} {3.0 4.0 5.0 6.0} {}} C:/Users/basse/Desktop/STM-Graduation-Project-2024/RTL/bus_matrix/AHB_Arbiter.v {0 {vlog -work work C:/Users/basse/Desktop/STM-Graduation-Project-2024/RTL/bus_matrix/AHB_Arbiter.v
+Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+** Error: (vlog-42) Unsupported ModelSim library format for "work". (Format: 4)
+
+** Error: Verilog Compiler exiting
+
+} {3.0 4.0 5.0 6.0} {}} C:/Users/basse/Desktop/STM-Graduation-Project-2024/RTL/ahb_peripherals/apb_subsystem/uart/cmsdk_apb_uart.v {0 {vlog -work work C:/Users/basse/Desktop/STM-Graduation-Project-2024/RTL/ahb_peripherals/apb_subsystem/uart/cmsdk_apb_uart.v
+Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+** Error: (vlog-42) Unsupported ModelSim library format for "work". (Format: 4)
+
+** Error: Verilog Compiler exiting
+
+} {3.0 4.0 5.0 6.0} {}} C:/Users/basse/Desktop/STM-Graduation-Project-2024/RTL/cortex/cortexm0ds_logic.v {0 {vlog -work work C:/Users/basse/Desktop/STM-Graduation-Project-2024/RTL/cortex/cortexm0ds_logic.v
+Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+** Error: (vlog-42) Unsupported ModelSim library format for "work". (Format: 4)
+
+** Error: Verilog Compiler exiting
+
+} {3.0 4.0 5.0 6.0} {}} C:/Users/basse/Desktop/STM-Graduation-Project-2024/RTL/ahb_peripherals/apb_subsystem/bridge/APB_Bridge.v {0 {vlog -work work C:/Users/basse/Desktop/STM-Graduation-Project-2024/RTL/ahb_peripherals/apb_subsystem/bridge/APB_Bridge.v
+Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+** Error: (vlog-42) Unsupported ModelSim library format for "work". (Format: 4)
+
+** Error: Verilog Compiler exiting
+
+} {3.0 4.0 5.0 6.0} {}} C:/Users/basse/Desktop/STM-Graduation-Project-2024/RTL/ahb_peripherals/memory/cmsdk_ahb_to_dsram.v {0 {vlog -work work C:/Users/basse/Desktop/STM-Graduation-Project-2024/RTL/ahb_peripherals/memory/cmsdk_ahb_to_dsram.v
+Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+** Error: (vlog-42) Unsupported ModelSim library format for "work". (Format: 4)
+
+** Error: Verilog Compiler exiting
+
+} {3.0 4.0 5.0 6.0} {}} C:/Users/basse/Desktop/STM-Graduation-Project-2024/RTL/ahb_peripherals/gpio/cmsdk_iop_gpio.v {0 {vlog -work work C:/Users/basse/Desktop/STM-Graduation-Project-2024/RTL/ahb_peripherals/gpio/cmsdk_iop_gpio.v
+Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+** Error: (vlog-42) Unsupported ModelSim library format for "work". (Format: 4)
+
+** Error: Verilog Compiler exiting
+
+} {3.0 4.0 5.0 6.0} {}} C:/Users/basse/Desktop/STM-Graduation-Project-2024/Testbench/bridge_test.sv {0 {vlog -work work -sv C:/Users/basse/Desktop/STM-Graduation-Project-2024/Testbench/bridge_test.sv
+Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+** Error: (vlog-42) Unsupported ModelSim library format for "work". (Format: 4)
+
+** Error: Verilog Compiler exiting
+
+} {3.0 4.0 5.0 6.0} {}} C:/Users/basse/Desktop/STM-Graduation-Project-2024/RTL/ahb_peripherals/apb_subsystem/subsystem_top/cmsdk_apb_subsystem.v {0 {vlog -work work C:/Users/basse/Desktop/STM-Graduation-Project-2024/RTL/ahb_peripherals/apb_subsystem/subsystem_top/cmsdk_apb_subsystem.v
+Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+** Error: (vlog-42) Unsupported ModelSim library format for "work". (Format: 4)
+
+** Error: Verilog Compiler exiting
+
+} {3.0 4.0 5.0 6.0} {}} C:/Users/basse/Desktop/STM-Graduation-Project-2024/RTL/ahb_peripherals/memory/cmsdk_fpga_isram.v {0 {vlog -work work C:/Users/basse/Desktop/STM-Graduation-Project-2024/RTL/ahb_peripherals/memory/cmsdk_fpga_isram.v
+Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+** Error: (vlog-42) Unsupported ModelSim library format for "work". (Format: 4)
+
+** Error: Verilog Compiler exiting
+
+} {3.0 4.0 5.0 6.0} {}} C:/Users/basse/Desktop/STM-Graduation-Project-2024/RTL/ahb_peripherals/gpio/GPIO_HW.v {0 {vlog -work work C:/Users/basse/Desktop/STM-Graduation-Project-2024/RTL/ahb_peripherals/gpio/GPIO_HW.v
+Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+** Error: (vlog-42) Unsupported ModelSim library format for "work". (Format: 4)
+
+** Error: Verilog Compiler exiting
+
+} {3.0 4.0 5.0 6.0} {}} C:/Users/basse/Desktop/STM-Graduation-Project-2024/Testbench/subsystem_tb.sv {0 {vlog -work work -sv C:/Users/basse/Desktop/STM-Graduation-Project-2024/Testbench/subsystem_tb.sv
+Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+** Error: (vlog-42) Unsupported ModelSim library format for "work". (Format: 4)
+
+** Error: Verilog Compiler exiting
+
+} {3.0 4.0 5.0 6.0} {}} C:/Users/basse/Desktop/STM-Graduation-Project-2024/Testbench/timer_tb.sv {0 {vlog -work work -sv C:/Users/basse/Desktop/STM-Graduation-Project-2024/Testbench/timer_tb.sv
+Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+** Error: (vlog-42) Unsupported ModelSim library format for "work". (Format: 4)
+
+** Error: Verilog Compiler exiting
+
+} {3.0 4.0 5.0 6.0} {}} C:/Users/basse/Desktop/STM-Graduation-Project-2024/RTL/cortex/CORTEXM0INTEGRATION.v {0 {vlog -work work C:/Users/basse/Desktop/STM-Graduation-Project-2024/RTL/cortex/CORTEXM0INTEGRATION.v
+Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+** Error: (vlog-42) Unsupported ModelSim library format for "work". (Format: 4)
+
+** Error: Verilog Compiler exiting
+
+} {3.0 4.0 5.0 6.0} {}} C:/Users/basse/Desktop/STM-Graduation-Project-2024/RTL/ahb_peripherals/apb_subsystem/dual_timer/cmsdk_apb_dualtimers_defs.v {0 {vlog -work work C:/Users/basse/Desktop/STM-Graduation-Project-2024/RTL/ahb_peripherals/apb_subsystem/dual_timer/cmsdk_apb_dualtimers_defs.v
+Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+** Error: (vlog-42) Unsupported ModelSim library format for "work". (Format: 4)
+
+** Error: Verilog Compiler exiting
+
+} {3.0 4.0 5.0 6.0} {}} C:/Users/basse/Desktop/STM-Graduation-Project-2024/RTL/ahb_peripherals/rcc/CLKDIV.v {0 {vlog -work work C:/Users/basse/Desktop/STM-Graduation-Project-2024/RTL/ahb_peripherals/rcc/CLKDIV.v
+Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+** Error: (vlog-42) Unsupported ModelSim library format for "work". (Format: 4)
+
+** Error: Verilog Compiler exiting
+
+} {3.0 4.0 5.0 6.0} {}} C:/Users/basse/Desktop/STM-Graduation-Project-2024/RTL/ahb_peripherals/memory/cmsdk_fpga_dsram.v {0 {vlog -work work C:/Users/basse/Desktop/STM-Graduation-Project-2024/RTL/ahb_peripherals/memory/cmsdk_fpga_dsram.v
+Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+** Error: (vlog-42) Unsupported ModelSim library format for "work". (Format: 4)
+
+** Error: Verilog Compiler exiting
+
+} {3.0 4.0 5.0 6.0} {}} C:/Users/basse/Desktop/STM-Graduation-Project-2024/Testbench/gpio_tb.sv {0 {vlog -work work -sv C:/Users/basse/Desktop/STM-Graduation-Project-2024/Testbench/gpio_tb.sv
+Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+** Error: (vlog-42) Unsupported ModelSim library format for "work". (Format: 4)
+
+** Error: Verilog Compiler exiting
+
+} {3.0 4.0 5.0 6.0} {}} C:/Users/basse/Desktop/STM-Graduation-Project-2024/RTL/ahb_peripherals/gpio/cmsdk_ahb_gpio.v {0 {vlog -work work C:/Users/basse/Desktop/STM-Graduation-Project-2024/RTL/ahb_peripherals/gpio/cmsdk_ahb_gpio.v
+Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+** Error: (vlog-42) Unsupported ModelSim library format for "work". (Format: 4)
+
+** Error: Verilog Compiler exiting
+
+} {3.0 4.0 5.0 6.0} {}} C:/Users/basse/Desktop/STM-Graduation-Project-2024/RTL/ahb_peripherals/gpio/mux_2x1.v {0 {vlog -work work C:/Users/basse/Desktop/STM-Graduation-Project-2024/RTL/ahb_peripherals/gpio/mux_2x1.v
+Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+** Error: (vlog-42) Unsupported ModelSim library format for "work". (Format: 4)
+
+** Error: Verilog Compiler exiting
+
+} {3.0 4.0 5.0 6.0} {}} C:/Users/basse/Desktop/STM-Graduation-Project-2024/RTL/bus_matrix/bus_matrix_defs.v {0 {vlog -work work C:/Users/basse/Desktop/STM-Graduation-Project-2024/RTL/bus_matrix/bus_matrix_defs.v
+Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+** Error: (vlog-42) Unsupported ModelSim library format for "work". (Format: 4)
+
+** Error: Verilog Compiler exiting
+
+} {3.0 4.0 5.0 6.0} {}} C:/Users/basse/Desktop/STM-Graduation-Project-2024/RTL/ahb_peripherals/apb_subsystem/watchdog/cmsdk_apb_watchdog_defs.v {0 {vlog -work work C:/Users/basse/Desktop/STM-Graduation-Project-2024/RTL/ahb_peripherals/apb_subsystem/watchdog/cmsdk_apb_watchdog_defs.v
+Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+** Error: (vlog-42) Unsupported ModelSim library format for "work". (Format: 4)
+
+** Error: Verilog Compiler exiting
+
+} {3.0 4.0 5.0 6.0} {}} C:/Users/basse/Desktop/STM-Graduation-Project-2024/RTL/ahb_peripherals/memory/Instruction_SRAM_TOP.v {0 {vlog -work work C:/Users/basse/Desktop/STM-Graduation-Project-2024/RTL/ahb_peripherals/memory/Instruction_SRAM_TOP.v
+Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+** Error: (vlog-42) Unsupported ModelSim library format for "work". (Format: 4)
+
+** Error: Verilog Compiler exiting
+
+} {3.0 4.0 5.0 6.0} {}} C:/Users/basse/Desktop/STM-Graduation-Project-2024/RTL/ahb_peripherals/rcc/RCC.v {0 {vlog -work work C:/Users/basse/Desktop/STM-Graduation-Project-2024/RTL/ahb_peripherals/rcc/RCC.v
+Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+** Error: (vlog-42) Unsupported ModelSim library format for "work". (Format: 4)
+
+** Error: Verilog Compiler exiting
+
+} {3.0 4.0 5.0 6.0} {}} C:/Users/basse/Desktop/STM-Graduation-Project-2024/Testbench/dualtimers_tb.sv {0 {vlog -work work -sv C:/Users/basse/Desktop/STM-Graduation-Project-2024/Testbench/dualtimers_tb.sv
+Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+** Error: (vlog-42) Unsupported ModelSim library format for "work". (Format: 4)
+
+** Error: Verilog Compiler exiting
+
+} {3.0 4.0 5.0 6.0} {}} C:/Users/basse/Desktop/STM-Graduation-Project-2024/RTL/ahb_peripherals/gpio/cmsdk_ahb_to_iop.v {0 {vlog -work work C:/Users/basse/Desktop/STM-Graduation-Project-2024/RTL/ahb_peripherals/gpio/cmsdk_ahb_to_iop.v
+Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+** Error: (vlog-42) Unsupported ModelSim library format for "work". (Format: 4)
+
+** Error: Verilog Compiler exiting
+
+} {3.0 4.0 5.0 6.0} {}} C:/Users/basse/Desktop/STM-Graduation-Project-2024/RTL/bus_matrix/AHB_BusMatrix_lite.v {0 {vlog -work work C:/Users/basse/Desktop/STM-Graduation-Project-2024/RTL/bus_matrix/AHB_BusMatrix_lite.v
+Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+** Error: (vlog-42) Unsupported ModelSim library format for "work". (Format: 4)
+
+** Error: Verilog Compiler exiting
+
+} {3.0 4.0 5.0 6.0} {}} C:/Users/basse/Desktop/STM-Graduation-Project-2024/RTL/ahb_peripherals/apb_subsystem/watchdog/cmsdk_apb_watchdog_frc.v {0 {vlog -work work C:/Users/basse/Desktop/STM-Graduation-Project-2024/RTL/ahb_peripherals/apb_subsystem/watchdog/cmsdk_apb_watchdog_frc.v
+Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+** Error: (vlog-42) Unsupported ModelSim library format for "work". (Format: 4)
+
+** Error: Verilog Compiler exiting
+
+} {3.0 4.0 5.0 6.0} {}} C:/Users/basse/Desktop/STM-Graduation-Project-2024/RTL/top/SYSTEM_TOP.v {0 {vlog -work work C:/Users/basse/Desktop/STM-Graduation-Project-2024/RTL/top/SYSTEM_TOP.v
+Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+** Error: (vlog-42) Unsupported ModelSim library format for "work". (Format: 4)
+
+** Error: Verilog Compiler exiting
+
+} {3.0 4.0 5.0 6.0} {}} C:/Users/basse/Desktop/STM-Graduation-Project-2024/Testbench/cortex_tb.sv {0 {vlog -work work -sv C:/Users/basse/Desktop/STM-Graduation-Project-2024/Testbench/cortex_tb.sv
+Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+** Error: (vlog-42) Unsupported ModelSim library format for "work". (Format: 4)
+
+** Error: Verilog Compiler exiting
+
+} {3.0 4.0 5.0 6.0} {}} C:/Users/basse/Desktop/STM-Graduation-Project-2024/RTL/ahb_peripherals/apb_subsystem/dual_timer/cmsdk_apb_dualtimers_frc.v {0 {vlog -work work C:/Users/basse/Desktop/STM-Graduation-Project-2024/RTL/ahb_peripherals/apb_subsystem/dual_timer/cmsdk_apb_dualtimers_frc.v
+Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+** Error: (vlog-42) Unsupported ModelSim library format for "work". (Format: 4)
+
+** Error: Verilog Compiler exiting
+
+} {3.0 4.0 5.0 6.0} {}} C:/Users/basse/Desktop/STM-Graduation-Project-2024/RTL/bus_matrix/AHB_OutputStage.v {0 {vlog -work work C:/Users/basse/Desktop/STM-Graduation-Project-2024/RTL/bus_matrix/AHB_OutputStage.v
+Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+** Error: (vlog-42) Unsupported ModelSim library format for "work". (Format: 4)
+
+** Error: Verilog Compiler exiting
+
+} {3.0 4.0 5.0 6.0} {}} C:/Users/basse/Desktop/STM-Graduation-Project-2024/RTL/bus_matrix/AHB_BusMatrix_default_slave.v {0 {vlog -work work C:/Users/basse/Desktop/STM-Graduation-Project-2024/RTL/bus_matrix/AHB_BusMatrix_default_slave.v
+Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+** Error: (vlog-42) Unsupported ModelSim library format for "work". (Format: 4)
+
+** Error: Verilog Compiler exiting
+
+} {3.0 4.0 5.0 6.0} {}} C:/Users/basse/Desktop/STM-Graduation-Project-2024/RTL/ahb_peripherals/memory/DATA_SRAM_TOP.v {0 {vlog -work work C:/Users/basse/Desktop/STM-Graduation-Project-2024/RTL/ahb_peripherals/memory/DATA_SRAM_TOP.v
+Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+** Error: (vlog-42) Unsupported ModelSim library format for "work". (Format: 4)
+
+** Error: Verilog Compiler exiting
+
+} {3.0 4.0 5.0 6.0} {}} C:/Users/basse/Desktop/STM-Graduation-Project-2024/RTL/bus_matrix/AHB_BusMatrix.v {0 {vlog -work work C:/Users/basse/Desktop/STM-Graduation-Project-2024/RTL/bus_matrix/AHB_BusMatrix.v
+Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+** Error: (vlog-42) Unsupported ModelSim library format for "work". (Format: 4)
+
+** Error: Verilog Compiler exiting
+
+} {3.0 4.0 5.0 6.0} {}}
