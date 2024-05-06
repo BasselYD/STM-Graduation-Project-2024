@@ -240,7 +240,7 @@ module cmsdk_apb_watchdog (
   //----------------------------------------------------------------------------
 
   // Address decoding for register reads.
-  assign prdata_next_en = PSEL & (~PWRITE) /*& (~PENABLE)*/;
+  assign prdata_next_en = PSEL & (~PWRITE) & (~PENABLE);
 
   // Selects output data from address bus.
   always @ (prdata_next_en or PADDR or frc_data or wdog_pdata or wdog_lock

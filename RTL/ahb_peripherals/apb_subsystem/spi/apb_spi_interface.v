@@ -208,14 +208,14 @@ always @ (posedge PCLK or negedge PRESETn)
 begin
 	if(!PRESETn)
 	STATE_REG <= 'b0 ;
-	else if (PWRITE && (PADDR[6:2] == 'h4))
+	else if (PWRITE && (PADDR[6:2] == 'h1) && PSEL)
 	STATE_REG[0] <= 'b1 ;
 	else if (RX_PULSE)
 	begin
 	  STATE_REG[0] <= 'b0;
 	  STATE_REG[1] <= 'b1;
 	end
-	else if (!PWRITE && (PADDR[6:2] == 'h4))
+	else if (!PWRITE && (PADDR[6:2] == 'h1) && PSEL)
 	STATE_REG[1] <= 'b0 ;	
 end
 
