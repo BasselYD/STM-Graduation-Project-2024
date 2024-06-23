@@ -8,6 +8,10 @@
 #include "system_CMSDK_CM0.h"
 #include "system_macros.h"
 
+#include <stdio.h>
+#include <string.h>
+#include <stdarg.h> 
+
 
 //////////////////////////////////Register layering of spi
 typedef struct

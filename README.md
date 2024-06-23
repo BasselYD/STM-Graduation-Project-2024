@@ -1,12 +1,16 @@
 # STM-Graduation-Project-2024
 
-Version 1.0 of the SoC, containing the following peripherals:
+Final Version of the SoC, containing the following peripherals:
 - I-SRAM
 - D-SRAM
-- GPIO
+- DMA (Optional)
+- GPIO (With Alternate Functions)
 - APB Subsystem:
     - AHB2APB Bridge
     - UART
+    - SPI (Optional)
     - Watchdog Timer
     - Timer
     - Dualtimer (Optional)
+
+This version uses (tranif) in the Alternate Function implementation, targeting ASIC flow.

@@ -1,5 +1,8 @@
 module Instruction_SRAM_TOP #(parameter AW       = 16,
-                             parameter MEMFILE = "../Program/Scratch/main.bin")
+                             GROUP0 = "../Program/Scratch/main.bin",
+                             GROUP1 = "../Program/Scratch/main.bin",
+                             GROUP2 = "../Program/Scratch/main.bin",
+                             GROUP3 = "../Program/Scratch/main.bin")
 ( 
 
   //Bus Matrix inputs to SRAM 
@@ -69,7 +72,7 @@ cmsdk_ahb_to_isram U0_cmsdk_ahb_to_isram(
 
 
 
-cmsdk_fpga_isram #(.AW(AW)) U0_cmsdk_fpga_isram(
+cmsdk_fpga_isram #(AW,GROUP0,GROUP1,GROUP2,GROUP3) U0_cmsdk_fpga_isram(
 //inputs 
 .CLK(HCLK),
 .ADDR({1'b0,1'b0,SRAMADDR}),

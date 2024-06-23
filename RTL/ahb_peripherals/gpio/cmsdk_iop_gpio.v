@@ -66,40 +66,43 @@ module cmsdk_iop_gpio
    parameter  ALTERNATE_FUNC_DEFAULT = 16'h0000,
 
    // By default use little endian
-   parameter  BE                  = 0
+   parameter  BE                  = 0,
+
+   // The GPIO width by default is 16-bit, but is coded in a way that it is
+   // easy to customise the width.
+   parameter  PORTWIDTH                      = 16'b1000,
+   parameter  ALTFUNC                        =  4
+
   )
 
 // --------------------------------------------------------------------------
 // Port Definitions
 // --------------------------------------------------------------------------
   (// Inputs
-   input wire                  FCLK,       // Free-running clock
-   input wire                  HCLK,       // System clock
-   input wire                  HRESETn,    // System reset
-   input wire                  IOSEL,      // Decode for peripheral
-   input wire  [11:0]          IOADDR,     // I/O transfer address
-   input wire                  IOWRITE,    // I/O transfer direction
-   input wire  [1:0]           IOSIZE,     // I/O transfer size
-   input wire                  IOTRANS,    // I/O transaction
-   input wire  [31:0]          IOWDATA,    // I/O write data bus
+   input wire                                           FCLK,       // Free-running clock
+   input wire                                           HCLK,       // System clock
+   input wire                                           HRESETn,    // System reset
+   input wire                                           IOSEL,      // Decode for peripheral
+   input wire  [11:0]                                   IOADDR,     // I/O transfer address
+   input wire                                           IOWRITE,    // I/O transfer direction
+   input wire  [1:0]                                    IOSIZE,     // I/O transfer size
+   input wire                                           IOTRANS,    // I/O transaction
+   input wire  [31:0]                                   IOWDATA,    // I/O write data bus
 
-   input wire  [3:0]           ECOREVNUM,  // Engineering-change-order revision bits
+   input wire  [3:0]                                    ECOREVNUM,  // Engineering-change-order revision bits
 
-   input wire  [15:0]          PORTIN,     // GPIO Interface input
+   input wire  [PORTWIDTH-1:0]                          PORTIN,     // GPIO Interface input
 
-   // Outputs
-   output wire [31:0]          IORDATA,    // I/0 read data bus
-   output reg                  GRESP,
-   output wire [15:0]          PORTOUT,    // GPIO output
-   output wire [15:0]          PORTEN,     // GPIO output enable
-   output wire [15:0]          PORTFUNC,   // Alternate function control
+   // Outputs                 
+   output wire [31:0]                                   IORDATA,    // I/0 read data bus
+   output reg                                           GRESP,
+   output wire [PORTWIDTH-1:0]                          PORTOUT,    // GPIO output
+   output wire [PORTWIDTH-1:0]                          PORTEN,     // GPIO output enable
+   output wire [PORTWIDTH-1:0]                          PORTFUNC,   // Alternate function control
+   output wire [PORTWIDTH*$clog2(ALTFUNC)-1:0]          ALT_FUNC,   // Alternate function selector
+   output wire [PORTWIDTH-1:0]                          GPIOINT,    // Interrupt output for each pin
+   output wire                                          COMBINT);   // Combined interrupt
 
-   output wire [15:0]          GPIOINT,    // Interrupt output for each pin
-   output wire                 COMBINT);   // Combined interrupt
-
-// The GPIO width by default is 16-bit, but is coded in a way that it is
-// easy to customise the width.
-localparam  PortWidth                      = 16;
 // Local parameter for IDs, IO PORT GPIO has part number of 820
 localparam  ARM_CMSDK_IOP_GPIO_PID0        = {32'h00000020}; // 0xFE0 : PID 0 IOP GPIO part number[7:0]
 localparam  ARM_CMSDK_IOP_GPIO_PID1        = {32'h000000B8}; // 0xFE4 : PID 1 [7:4] jep106_id_3_0. [3:0] part number [11:8]
@@ -113,31 +116,37 @@ localparam  ARM_CMSDK_IOP_GPIO_CID0        = {32'h0000000D}; // 0xFF0 : CID 0
 localparam  ARM_CMSDK_IOP_GPIO_CID1        = {32'h000000F0}; // 0xFF4 : CID 1 PrimeCell class
 localparam  ARM_CMSDK_IOP_GPIO_CID2        = {32'h00000005}; // 0xFF8 : CID 2
 localparam  ARM_CMSDK_IOP_GPIO_CID3        = {32'h000000B1}; // 0xFFC : CID 3
+localparam sel_bits = $clog2(ALTFUNC);
+// Calculate the total number of bits required
+localparam total_bits = PORTWIDTH * sel_bits;
+// Calculate the number of 32-bit registers needed
+localparam num_registers = (total_bits / 32) + ((total_bits % 32) != 0 ? 1 : 0);
+
 //    Note : Customer changing the design should modify
 //          - jep106 value (www.jedec.org)
 //          - part number (customer define)
 //          - Optional revision and modification number (e.g. rXpY)
-
   // --------------------------------------------------------------------------
   // Internal wires
   // --------------------------------------------------------------------------
-
+ 
   reg    [31:0]          read_mux;
   reg    [31:0]          read_mux_le;
-
+         
   // Signals for Control registers
   wire   [31:0]          reg_datain32;
-  wire   [PortWidth-1:0] reg_datain;
-  wire   [PortWidth-1:0] reg_dout;     // Output pin register
-  wire   [PortWidth-1:0] reg_douten;   // Port enable register
-  wire   [PortWidth-1:0] reg_altfunc;  // Alternate function register
-  wire   [PortWidth-1:0] reg_inten;    // Interrupt enable
-  wire   [PortWidth-1:0] reg_inttype;  // Interrupt edge(1)/level(0)
-  wire   [PortWidth-1:0] reg_intpol;   // Interrupt active level
-  wire   [PortWidth-1:0] reg_intstat;  // interrupt status
-
+  //wire   [31:0]          reg_ALTFUNCsel;
+  wire   [PORTWIDTH-1:0] reg_datain;
+  wire   [PORTWIDTH-1:0] reg_dout;     // Output pin register
+  wire   [PORTWIDTH-1:0] reg_douten;   // Port enable register
+  wire   [PORTWIDTH-1:0] reg_ALTFUNC;  // Alternate function register
+  wire   [PORTWIDTH-1:0] reg_inten;    // Interrupt enable
+  wire   [PORTWIDTH-1:0] reg_inttype;  // Interrupt edge(1)/level(0)
+  wire   [PORTWIDTH-1:0] reg_intpol;   // Interrupt active level
+  wire   [PORTWIDTH-1:0] reg_intstat;  // interrupt status
+  reg [31:0] registers [num_registers - 1:0];
   // interrupt signals
-  wire   [PortWidth-1:0] new_raw_int;  // carrying configuration of interrupt
+  wire   [PORTWIDTH-1:0] new_raw_int;  // carrying configuration of interrupt
 
   wire                   bigendian;
   reg    [31:0]          IOWDATALE; // Little endian version of IOWDATA
@@ -161,13 +170,70 @@ localparam  ARM_CMSDK_IOP_GPIO_CID3        = {32'h000000B1}; // 0xFFC : CID 3
        GRESP = 'b0;
      end
        
+localparam start_address  = 32'h003C; // Starting address for register writes
+localparam clear_address  = 32'h0040; // Clearing address for register writes
+localparam address_offset = 32'h0008; // Offset between addresses for each register
+// Calculate the number of selection bits per port based on ALTFUNC
+reg [31:0] current_start_address [num_registers-1:0];
+reg [31:0] current_clear_address [num_registers-1:0];
+wire [total_bits-1:0] total_regs;
+genvar i;
+
+  // Manage writes to the registers based on the input address
+
+// Generate block that iterates through each register
+generate
+    for (i = 0; i < num_registers; i = i + 1) begin: register_management
+        always @(posedge HCLK or negedge HRESETn) 
+        begin
+            if (!HRESETn) 
+            begin
+                // Clear the current register on reset
+                registers[i] <= 32'd0;
+                current_start_address[i] <= 'b0;
+                current_clear_address[i] <= 'b0;
+            end 
+            else 
+            begin
+                // Calculate the current register's start and clear addresses
+                current_start_address[i] <= start_address + (i << 3);
+                current_clear_address[i] <= clear_address + (i << 3);
+                // Manage the current register based on IOADDR
+                if (IOADDR == current_start_address[i]) 
+                begin
+                    // Write IOWDATA to the current register when address matches start address
+                    registers[i] <= IOWDATA;
+                end 
+                else if (IOADDR == current_clear_address[i]) 
+                begin
+                    // Clear the current register when address matches clear address
+                    registers[i] <= 32'd0;
+                end
+            end
+        end
+    end
+endgenerate
+
+    wire [(32*num_registers) - 1:0] temp_regs;
+  
+genvar f;
+generate
+    for (f = 0; f < num_registers; f = f + 1) begin : concatenate_loop
+        // Use an assign statement to concatenate each 32-bit register into temp_regs
+       assign  temp_regs[(f + 1) * 32 - 1 : f * 32] = registers[f];
+    end
+endgenerate
+
+assign total_regs = temp_regs;
+assign ALT_FUNC = total_regs;
+
   // Generate byte strobes to allow the GPIO registers to handle different transfer sizes
   assign iop_byte_strobe[0] = (IOSIZE[1] | ((IOADDR[1]==1'b0) & IOSIZE[0]) | (IOADDR[1:0]==2'b00)) & IOSEL;
   assign iop_byte_strobe[1] = (IOSIZE[1] | ((IOADDR[1]==1'b0) & IOSIZE[0]) | (IOADDR[1:0]==2'b01)) & IOSEL;
 
   // Read operation
   always @(IOADDR or reg_datain32 or reg_dout or reg_douten or
-    reg_altfunc or reg_inten or reg_inttype or reg_intpol or
+    reg_ALTFUNC or reg_inten or reg_inttype or reg_intpol or
     reg_intstat or ECOREVNUM)
   begin
   case (IOADDR[11:10]) 
@@ -175,15 +241,15 @@ localparam  ARM_CMSDK_IOP_GPIO_CID3        = {32'h000000B1}; // 0xFFC : CID 3
            if (IOADDR[9:6]==4'h0)
              case (IOADDR[5:2])
               4'h0      : read_mux_le = reg_datain32;
-              4'h1      : read_mux_le = {{32-PortWidth{1'b0}}, reg_dout};
+              4'h1      : read_mux_le = {{32-PORTWIDTH{1'b0}}, reg_dout};
               4'h2, 4'h3: read_mux_le = {32{1'b0}};
-              4'h4, 4'h5: read_mux_le = {{32-PortWidth{1'b0}}, reg_douten };
-              4'h6, 4'h7: read_mux_le = {{32-PortWidth{1'b0}}, reg_altfunc};
-              4'h8, 4'h9: read_mux_le = {{32-PortWidth{1'b0}}, reg_inten  };
-              4'hA, 4'hB: read_mux_le = {{32-PortWidth{1'b0}}, reg_inttype};
-              4'hC, 4'hD: read_mux_le = {{32-PortWidth{1'b0}}, reg_intpol };
-              4'hE      : read_mux_le = {{32-PortWidth{1'b0}}, reg_intstat};
-              4'hF      : read_mux_le = {32{1'b0}};
+              4'h4, 4'h5: read_mux_le = {{32-PORTWIDTH{1'b0}}, reg_douten };
+              4'h6, 4'h7: read_mux_le = {{32-PORTWIDTH{1'b0}}, reg_ALTFUNC};
+              4'h8, 4'h9: read_mux_le = {{32-PORTWIDTH{1'b0}}, reg_inten  };
+              4'hA, 4'hB: read_mux_le = {{32-PORTWIDTH{1'b0}}, reg_inttype};
+              4'hC, 4'hD: read_mux_le = {{32-PORTWIDTH{1'b0}}, reg_intpol };
+              4'hE      : read_mux_le = {{32-PORTWIDTH{1'b0}}, reg_intstat};
+              //4'hF      : read_mux_le = reg_ALTFUNCsel;
               default: read_mux_le = {32{1'bx}}; // X-propagation if address is X
              endcase
            else
@@ -258,15 +324,15 @@ localparam  ARM_CMSDK_IOP_GPIO_CID3        = {32'h000000B1}; // 0xFFC : CID 3
   // Synchronize input with double stage flip-flops
   // ----------------------------------------------------------
   // Signals for input double flop-flop synchroniser
-  reg    [PortWidth-1:0] reg_in_sync1;
-  reg    [PortWidth-1:0] reg_in_sync2;
+  reg    [PORTWIDTH-1:0] reg_in_sync1;
+  reg    [PORTWIDTH-1:0] reg_in_sync2;
 
   always @(posedge FCLK or negedge HRESETn)
   begin
     if (~HRESETn)
       begin
-      reg_in_sync1 <= {PortWidth{1'b0}};
-      reg_in_sync2 <= {PortWidth{1'b0}};
+      reg_in_sync1 <= {PORTWIDTH{1'b0}};
+      reg_in_sync2 <= {PORTWIDTH{1'b0}};
       end
     else
       begin
@@ -277,14 +343,14 @@ localparam  ARM_CMSDK_IOP_GPIO_CID3        = {32'h000000B1}; // 0xFFC : CID 3
 
   assign reg_datain = reg_in_sync2;
   // format to 32-bit for data read
-  assign reg_datain32 = {{32-PortWidth{1'b0}},reg_datain};
+  assign reg_datain32 = {{32-PORTWIDTH{1'b0}},reg_datain};
 
   // ----------------------------------------------------------
   // Data Output register
   // ----------------------------------------------------------
   wire [32:0] current_dout_padded;
-  wire [PortWidth-1:0] nxt_dout_padded;
-  reg  [PortWidth-1:0] reg_dout_padded;
+  wire [PORTWIDTH-1:0] nxt_dout_padded;
+  reg  [PORTWIDTH-1:0] reg_dout_padded;
   wire        reg_dout_normal_write0;
   wire        reg_dout_normal_write1;
   wire        reg_dout_masked_write0; // byte 0 mask reg
@@ -302,7 +368,7 @@ localparam  ARM_CMSDK_IOP_GPIO_CID3        = {32'h000000B1}; // 0xFFC : CID 3
               (IOADDR[11:10] == 2'b10) & iop_byte_strobe[1];
 
   // padding to 33-bit for easier coding
-  assign current_dout_padded = {{(33-PortWidth){1'b0}},reg_dout};
+  assign current_dout_padded = {{(33-PORTWIDTH){1'b0}},reg_dout};
 
   // byte #0
   assign nxt_dout_padded[7:0] = // simple write
@@ -338,17 +404,17 @@ localparam  ARM_CMSDK_IOP_GPIO_CID3        = {32'h000000B1}; // 0xFFC : CID 3
       reg_dout_padded[15:8] <= nxt_dout_padded[15:8];
   end
 
-  assign reg_dout[PortWidth-1:0] = reg_dout_padded[PortWidth-1:0]; // this register value will be assigned to PORT_OUT
+  assign reg_dout[PORTWIDTH-1:0] = reg_dout_padded[PORTWIDTH-1:0]; // this register value will be assigned to PORT_OUT
 
 
   // ----------------------------------------------------------
   // Output enable register
   // ----------------------------------------------------------
 
-  reg     [PortWidth-1:0] reg_douten_padded;
+  reg     [PORTWIDTH-1:0] reg_douten_padded;
   integer                 loop1;              // loop variable for register
-  wire    [PortWidth-1:0] reg_doutenclr;
-  wire    [PortWidth-1:0] reg_doutenset;
+  wire    [PORTWIDTH-1:0] reg_doutenclr;
+  wire    [PORTWIDTH-1:0] reg_doutenset;
 
   // since its address is 0x10
   assign    reg_doutenset[7:0]   = ((write_trans == 1'b1) & (IOADDR[11:2]  == 10'h004)
@@ -368,16 +434,16 @@ localparam  ARM_CMSDK_IOP_GPIO_CID3        = {32'h000000B1}; // 0xFFC : CID 3
   always @(posedge HCLK or negedge HRESETn)
   begin
     if (~HRESETn)
-      reg_douten_padded <= {PortWidth{1'b0}};
+      reg_douten_padded <= {PORTWIDTH{1'b0}};
     else
-      for (loop1 = 0; loop1 < PortWidth; loop1 = loop1 + 1)
+      for (loop1 = 0; loop1 < PORTWIDTH; loop1 = loop1 + 1)
       begin
         if (reg_doutenset[loop1] | reg_doutenclr[loop1])
           reg_douten_padded[loop1] <= reg_doutenset[loop1];
       end
   end
 
-  assign reg_douten[PortWidth-1:0] = reg_douten_padded[PortWidth-1:0]; // this value will be assigned to PORT_EN reg
+  assign reg_douten[PORTWIDTH-1:0] = reg_douten_padded[PORTWIDTH-1:0]; // this value will be assigned to PORT_EN reg
 
 
   // ----------------------------------------------------------
@@ -385,49 +451,49 @@ localparam  ARM_CMSDK_IOP_GPIO_CID3        = {32'h000000B1}; // 0xFFC : CID 3
   // ----------------------------------------------------------
 
 
-  reg  [PortWidth-1:0] reg_altfunc_padded;
+  reg  [PORTWIDTH-1:0] reg_ALTFUNC_padded;
+  reg  [31:0]          reg_ALTFUNCsel_padded;
   integer              loop2;              // loop variable for register
-  wire [PortWidth-1:0] reg_altfuncset;
-  wire [PortWidth-1:0] reg_altfuncclr;
-
-  assign  reg_altfuncset[7:0]  =  ((write_trans == 1'b1) & (IOADDR[11:2]  == 10'h006)
+  wire [PORTWIDTH-1:0] reg_ALTFUNCset;
+  wire [PORTWIDTH-1:0] reg_ALTFUNCclr;
+  wire [31:0] reg_ALTFUNCselset;
+  wire [31:0] reg_ALTFUNCselclr;
+  assign  reg_ALTFUNCset[7:0]  =  ((write_trans == 1'b1) & (IOADDR[11:2]  == 10'h006)
                                   & (iop_byte_strobe[0] == 1'b1)) ? IOWDATALE[7:0] : {8{1'b0}};
 
-  assign  reg_altfuncset[15:8] =  ((write_trans == 1'b1) & (IOADDR[11:2]  == 10'h006)
+  assign  reg_ALTFUNCset[15:8] =  ((write_trans == 1'b1) & (IOADDR[11:2]  == 10'h006)
                                   & (iop_byte_strobe[1] == 1'b1)) ? IOWDATALE[15:8] : {8{1'b0}};
 
-  assign  reg_altfuncclr[7:0]  =  ((write_trans  == 1'b1) & (IOADDR[11:2]  == 10'h007)
+  assign  reg_ALTFUNCclr[7:0]  =  ((write_trans  == 1'b1) & (IOADDR[11:2]  == 10'h007)
                                   & (iop_byte_strobe[0] == 1'b1)) ? IOWDATALE[7:0] : {8{1'b0}};
 
-  assign  reg_altfuncclr[15:8] =  ((write_trans  == 1'b1) & (IOADDR[11:2]  == 10'h007)
+  assign  reg_ALTFUNCclr[15:8] =  ((write_trans  == 1'b1) & (IOADDR[11:2]  == 10'h007)
                                   & (iop_byte_strobe[1] == 1'b1)) ? IOWDATALE[15:8] : {8{1'b0}};
 
-
-  // registering stage
+  // alt function registering stage
   always @(posedge HCLK or negedge HRESETn)
   begin
     if (~HRESETn)
-      reg_altfunc_padded <= ALTERNATE_FUNC_DEFAULT;
+      reg_ALTFUNC_padded <= ALTERNATE_FUNC_DEFAULT;
     else
-      for(loop2 = 0; loop2 < PortWidth; loop2 = loop2 + 1)
+      for(loop2 = 0; loop2 < PORTWIDTH; loop2 = loop2 + 1)
     begin
-        if (reg_altfuncset[loop2] | reg_altfuncclr[loop2])
-          reg_altfunc_padded[loop2] <= reg_altfuncset[loop2];
+        if (reg_ALTFUNCset[loop2] | reg_ALTFUNCclr[loop2])
+          reg_ALTFUNC_padded[loop2] <= reg_ALTFUNCset[loop2];
       end
   end
   // this value will be written in ALT_FUNC reg, the anding with parameter mask is bec its an 
   // enable for the GPIO pins to support or not support ALT_FUNC
-  assign reg_altfunc[PortWidth-1:0] = reg_altfunc_padded[PortWidth-1:0] & ALTERNATE_FUNC_MASK; 
-
+  assign reg_ALTFUNC[PORTWIDTH-1:0] = reg_ALTFUNC_padded[PORTWIDTH-1:0] & ALTERNATE_FUNC_MASK; 
 
   // ----------------------------------------------------------
   // Interrupt enable register
   // ----------------------------------------------------------
 
-  reg  [PortWidth-1:0] reg_inten_padded;
+  reg  [PORTWIDTH-1:0] reg_inten_padded;
   integer              loop3;              // loop variable for register
-  wire [PortWidth-1:0] reg_intenset;
-  wire [PortWidth-1:0] reg_intenclr;
+  wire [PORTWIDTH-1:0] reg_intenset;
+  wire [PORTWIDTH-1:0] reg_intenclr;
 
   assign  reg_intenset[7:0]    =   ((write_trans  == 1'b1) & (IOADDR[11:2]  == 10'h008)
                                    & (iop_byte_strobe[0] == 1'b1)) ? IOWDATALE[7:0] : {8{1'b0}};
@@ -446,26 +512,26 @@ localparam  ARM_CMSDK_IOP_GPIO_CID3        = {32'h000000B1}; // 0xFFC : CID 3
   always @(posedge HCLK or negedge HRESETn)
   begin
     if (~HRESETn)
-      reg_inten_padded <= {PortWidth{1'b0}};
+      reg_inten_padded <= {PORTWIDTH{1'b0}};
     else
-      for(loop3 = 0; loop3 < PortWidth; loop3 = loop3 + 1)
+      for(loop3 = 0; loop3 < PORTWIDTH; loop3 = loop3 + 1)
       begin
         if (reg_intenclr[loop3] | reg_intenset[loop3])
         reg_inten_padded[loop3] <= reg_intenset[loop3];
       end
   end
 
-  assign reg_inten[PortWidth-1:0] = reg_inten_padded[PortWidth-1:0]; 
+  assign reg_inten[PORTWIDTH-1:0] = reg_inten_padded[PORTWIDTH-1:0]; 
 
 
   // ----------------------------------------------------------
   // Interrupt Type register
   // ----------------------------------------------------------
 
-  reg  [PortWidth-1:0] reg_inttype_padded;
+  reg  [PORTWIDTH-1:0] reg_inttype_padded;
   integer              loop4;              // loop variable for register
-  wire [PortWidth-1:0] reg_inttypeset;
-  wire [PortWidth-1:0] reg_inttypeclr;
+  wire [PORTWIDTH-1:0] reg_inttypeset;
+  wire [PORTWIDTH-1:0] reg_inttypeclr;
 
   assign  reg_inttypeset[7:0]  =  ((write_trans  == 1'b1) & (IOADDR[11:2]  == 10'h00A)
                                   & (iop_byte_strobe[0] == 1'b1)) ? IOWDATALE[7:0] : {8{1'b0}};
@@ -484,16 +550,16 @@ localparam  ARM_CMSDK_IOP_GPIO_CID3        = {32'h000000B1}; // 0xFFC : CID 3
   always @(posedge HCLK or negedge HRESETn)
   begin
     if (~HRESETn)
-      reg_inttype_padded <= {PortWidth{1'b0}};
+      reg_inttype_padded <= {PORTWIDTH{1'b0}};
     else
-    for(loop4 = 0; loop4 < PortWidth; loop4 = loop4 + 1)
+    for(loop4 = 0; loop4 < PORTWIDTH; loop4 = loop4 + 1)
     begin
       if (reg_inttypeset[loop4] | reg_inttypeclr[loop4])
         reg_inttype_padded[loop4] <= reg_inttypeset[loop4];
       end
   end
 
-  assign reg_inttype[PortWidth-1:0] = reg_inttype_padded[PortWidth-1:0];
+  assign reg_inttype[PORTWIDTH-1:0] = reg_inttype_padded[PORTWIDTH-1:0];
 
 
   // ----------------------------------------------------------
@@ -501,10 +567,10 @@ localparam  ARM_CMSDK_IOP_GPIO_CID3        = {32'h000000B1}; // 0xFFC : CID 3
   // ----------------------------------------------------------
 
 
-  reg  [PortWidth-1:0] reg_intpol_padded;
+  reg  [PORTWIDTH-1:0] reg_intpol_padded;
   integer              loop5;              // loop variable for register
-  wire [PortWidth-1:0] reg_intpolset;
-  wire [PortWidth-1:0] reg_intpolclr;
+  wire [PORTWIDTH-1:0] reg_intpolset;
+  wire [PORTWIDTH-1:0] reg_intpolclr;
 
   assign  reg_intpolset[7:0]   =  ((write_trans  == 1'b1) & (IOADDR[11:2]  == 10'h00C)
                                   & (iop_byte_strobe[0] == 1'b1)) ? IOWDATALE[7:0] : {8{1'b0}};
@@ -522,29 +588,29 @@ localparam  ARM_CMSDK_IOP_GPIO_CID3        = {32'h000000B1}; // 0xFFC : CID 3
   always @(posedge HCLK or negedge HRESETn)
   begin
     if (~HRESETn)
-      reg_intpol_padded <= {PortWidth{1'b0}};
+      reg_intpol_padded <= {PORTWIDTH{1'b0}};
     else
-    for(loop5 = 0; loop5 < PortWidth; loop5 = loop5 + 1)
+    for(loop5 = 0; loop5 < PORTWIDTH; loop5 = loop5 + 1)
       begin
       if (reg_intpolset[loop5] | reg_intpolclr[loop5])
           reg_intpol_padded[loop5] <= reg_intpolset[loop5];
       end
   end
 
-  assign reg_intpol[PortWidth-1:0] = reg_intpol_padded[PortWidth-1:0];
+  assign reg_intpol[PORTWIDTH-1:0] = reg_intpol_padded[PORTWIDTH-1:0];
 
 
   // ---------------------------------------------------------------------------------
   // Interrupt status/clear register: reading interrupt statues and clearing interrupt
   // ---------------------------------------------------------------------------------
 
-  reg  [PortWidth-1:0]  reg_intstat_padded;
+  reg  [PORTWIDTH-1:0]  reg_intstat_padded;
   integer               loop6;              // loop variable for register
-  wire [PortWidth-1:0]  reg_intclr_padded;
+  wire [PORTWIDTH-1:0]  reg_intclr_padded;
   wire                  reg_intclr_normal_write0;
   wire                  reg_intclr_normal_write1;
   
-  wire [PortWidth-1:0]  new_masked_int;
+  wire [PORTWIDTH-1:0]  new_masked_int;
  // clearing interrupt register
   assign      reg_intclr_normal_write0 = write_trans &
               (IOADDR[11:2]  == 10'h00E) & iop_byte_strobe[0];
@@ -554,39 +620,39 @@ localparam  ARM_CMSDK_IOP_GPIO_CID3        = {32'h000000B1}; // 0xFFC : CID 3
   assign      reg_intclr_padded[ 7:0] = {8{reg_intclr_normal_write0}} & IOWDATALE[ 7:0];
   assign      reg_intclr_padded[15:8] = {8{reg_intclr_normal_write1}} & IOWDATALE[15:8];
  // update reg when interrupt is enabled and new_raw_int carries the statues of interrupt
-  assign      new_masked_int[PortWidth-1:0] = new_raw_int[PortWidth-1:0] & reg_inten[PortWidth-1:0];
+  assign      new_masked_int[PORTWIDTH-1:0] = new_raw_int[PORTWIDTH-1:0] & reg_inten[PORTWIDTH-1:0];
 
   // registering stage
   always @(posedge FCLK or negedge HRESETn)
   begin
     if (~HRESETn)
-      reg_intstat_padded <= {PortWidth{1'b0}};
+      reg_intstat_padded <= {PORTWIDTH{1'b0}};
     else
-      for (loop6=0;loop6<PortWidth;loop6=loop6+1)
+      for (loop6=0;loop6<PORTWIDTH;loop6=loop6+1)
         begin
         if (new_masked_int[loop6] | reg_intclr_padded[loop6])
           reg_intstat_padded[loop6] <= new_masked_int[loop6];
         end
   end
 
-  assign reg_intstat[PortWidth-1:0] = reg_intstat_padded[PortWidth-1:0];
+  assign reg_intstat[PORTWIDTH-1:0] = reg_intstat_padded[PORTWIDTH-1:0];
 
   // ----------------------------------------------------------
   // Interrupt generation: configurating interrupt
   // ----------------------------------------------------------
   // reg_datain is the synchronized input
 
-  reg   [PortWidth-1:0] reg_last_datain; // last state of synchronized input
-  wire  [PortWidth-1:0] high_level_int;
-  wire  [PortWidth-1:0] low_level_int;
-  wire  [PortWidth-1:0] rise_edge_int;
-  wire  [PortWidth-1:0] fall_edge_int;
+  reg   [PORTWIDTH-1:0] reg_last_datain; // last state of synchronized input
+  wire  [PORTWIDTH-1:0] high_level_int;
+  wire  [PORTWIDTH-1:0] low_level_int;
+  wire  [PORTWIDTH-1:0] rise_edge_int;
+  wire  [PORTWIDTH-1:0] fall_edge_int;
 
   // Last input state for edge detection
   always @(posedge FCLK or negedge HRESETn)
   begin
     if (~HRESETn)
-      reg_last_datain <= {PortWidth{1'b0}};
+      reg_last_datain <= {PORTWIDTH{1'b0}};
     else  if (|reg_inttype)
       reg_last_datain <= reg_datain;
   end
@@ -602,8 +668,7 @@ localparam  ARM_CMSDK_IOP_GPIO_CID3        = {32'h000000B1}; // 0xFFC : CID 3
   // ----------------------------------------------------------
   assign PORTOUT = reg_dout;
   assign PORTEN  = reg_douten;
-  assign PORTFUNC = reg_altfunc;
-
+  assign PORTFUNC = reg_ALTFUNC;
   assign IORDATA   = read_mux;
 
   // Connect interrupt signal to top level
@@ -623,26 +688,26 @@ localparam  ARM_CMSDK_IOP_GPIO_CID3        = {32'h000000B1}; // 0xFFC : CID 3
   reg[1:0]     ovl_iosize_d;
 
   // OVL Registers for internal GPIO registers
-  reg[PortWidth-1:0]    ovl_reg_douten_d;
-  reg[PortWidth-1:0]    ovl_reg_altfunc_d;
-  reg[PortWidth-1:0]    ovl_reg_inten_d;
-  reg[PortWidth-1:0]    ovl_reg_inttype_d;
-  reg[PortWidth-1:0]    ovl_reg_intpol_d;
-  reg[PortWidth-1:0]    ovl_reg_intstat_d;
+  reg[PORTWIDTH-1:0]    ovl_reg_douten_d;
+  reg[PORTWIDTH-1:0]    ovl_reg_ALTFUNC_d;
+  reg[PORTWIDTH-1:0]    ovl_reg_inten_d;
+  reg[PORTWIDTH-1:0]    ovl_reg_inttype_d;
+  reg[PORTWIDTH-1:0]    ovl_reg_intpol_d;
+  reg[PORTWIDTH-1:0]    ovl_reg_intstat_d;
 
   reg                   ovl_reg_intclr_write1_d;
   reg                   ovl_reg_intclr_write0_d;
-  wire[PortWidth-1:0]   ovl_reg_intclr_wr_d_msk;
+  wire[PORTWIDTH-1:0]   ovl_reg_intclr_wr_d_msk;
 
-  reg[PortWidth-1:0]    ovl_iowdata_d;      //Update based on HCLK
-  reg[PortWidth-1:0]    ovl_iowdata_fclk_d; //Update based on FCLK
+  reg[PORTWIDTH-1:0]    ovl_iowdata_d;      //Update based on HCLK
+  reg[PORTWIDTH-1:0]    ovl_iowdata_fclk_d; //Update based on FCLK
   reg[31:0]             ovl_iowdatale;
 
-  reg[PortWidth-1:0]    ovl_portout_d;
+  reg[PORTWIDTH-1:0]    ovl_portout_d;
 
   reg [1:0]             ovl_iop_byte_strobe_d;
 
-  reg[PortWidth-1:0]    ovl_new_masked_int_d;
+  reg[PORTWIDTH-1:0]    ovl_new_masked_int_d;
 
   wire         ovl_gpio_wr =(IOSEL == 1'b1) & (IOTRANS) & (IOWRITE ==1'b1);
   wire         ovl_gpio_rd =(IOSEL == 1'b1) & (IOTRANS) & (IOWRITE ==1'b0);
@@ -651,15 +716,15 @@ localparam  ARM_CMSDK_IOP_GPIO_CID3        = {32'h000000B1}; // 0xFFC : CID 3
   always @(posedge HCLK or negedge HRESETn)
   begin
     if (~HRESETn) begin
-      ovl_reg_douten_d  <= {PortWidth{1'b0}};
-      ovl_reg_altfunc_d <= {PortWidth{1'b0}};
-      ovl_reg_inten_d   <= {PortWidth{1'b0}};
-      ovl_reg_inttype_d <= {PortWidth{1'b0}};
-      ovl_reg_intpol_d  <= {PortWidth{1'b0}};
+      ovl_reg_douten_d  <= {PORTWIDTH{1'b0}};
+      ovl_reg_ALTFUNC_d <= {PORTWIDTH{1'b0}};
+      ovl_reg_inten_d   <= {PORTWIDTH{1'b0}};
+      ovl_reg_inttype_d <= {PORTWIDTH{1'b0}};
+      ovl_reg_intpol_d  <= {PORTWIDTH{1'b0}};
     end
     else begin
       ovl_reg_douten_d  <= reg_douten;
-      ovl_reg_altfunc_d <= reg_altfunc;
+      ovl_reg_ALTFUNC_d <= reg_ALTFUNC;
       ovl_reg_inten_d   <= reg_inten;
       ovl_reg_inttype_d <= reg_inttype;
       ovl_reg_intpol_d  <= reg_intpol;
@@ -670,7 +735,7 @@ localparam  ARM_CMSDK_IOP_GPIO_CID3        = {32'h000000B1}; // 0xFFC : CID 3
   always @ (posedge FCLK or negedge HRESETn)
   begin
     if (~HRESETn) begin
-       ovl_reg_intstat_d <= {PortWidth{1'b0}};
+       ovl_reg_intstat_d <= {PORTWIDTH{1'b0}};
        ovl_reg_intclr_write1_d <= 1'b0;
        ovl_reg_intclr_write0_d <= 1'b0;
     end
@@ -687,18 +752,18 @@ localparam  ARM_CMSDK_IOP_GPIO_CID3        = {32'h000000B1}; // 0xFFC : CID 3
   always @(posedge HCLK or negedge HRESETn)
   begin
     if (~HRESETn)
-      ovl_iowdata_d <= {PortWidth{1'b0}};
+      ovl_iowdata_d <= {PORTWIDTH{1'b0}};
     else if (ovl_gpio_wr)
-      ovl_iowdata_d <= ovl_iowdatale[PortWidth-1:0];
+      ovl_iowdata_d <= ovl_iowdatale[PORTWIDTH-1:0];
   end
 
   // Register the write data using FCLK, for interrupt state register assertion
   always @(posedge FCLK or negedge HRESETn)
   begin
     if (~HRESETn)
-      ovl_iowdata_fclk_d <= {PortWidth{1'b0}};
+      ovl_iowdata_fclk_d <= {PORTWIDTH{1'b0}};
     else if (ovl_gpio_wr)
-      ovl_iowdata_fclk_d <= ovl_iowdatale[PortWidth-1:0];
+      ovl_iowdata_fclk_d <= ovl_iowdatale[PORTWIDTH-1:0];
   end
 
  // Register the IO Port control signals
@@ -737,7 +802,7 @@ localparam  ARM_CMSDK_IOP_GPIO_CID3        = {32'h000000B1}; // 0xFFC : CID 3
   always @(posedge HCLK or negedge HRESETn)
   begin
     if (~HRESETn) begin
-      ovl_portout_d  <= {PortWidth{1'b0}};
+      ovl_portout_d  <= {PORTWIDTH{1'b0}};
     end
     else begin
       ovl_portout_d <= PORTOUT;
@@ -761,7 +826,7 @@ localparam  ARM_CMSDK_IOP_GPIO_CID3        = {32'h000000B1}; // 0xFFC : CID 3
  always @(posedge FCLK or negedge HRESETn)
   begin
     if (~HRESETn) begin
-        ovl_new_masked_int_d <= {PortWidth{1'b0}};
+        ovl_new_masked_int_d <= {PORTWIDTH{1'b0}};
     end
     else begin
         ovl_new_masked_int_d <= new_masked_int;
@@ -949,14 +1014,14 @@ localparam  ARM_CMSDK_IOP_GPIO_CID3        = {32'h000000B1}; // 0xFFC : CID 3
     `OVL_ASSERT,
     "write 1 to SET the register bit"
     )
-  u_ovl_iop_gpio_set_reg_altfunc
+  u_ovl_iop_gpio_set_reg_ALTFUNC
   (.clk         ( HCLK ),
    .reset_n     (HRESETn),
    .start_event ((ovl_gpio_wr) &
                  (IOADDR[11:0]==12'h018)  // ALTFUNCSET
                  ),
    .test_expr   (
-                  reg_altfunc == ((ovl_reg_altfunc_d | (ovl_iowdata_d[15:0] & ovl_iop_byte_strobe_d_msk)) & ALTERNATE_FUNC_MASK)
+                  reg_ALTFUNC == ((ovl_reg_ALTFUNC_d | (ovl_iowdata_d[15:0] & ovl_iop_byte_strobe_d_msk)) & ALTERNATE_FUNC_MASK)
                  )
    );
 
@@ -1035,14 +1100,14 @@ localparam  ARM_CMSDK_IOP_GPIO_CID3        = {32'h000000B1}; // 0xFFC : CID 3
     `OVL_ASSERT,
     "write 1 to clear the register bit"
     )
-  u_ovl_iop_gpio_clear_reg_altfunc
+  u_ovl_iop_gpio_clear_reg_ALTFUNC
   (.clk         ( HCLK ),
    .reset_n     (HRESETn),
    .start_event ((ovl_gpio_wr) &
                  (IOADDR[11:0]==12'h01C)  // ALTFUNCCLR
                  ),
    .test_expr   (
-                  reg_altfunc == (ovl_reg_altfunc_d &( ~(ovl_iowdata_d[15:0] & ovl_iop_byte_strobe_d_msk)) & ALTERNATE_FUNC_MASK)
+                  reg_ALTFUNC == (ovl_reg_ALTFUNC_d &( ~(ovl_iowdata_d[15:0] & ovl_iop_byte_strobe_d_msk)) & ALTERNATE_FUNC_MASK)
                  )
    );
 
@@ -1122,7 +1187,7 @@ localparam  ARM_CMSDK_IOP_GPIO_CID3        = {32'h000000B1}; // 0xFFC : CID 3
 
   // Port out should not go to X
   assert_never_unknown
-  #(`OVL_ERROR, PortWidth, `OVL_ASSERT,
+  #(`OVL_ERROR, PORTWIDTH, `OVL_ASSERT,
     "GPIO PORTOUT went X")
    u_ovl_iop_gpio_portout_x (
    .clk(HCLK),
@@ -1133,7 +1198,7 @@ localparam  ARM_CMSDK_IOP_GPIO_CID3        = {32'h000000B1}; // 0xFFC : CID 3
 
   // Port enable should not go to X
   assert_never_unknown
-  #(`OVL_ERROR, PortWidth, `OVL_ASSERT,
+  #(`OVL_ERROR, PORTWIDTH, `OVL_ASSERT,
     "GPIO port enable went X")
    u_ovl_iop_gpio_porten_x (
    .clk(HCLK),
@@ -1144,9 +1209,9 @@ localparam  ARM_CMSDK_IOP_GPIO_CID3        = {32'h000000B1}; // 0xFFC : CID 3
 
   // Port alt function should not go to X
   assert_never_unknown
-  #(`OVL_ERROR, PortWidth, `OVL_ASSERT,
+  #(`OVL_ERROR, PORTWIDTH, `OVL_ASSERT,
     "GPIO alt function went X")
-   u_ovl_iop_gpio_altfunc_x (
+   u_ovl_iop_gpio_ALTFUNC_x (
    .clk(HCLK),
    .reset_n(HRESETn),
    .qualifier(1'b1),
@@ -1155,7 +1220,7 @@ localparam  ARM_CMSDK_IOP_GPIO_CID3        = {32'h000000B1}; // 0xFFC : CID 3
 
   // Interrupt should not go to X
   assert_never_unknown
-  #(`OVL_ERROR, PortWidth, `OVL_ASSERT,
+  #(`OVL_ERROR, PORTWIDTH, `OVL_ASSERT,
     "GPIO INT went X")
    u_ovl_iop_gpio_gpioint_x (
    .clk(HCLK),
