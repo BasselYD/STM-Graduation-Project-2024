@@ -82,7 +82,12 @@ module cmsdk_apb_uart (
   output wire        RXINT,    // Receive Interrupt
   output wire        TXOVRINT, // Transmit overrun Interrupt
   output wire        RXOVRINT, // Receive overrun Interrupt
-  output wire        UARTINT); // Combined interrupt
+  output wire        UARTINT,
+  
+  output wire        RTS ,
+  input wire         CTS ); // Combined interrupt
+  
+  
 
 // Local ID parameters, APB UART part number is 0x821
 localparam  ARM_CMSDK_APB_UART_PID4 = 8'h04;
@@ -190,6 +195,12 @@ wire          rxbuf_sample; // Sample received data into receive data buffer
 wire          rx_data_read; // Receive data buffer read by APB interface
 wire    [7:0] nxt_rx_buf;
 
+/////////////////////////////////////////
+reg RTS_reg;
+reg CTS_reg;
+assign  RTS  = RTS_reg ;
+////////////////////////////////////////
+
 // Start of main code
 // Read and write control signals
 assign  read_enable  = PSEL & (~PWRITE); // assert for whole APB read transfer
@@ -267,7 +278,8 @@ assign  write_enable10 = write_enable & (PADDR[11:2] == 10'h004); // assert to c
      3'h2: read_mux_byte0 =  {{1{1'b0}},reg_ctrl};
      3'h3: read_mux_byte0 =  {{4{1'b0}},intr_state};
      3'h4: read_mux_byte0 =  reg_baud_div[7:0];
-     3'h5, 3'h6, 3'h7: read_mux_byte0 =   {8{1'b0}};     //default read out value
+     3'h5: read_mux_byte0 =  {{7{1'b0}},CTS_reg} ; 
+     3'h6, 3'h7: read_mux_byte0 =   {8{1'b0}};     //default read out value
      default:  read_mux_byte0 =   {8{1'bx}};// x propagation
      endcase
    end
@@ -319,7 +331,7 @@ assign  write_enable10 = write_enable & (PADDR[11:2] == 10'h004); // assert to c
   // Error response when accessing reserved registers , writing read only registers or configurating baud_div with a value less than 16
   always@(*)
   begin
-    if(PADDR > 3'h4)
+    if(PADDR > 3'h5)
       PSLVERR = 1'b1;
     else if(PADDR == 'h01 && PWRITE == 1 && PWDATA[1:0] != 0)
       PSLVERR = 1'b1;
@@ -1141,5 +1153,26 @@ assign  write_enable10 = write_enable & (PADDR[11:2] == 10'h004); // assert to c
       );
 
 `endif
+ always @(posedge PCLK or negedge PRESETn)
+  begin
+    if (~PRESETn)
+      CTS_reg <= 1'b0;
+    else 
+      CTS_reg <= CTS;
+  end
+  
+always @(posedge PCLK or negedge PRESETn) begin
+    if (~PRESETn) begin
+        // Reset RTS
+        RTS_reg <= 0;
+    end else begin
+                if (rx_buf_full || !reg_ctrl[1]) begin
+            RTS_reg <= 0;
+        end else begin
+            RTS_reg <= 1; 
+        end
+    end
+end
 
 endmodule
+

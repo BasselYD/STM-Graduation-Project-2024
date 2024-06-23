@@ -18,13 +18,47 @@ ifneq ($(BUILD_DIR),)
 endif
 
 # Specify the unit test source files
-UNIT_TESTS := Unit_test/src/dma_test.c Unit_test/src/serial_test.c Unit_test/src/timer_test.c
+UNIT_TESTS := Unit_test/src/dma_test.c Unit_test/src/serial_test.c Unit_test/src/timer_test.c Unit_test/src/gpio_test.c
+
+
+DMA_TEST := Unit_test/src/dma_test.c
+SERIAL_TEST := Unit_test/src/serial_test.c
+TIMER_TEST := Unit_test/src/timer_test.c
+GPIO_TEST := Unit_test/src/gpio_test.c
+UART_TEST := Unit_test/src/uart_test.c
+DUALTIMER_TEST := Unit_test/src/dualtimer_test.c
+WATCHDOG_TEST := Unit_test/src/watchdog_test.c
+RCC_TEST := Unit_test/src/rcc_test.c
 
 ifdef SELECTED_TEST
-    SELECTED_SRC := $(filter $(SELECTED_TEST),$(UNIT_TESTS))
+    ifeq ($(SELECTED_TEST),DMA)
+        SELECTED_SRC := $(DMA_TEST)
+    else ifeq ($(SELECTED_TEST),SERIAL)
+        SELECTED_SRC := $(SERIAL_TEST)
+    else ifeq ($(SELECTED_TEST),TIMER)
+        SELECTED_SRC := $(TIMER_TEST)
+    else ifeq ($(SELECTED_TEST),GPIO)
+        SELECTED_SRC := $(GPIO_TEST)
+	else ifeq ($(SELECTED_TEST),UART)
+        SELECTED_SRC := $(UART_TEST)
+	else ifeq ($(SELECTED_TEST),DUALTIMER)
+        SELECTED_SRC := $(DUALTIMER_TEST)
+	else ifeq ($(SELECTED_TEST),GPIO)
+        SELECTED_SRC := $(WATCHDOG_TEST)
+	else ifeq ($(SELECTED_TEST),RCC)
+        SELECTED_SRC := $(RCC_TEST)
+    else
+        $(error Unknown test selected: $(SELECTED_TEST))
+    endif
 else
     SELECTED_SRC := APP/src/main.c
 endif
+
+#ifdef SELECTED_TEST
+#    SELECTED_SRC := $(filter $(SELECTED_TEST),$(UNIT_TESTS))
+#else
+#    SELECTED_SRC := APP/src/main.c
+#endif
 
 SRCS := $(foreach dir,$(SRC_DIRS),$(wildcard $(dir)*.c))
 SRCS += $(SELECTED_SRC)

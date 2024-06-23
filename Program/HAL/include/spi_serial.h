@@ -13,3 +13,4 @@ void serial_spi_transmit_string_poll( spi_typedef *SPI, char* text);
 
 void serial_spi_transmit_string_int( spi_typedef *SPI, char* text);
 
+void serial_spi_printf(const char *format, ...);

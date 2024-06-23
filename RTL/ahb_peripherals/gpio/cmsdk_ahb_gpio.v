@@ -33,39 +33,45 @@ module cmsdk_ahb_gpio
    parameter  ALTERNATE_FUNC_DEFAULT = 16'h0000,
 
    // By default use little endian
-   parameter  BE                  = 0
+   parameter  BE                  = 0,
+
+   // The GPIO width by default is 16-bit, but is coded in a way that it is
+   // easy to customise the width.
+   parameter  PORTWIDTH                      = 16'b1000,
+
+   parameter  ALTFUNC                        =  4
   )
 
 // ----------------------------------------------------------------------------
 // Port Definitions
 // ----------------------------------------------------------------------------
   (// AHB Inputs
-   input  wire                 HCLK,      // system bus clock
-   input  wire                 HRESETn,   // system bus reset
-   input  wire                 FCLK,      // system bus clock
-   input  wire                 HSEL,      // AHB peripheral select
-   input  wire                 HREADY,    // AHB ready input
-   input  wire  [1:0]          HTRANS,    // AHB transfer type
-   input  wire  [2:0]          HSIZE,     // AHB hsize
-   input  wire                 HWRITE,    // AHB hwrite
-   input  wire [11:0]          HADDR,     // AHB address bus
-   input  wire [31:0]          HWDATA,    // AHB write data bus
-
-   input wire  [3:0]           ECOREVNUM,  // Engineering-change-order revision bits
-
-   input wire  [15:0]          PORTIN,     // GPIO Interface input
-
-   // AHB Outputs
-   output wire                 HREADYOUT, // AHB ready output to S->M mux
-   output wire                 HRESP,     // AHB response
-   output wire [31:0]          HRDATA,
-
-   output wire [15:0]          PORTOUT,    // GPIO output
-   output wire [15:0]          PORTEN,     // GPIO output enable
-   output wire [15:0]          PORTFUNC,   // Alternate function control
-
-   output wire [15:0]          GPIOINT,    // Interrupt output for each pin
-   output wire                 COMBINT);   // Combined interrupt
+   input  wire                                          HCLK,      // system bus clock
+   input  wire                                          HRESETn,   // system bus reset
+   input  wire                                          FCLK,      // system bus clock
+   input  wire                                          HSEL,      // AHB peripheral select
+   input  wire                                          HREADY,    // AHB ready input
+   input  wire  [1:0]                                   HTRANS,    // AHB transfer type
+   input  wire  [2:0]                                   HSIZE,     // AHB hsize
+   input  wire                                          HWRITE,    // AHB hwrite
+   input  wire [11:0]                                   HADDR,     // AHB address bus
+   input  wire [31:0]                                   HWDATA,    // AHB write data bus
+                        
+   input wire  [3:0]                                    ECOREVNUM,  // Engineering-change-order revision bits
+                        
+   input wire  [15:0]                                   PORTIN,     // GPIO Interface input
+                        
+   // AHB Outputs                         
+   output wire                                          HREADYOUT, // AHB ready output to S->M mux
+   output wire                                          HRESP,     // AHB response
+   output wire [31:0]                                   HRDATA,
+                        
+   output wire [15:0]                                   PORTOUT,    // GPIO output
+   output wire [15:0]                                   PORTEN,     // GPIO output enable
+   output wire [15:0]                                   PORTFUNC,   // Alternate function control
+   output wire [PORTWIDTH*$clog2(ALTFUNC)-1:0]          ALT_FUNC,   // Alternate function selector
+   output wire [15:0]                                   GPIOINT,    // Interrupt output for each pin
+   output wire                                          COMBINT);   // Combined interrupt
 
 // ----------------------------------------------------------------------------
 // Internal wires
@@ -115,7 +121,10 @@ module cmsdk_ahb_gpio
   cmsdk_iop_gpio #(
     .ALTERNATE_FUNC_MASK     (ALTERNATE_FUNC_MASK),
     .ALTERNATE_FUNC_DEFAULT  (ALTERNATE_FUNC_DEFAULT), // All pins default to GPIO
-    .BE                      (BE))
+    .BE                      (BE),
+    .PORTWIDTH               (PORTWIDTH),
+    .ALTFUNC                 (ALTFUNC)  
+    )
     u_iop_gpio  (
     // Inputs
     .HCLK         (HCLK),
@@ -137,7 +146,7 @@ module cmsdk_ahb_gpio
     .PORTOUT      (PORTOUT),  // GPIO Interface outputs
     .PORTEN       (PORTEN),
     .PORTFUNC     (PORTFUNC), // Alternate function control
-
+    .ALT_FUNC     (ALT_FUNC),
     .GPIOINT      (GPIOINT),  // Interrupt outputs
     .COMBINT      (COMBINT),
     .GRESP        (RESP)

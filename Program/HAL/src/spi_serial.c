@@ -91,3 +91,22 @@ void serial_spi_transmit_string_int( spi_typedef *SPI, char* text)
                   semaphore_spi = 0;
             }
 }
+
+
+void serial_spi_printf(const char *format, ...) 
+{
+    char buffer[256]; // Buffer to hold formatted string
+    va_list args;     // Variable argument list
+    
+    // Initialize variable argument list
+    va_start(args, format);
+    
+    // Format the string using vsnprintf
+    vsnprintf(buffer, sizeof(buffer), format, args);
+    
+    // Terminate variable argument list
+    va_end(args);
+    
+    // Transmit the formatted string via UART
+  serial_spi_transmit_string_int( SPI0,buffer);
+}

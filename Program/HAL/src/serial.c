@@ -11,6 +11,7 @@ void serial_uart_receive_string_poll( uart_typedef *UART , char* Str)
 {
 	uint8_t i = 0;
      //char *Str = "1" ;
+      while(!(UART->STATE & UART_STATE_RX_BF_Msk)) {};
 	Str[i] = uart_receive_char(UART); 
       
 	while(Str[i] != '\0')
