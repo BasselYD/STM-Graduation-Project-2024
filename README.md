@@ -1,10 +1,10 @@
 # STM-Graduation-Project-2024
 
-Version 1.0 of the SoC, containing the following peripherals:
+Final Version of the SoC, containing the following peripherals:
 - I-SRAM
 - D-SRAM
 - DMA (Optional)
-- GPIO
+- GPIO (With Alternate Functions)
 - APB Subsystem:
     - AHB2APB Bridge
     - UART
@@ -12,3 +12,5 @@ Version 1.0 of the SoC, containing the following peripherals:
     - Watchdog Timer
     - Timer
     - Dualtimer (Optional)
+
+This version targets the Zynq Ultrascale Ultra96-V2 FPGA, all inout signals were removed to allow use of the Vivado IP Integrator with the Zynq MPSoC.
