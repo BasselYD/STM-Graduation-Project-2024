@@ -30,7 +30,10 @@ module cmsdk_fpga_isram #(
 // Parameters
 // --------------------------------------------------------------------------
   parameter AW = 16,
-   parameter MEMFILE = "C:/Ain_shams/GP/Program/Scratch/main.mem"
+  GROUP0 = "C:/STM-Graduation-Project-2024/Program/main.bin",
+  GROUP1 = "C:/STM-Graduation-Project-2024/Program/main.bin",
+  GROUP2 = "C:/STM-Graduation-Project-2024/Program/main.bin",
+  GROUP3 = "C:/STM-Graduation-Project-2024/Program/main.bin"
  )
  (
   // Inputs
@@ -93,23 +96,12 @@ reg [7:0] fileimage [0:((MEM_SIZE)-1)];
   integer i;
   initial begin
     //  Initialize memory content to avoid X value on bus
-    for (i = 0; i <= AWT; i=i+1)
-      begin
-        BRAM0[i] = 8'h00;
-        BRAM1[i] = 8'h00;
-        BRAM2[i] = 8'h00;
-        BRAM3[i] = 8'h00;
-      end
+    
 
-      $readmemh(MEMFILE, fileimage);
-            // Copy from single array to splitted array
-          for (i=0;i<(MEM_SIZE/4); i= i+1)
-          begin
-            BRAM3[i] = fileimage[i*4+3];
-            BRAM2[i] = fileimage[i*4+2];
-            BRAM1[i] = fileimage[i*4+1];
-            BRAM0[i] = fileimage[i*4];
-      
-          end
+      $readmemb (GROUP0,BRAM0);
+      $readmemb (GROUP1,BRAM1);
+      $readmemb (GROUP2,BRAM2);
+      $readmemb (GROUP3,BRAM3);
+
   end
 endmodule

@@ -29,6 +29,7 @@
 #include "watchdog_driver.h"
 #include "timer_driver.h"
 #include "dualtimer_driver.h"
+#include "spi_driver.h"
 
 
 extern uint32_t _etext;
@@ -39,30 +40,39 @@ extern uint32_t _ebss;
 
 /* stack declared in blinky.ld */
 extern const uint32_t StackTop;
-
-gpio_configuration        GPIO_config;
+gpio_configuration GPIO_Config;
+spi_configuration SPI_Config;
 
 void SystemInit(void) 
 {
 
-    GPIO_config.outenableset = 0x00FF;
-    GPIO_config.type = 0x0F;
-    GPIO_config.int_num = 0x0F;
-    GPIO_config.alt_func_num = 0x0;      // alt_func
-    GPIO_config.alt_func_sel_num = 0x00; //selector 
-    gpio_config(GPIO0, &GPIO_config);
+    GPIO_Config.outenableset = 0xF000;
+    GPIO_Config.type = 0;
+    GPIO_Config.int_num = 0;
+    GPIO_Config.alt_func_num = 0x0FFF;      // alt_func
+    GPIO_Config.alt_func_sel_num = 0; //selector 
+    gpio_config(GPIO0, &GPIO_Config);
+
+
+
+    SPI_Config.clock_div    = 0 ;
+    SPI_Config.slave_select = 0 ;
+    SPI_Config.clock_mode   = 0 ;
+    SPI_Config.spi_mode     = 1 ; // master
+    SPI_Config.duplex_type  = 0 ;
+    SPI_Config.tx_int_en    = 1 ;
+    SPI_Config.rx_int_en    = 1 ;
+    spi_config(SPI0, &SPI_Config);
 
 }
 
 int main(void) 
 {
-    NVIC_EnableIRQ(0); //Pin0 Interrupt enable 
-    NVIC_EnableIRQ(1); //Pin1 Interrupt enable 
-    NVIC_EnableIRQ(2); //Pin2 Interrupt enable
-    NVIC_EnableIRQ(3); //Pin3 Interrupt enable
 
-    gpio_write_out_data(GPIO0,0x0EF);
-    gpio_read_pin(GPIO0);
+    gpio_write_out_data(GPIO0,0xF000);
+    spi_send_data(SPI0, 0x54);
+    spi_enable(SPI0);
+
 
 
 

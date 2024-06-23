@@ -1,6 +1,12 @@
-module SYSTEM_TOP #(parameter AW       = 16,
+module SYSTEM_TOP #(parameter AW       			 = 16,
 							  Include_dual_timer = 1,
-							  MEMFILE = "../Program/Scratch/main.bin")
+							  Include_SPI        = 1,
+							  Include_DMA = 1,
+							  GROUP0 = "c:/Users/20155/Downloads/group_0.bin",
+							  GROUP1 = "c:/Users/20155/Downloads/group_1.bin",
+							  GROUP2 = "c:/Users/20155/Downloads/group_2.bin",
+							  GROUP3 = "c:/Users/20155/Downloads/group_3.bin"
+							  )
 ( 
 
     input wire           HCLK,
@@ -11,8 +17,27 @@ module SYSTEM_TOP #(parameter AW       = 16,
 	output wire       	TXD1,		
 	input  wire       	RXD1,		
 	output wire       	TXD1_EN,		
-	input  wire			EXTIN, 		
-	inout wire [15:0]   SYSTEM_OUT);
+	input  wire			EXTIN, 	
+    output [15:0]      PORTOUT,
+	input  [15:0]      PORTIN,
+	output [15:0]      PORTEN,
+
+	output SCK_clk, // master output
+	output MOSII, // master output
+	input  MISO,  // master input
+	output SS0, // output .
+	output MISOO, // slave output
+    input IN_slave, // slave input MOSI
+	input SS, // slave select input
+	input SCK, // input clock to slave
+	output SS1,
+	output SS2,
+	output SS3,
+	output wire        RTS0 ,
+	input wire         CTS0 ,
+	output wire        RTS1 ,
+	input wire         CTS1 
+);
 	
 	
     // Input port SI0 (inputs from cortex)
@@ -95,6 +120,22 @@ module SYSTEM_TOP #(parameter AW       = 16,
     wire        HREADYOUTM3;     // Transfer done
 	wire 		HRESPM3;		 //Response signal
 
+
+    // Output port MI5 (outputs to RCC)
+	wire        HSELM5;          // Slave Select
+    wire [31:0] HADDRM5;         // Address bus
+    wire [1:0]  HTRANSM5;        // Transfer type
+    wire        HWRITEM5;        // Transfer direction
+    wire [2:0]  HSIZEM5;         // Transfer size
+    wire [2:0]  HBURSTM5;        // Burst type
+    wire [3:0]  HPROTM5;         // Protection control
+    wire [31:0] HWDATAM5;        // Write data
+    wire [31:0] HRDATAM5;        // Read data
+    wire        HMASTLOCKM5;     // Locked Sequence
+    wire        HREADYMUXM5;     // Transfer done
+    wire        HREADYOUTM5;     // Transfer done
+	wire 		HRESPM5;		 //Response signal
+
 	/***************************** Clocks and Resets **********************************/
 
 	wire           FCLK ;
@@ -109,7 +150,7 @@ module SYSTEM_TOP #(parameter AW       = 16,
 
 	wire [31:0] irq ;
 
-	wire [13:0] subsystem_interrupt ;
+	wire [16:0] subsystem_interrupt ;
 
 	wire [15:0] GPIOINT ;
 	wire COMBINT;
@@ -120,8 +161,8 @@ module SYSTEM_TOP #(parameter AW       = 16,
 	wire APB_ACTIVE ;
 
 	// GPIO interrupts
-	assign irq[15:0]  = GPIOINT ;
-	assign irq[16] = COMBINT;
+	assign irq[15:0] = GPIOINT ;
+	assign irq[16]   =  subsystem_interrupt[15];   //spi  transmit interrupt
 
 	// APB interrupts
 	assign irq[17]  = subsystem_interrupt[0] ;   // Timer interrupt
@@ -139,7 +180,7 @@ module SYSTEM_TOP #(parameter AW       = 16,
 	assign irq[29]  = subsystem_interrupt[12] ;  // Uart 1 receive overflow interrupt
 	assign irq[30]  = subsystem_interrupt[13] ;  // Uart 1 combined interrupt
 
-	assign irq[31] = 1'b0;
+	assign irq[31]  = subsystem_interrupt[14];    //spi  receiver interrupt
 
 
 /***************************** SYSTEM INSTANTIATION **********************************/
@@ -207,14 +248,22 @@ CORTEXM0INTEGRATION U0_CORTEXM0INTEGRATION (
 	
 
 //RCC
-RCC RCC_instance
+
+ahb_to_RCC RCC_instance
 (
    .HCLK(HCLK),
    .HRESETn(HRESETn),
    .APB_ACTIVE(APB_ACTIVE),
-   .PCLK_PCLKG_DIV(8'd2),
-   .TIMCLK_DIV(8'd2),
-   .WDOGCLK_DIV(8'd2),
+   .HSEL(HSELM5),      // AHB peripheral select
+   .HREADY(HREADYMUXM5),    // AHB ready input
+   .HTRANS(HTRANSM5),    // AHB transfer type
+   .HSIZE(HSIZEM5),     // AHB hsize
+   .HWRITE(HWRITEM5),    // AHB hwrite
+   .HADDR(HADDRM5),     // AHB address bus
+   .HWDATA(HWDATAM5),    // AHB write data bus
+   .HREADYOUT(HREADYOUTM5), // AHB ready output to S->M mux
+   .HRESP(HRESPM5),     // AHB response
+   .HRDATA(HRDATAM5),    // AHB read data bus
    .PCLK(PCLK),
    .PCLKG(PCLKG),
    .PRESETn(PRESETn),
@@ -225,7 +274,7 @@ RCC RCC_instance
 );
 
 //SRAM
-Instruction_SRAM_TOP #(.AW(AW)) Instruction_SRAM_TOP_instance(
+Instruction_SRAM_TOP #(.AW(AW),.GROUP0(GROUP0),.GROUP1(GROUP1),.GROUP2(GROUP2),.GROUP3(GROUP3)) Instruction_SRAM_TOP_instance(
     .HCLK(HCLK),
     .HRESETn(HRESETn),
     .HSEL(HSELM0),
@@ -257,7 +306,7 @@ DATA_SRAM_TOP #(.AW(AW)) DATA_SRAM_TOP_instance(
 );
 
 //APB subsystem
-cmsdk_apb_subsystem #(.Include_dual_timer(Include_dual_timer))  cmsdk_apb_subsystem_instance(
+cmsdk_apb_subsystem #(.Include_dual_timer(Include_dual_timer),.Include_SPI(Include_SPI))  cmsdk_apb_subsystem_instance(
 	    .HCLK(HCLK),
 	    .HRESETn(HRESETn),
 	    .HSEL(HSELM2),
@@ -282,9 +331,25 @@ cmsdk_apb_subsystem #(.Include_dual_timer(Include_dual_timer))  cmsdk_apb_subsys
 	    .RXD0 (RXD0),  
 	    .TXD0_EN(TXD0_EN),
 		.TXD1 (TXD1),
-	    .RXD1 (RXD1),  
+	    .RXD1 (RXD1),
+		.CTS0(CTS0),
+		.RTS0(RTS0),
+		.CTS1(CTS1),
+		.RTS1(RTS1),  
 	    .TXD1_EN(TXD1_EN),
-	    .EXTIN(EXTIN),  
+	    .EXTIN(EXTIN),
+	    .SCK_clk(SCK_clk), // master output
+	    .MOSII(MOSII), // master output
+	    .MISO(MISO),  // master input
+	    .SS0(SS0), // output .
+	    .MISOO(MISOO), // slave output
+        .IN_slave(IN_slave), // slave input MOSI
+	    .SS(SS), // slave select input
+	    .SCK(SCK), // input clock to slave
+	    .SS1(SS1),
+	    .SS2(SS2),
+	    .SS3(SS3),
+        .enable_master(enable_master),
 	    .subsystem_interrupt(subsystem_interrupt), 
 	    .watchdog_interrupt(watchdog_interrupt),   
 	    .watchdog_reset(watchdog_reset)            
@@ -292,7 +357,7 @@ cmsdk_apb_subsystem #(.Include_dual_timer(Include_dual_timer))  cmsdk_apb_subsys
 
 
 //GPIO
-GPIO_HW cmsdk_ahb_gpio_instance (
+cmsdk_ahb_gpio cmsdk_ahb_gpio_instance (
 	    .HCLK(HCLK),
 	    .HRESETn(HRESETn),
 	    .FCLK(FCLK),
@@ -307,93 +372,391 @@ GPIO_HW cmsdk_ahb_gpio_instance (
 	    .HREADYOUT(HREADYOUTM3),
 	    .HRESP(HRESPM3),
 	    .HRDATA(HRDATAM3),
-		.PORT_IN_OUT(SYSTEM_OUT),
+		.PORTOUT(PORTOUT),
+		.PORTIN(PORTIN),
+		.PORTEN(PORTEN),
+		.PORTFUNC(),
+		//.ALT_FUNC(),
 	    .GPIOINT(GPIOINT),
 	    .COMBINT(COMBINT)
 
 );
 
 
-//Bus matrix
-AHB_BusMatrix_lite AHB_BusMatrix_lite_instance (
-        .HCLK(HCLK),
-	    .HRESETn(HRESETn),
-	    .REMAP(4'b0), //Remapping signal is not used in our top module or system
-	    .HADDRS0(HADDRS0),
-	    .HTRANSS0(HTRANSS0),
-	    .HWRITES0(HWRITES0),
-	    .HSIZES0(HSIZES0),
-	    .HBURSTS0(HBURSTS0),
-	    .HPROTS0(HPROTS0),
-	    .HWDATAS0(HWDATAS0),
-	    .HMASTLOCKS0(HMASTLOCKS0),
-	    
-	    .HRDATAM0(HRDATAM0),
-	    .HREADYOUTM0(HREADYOUTM0),
-	    .HRESPM0(HRESPM0),
-	    .HSELM0(HSELM0),
-	    .HADDRM0(HADDRM0),
-	    .HTRANSM0(HTRANSM0),
-	    .HWRITEM0(HWRITEM0),
-	    .HSIZEM0(HSIZEM0),
-	    .HBURSTM0(HBURSTM0),
-	    .HPROTM0(HPROTM0),
-	    .HWDATAM0(HWDATAM0),
-	    .HMASTLOCKM0(HMASTLOCKM0),
-	    .HREADYMUXM0(HREADYMUXM0),
-	    .HRDATAS0(HRDATAS0),
-	    .HREADYS0(HREADYS0),
-	    .HRESPS0(HRESPS0),
+generate
+	if (Include_DMA) begin
 
-	    
-	    .HRDATAM2(HRDATAM2),
-	    .HREADYOUTM2(HREADYOUTM2),
-	    .HRESPM2(HRESPM2),
-	    .HSELM2(HSELM2),
-	    .HADDRM2(HADDRM2),
-	    .HTRANSM2(HTRANSM2),
-	    .HWRITEM2(HWRITEM2),
-	    .HSIZEM2(HSIZEM2),
-	    .HBURSTM2(HBURSTM2),
-	    .HPROTM2(HPROTM2),
-	    .HWDATAM2(HWDATAM2),
-	    .HMASTLOCKM2(HMASTLOCKM2),
-	    .HREADYMUXM2(HREADYMUXM2),
+		wire  [31:0] HADDRS1;         // Address bus
+		wire  [1:0] HTRANSS1;        // Transfer type
+		wire        HWRITES1;        // Transfer direction
+		wire  [2:0] HSIZES1;         // Transfer size
+		wire  [2:0] HBURSTS1;        // Burst type
+		wire  [3:0] HPROTS1;         // Protection control
+		wire [31:0] HWDATAS1;        // Write data
+		wire [31:0] HRDATAS1;        // Read data bus
+		wire        HREADYS1;     // HREADY feedback
+		wire        HRESPS1;         // Transfer response
 
-		
-		
-		.HRDATAM3(HRDATAM3),
-	    .HREADYOUTM3(HREADYOUTM3),
-	    .HRESPM3(HRESPM3),
-	    .HSELM3(HSELM3),
-	    .HADDRM3(HADDRM3),
-	    .HTRANSM3(HTRANSM3),
-	    .HWRITEM3(HWRITEM3),
-	    .HSIZEM3(HSIZEM3),
-	    .HBURSTM3(HBURSTM3),
-	    .HPROTM3(HPROTM3),
-	    .HWDATAM3(HWDATAM3),
-	    .HMASTLOCKM3(HMASTLOCKM3),
-	    .HREADYMUXM3(HREADYMUXM3),
+		wire [31:0] HRDATAM4;        // Read data bus
+		wire        HREADYOUTM4;     // HREADY feedback
+		wire        HRESPM4;         // Transfer response
+		wire        HSELM4;          // Slave Select
+		wire [31:0] HADDRM4;         // Address bus
+		wire  [1:0] HTRANSM4;        // Transfer type
+		wire        HWRITEM4;        // Transfer direction
+		wire  [2:0] HSIZEM4;         // Transfer size
+		wire  [2:0] HBURSTM4;        // Burst type
+		wire  [3:0] HPROTM4;         // Protection control
+		wire [31:0] HWDATAM4;        // Write data
+		wire        HREADYMUXM4;     // Transfer done
 
-	    
-	    .HRDATAM1(HRDATAM1),
-	    .HREADYOUTM1(HREADYOUTM1),
-	    .HRESPM1(HRESPM1),
-	    .HSELM1(HSELM1),
-	    .HADDRM1(HADDRM1),
-	    .HTRANSM1(HTRANSM1),
-	    .HWRITEM1(HWRITEM1),
-	    .HSIZEM1(HSIZEM1),
-	    .HBURSTM1(HBURSTM1),
-	    .HPROTM1(HPROTM1),
-	    .HWDATAM1(HWDATAM1),
-	    .HMASTLOCKM1(HMASTLOCKM1),
-	    .HREADYMUXM1(HREADYMUXM1),
-	    .SCANENABLE(1'b0),
-	    .SCANINHCLK(1'b0),
-	    .SCANOUTHCLK()
-);
+		// chXX_conf = { CBUF, ED, ARS, EN }
+		parameter         rf_addr  = 4;
+		parameter [1:0]   pri_sel  = 2'h0;
+		parameter         ch_count = 1;
+		parameter [3:0]   ch0_conf = 4'h1;
+		parameter [3:0]   ch1_conf = 4'h0;
+		parameter [3:0]   ch2_conf = 4'h0;
+		parameter [3:0]   ch3_conf = 4'h0;
+		parameter [3:0]   ch4_conf = 4'h0;
+		parameter [3:0]   ch5_conf = 4'h0;
+		parameter [3:0]   ch6_conf = 4'h0;
+		parameter [3:0]   ch7_conf = 4'h0;
+		parameter [3:0]   ch8_conf = 4'h0;
+		parameter [3:0]   ch9_conf = 4'h0;
+		parameter [3:0]   ch10_conf = 4'h0;
+		parameter [3:0]   ch11_conf = 4'h0;
+		parameter [3:0]   ch12_conf = 4'h0;
+		parameter [3:0]   ch13_conf = 4'h0;
+		parameter [3:0]   ch14_conf = 4'h0;
+		parameter [3:0]   ch15_conf = 4'h0;
+		parameter [3:0]   ch16_conf = 4'h0;
+		parameter [3:0]   ch17_conf = 4'h0;
+		parameter [3:0]   ch18_conf = 4'h0;
+		parameter [3:0]   ch19_conf = 4'h0;
+		parameter [3:0]   ch20_conf = 4'h0;
+		parameter [3:0]   ch21_conf = 4'h0;
+		parameter [3:0]   ch22_conf = 4'h0;
+		parameter [3:0]   ch23_conf = 4'h0;
+		parameter [3:0]   ch24_conf = 4'h0;
+		parameter [3:0]   ch25_conf = 4'h0;
+		parameter [3:0]   ch26_conf = 4'h0;
+		parameter [3:0]   ch27_conf = 4'h0;
+		parameter [3:0]   ch28_conf = 4'h0;
+		parameter [3:0]   ch29_conf = 4'h0;
+		parameter [3:0]   ch30_conf = 4'h0;
+
+		wire [ch_count-1:0] dma_req_i;
+		wire [ch_count-1:0] dma_ack_o;
+		wire 				irqa_o;
+		wire 				irqb_o;
+
+		//Bus matrix
+		AHB_BusMatrix_DMA_lite AHB_BusMatrix_lite_instance (
+			.HCLK(HCLK),
+			.HRESETn(HRESETn),
+			.REMAP(4'b0), //Remapping signal is not used in our top module or system
+			
+			.HADDRS0(HADDRS0),
+			.HTRANSS0(HTRANSS0),
+			.HWRITES0(HWRITES0),
+			.HSIZES0(HSIZES0),
+			.HBURSTS0(HBURSTS0),
+			.HPROTS0(HPROTS0),
+			.HWDATAS0(HWDATAS0),
+			.HMASTLOCKS0(HMASTLOCKS0),
+			.HRDATAS0(HRDATAS0),
+			.HREADYS0(HREADYS0),
+			.HRESPS0(HRESPS0),
+
+			.HADDRS1(HADDRS1),
+			.HTRANSS1(HTRANSS1),
+			.HWRITES1(HWRITES1),
+			.HSIZES1(HSIZES1),
+			.HBURSTS1(HBURSTS1),
+			.HPROTS1(HPROTS1),
+			.HWDATAS1(HWDATAS1),
+			.HMASTLOCKS1(HMASTLOCKS1),
+			.HRDATAS1(HRDATAS1),
+    		.HREADYS1(HREADYS1),
+    		.HRESPS1(HRESPS1),
+			
+			.HRDATAM0(HRDATAM0),
+			.HREADYOUTM0(HREADYOUTM0),
+			.HRESPM0(HRESPM0),
+			.HSELM0(HSELM0),
+			.HADDRM0(HADDRM0),
+			.HTRANSM0(HTRANSM0),
+			.HWRITEM0(HWRITEM0),
+			.HSIZEM0(HSIZEM0),
+			.HBURSTM0(HBURSTM0),
+			.HPROTM0(HPROTM0),
+			.HWDATAM0(HWDATAM0),
+			.HMASTLOCKM0(HMASTLOCKM0),
+			.HREADYMUXM0(HREADYMUXM0),
+			
+
+			.HRDATAM1(HRDATAM1),
+			.HREADYOUTM1(HREADYOUTM1),
+			.HRESPM1(HRESPM1),
+			.HSELM1(HSELM1),
+			.HADDRM1(HADDRM1),
+			.HTRANSM1(HTRANSM1),
+			.HWRITEM1(HWRITEM1),
+			.HSIZEM1(HSIZEM1),
+			.HBURSTM1(HBURSTM1),
+			.HPROTM1(HPROTM1),
+			.HWDATAM1(HWDATAM1),
+			.HMASTLOCKM1(HMASTLOCKM1),
+			.HREADYMUXM1(HREADYMUXM1),
+
+			
+			.HRDATAM2(HRDATAM2),
+			.HREADYOUTM2(HREADYOUTM2),
+			.HRESPM2(HRESPM2),
+			.HSELM2(HSELM2),
+			.HADDRM2(HADDRM2),
+			.HTRANSM2(HTRANSM2),
+			.HWRITEM2(HWRITEM2),
+			.HSIZEM2(HSIZEM2),
+			.HBURSTM2(HBURSTM2),
+			.HPROTM2(HPROTM2),
+			.HWDATAM2(HWDATAM2),
+			.HMASTLOCKM2(HMASTLOCKM2),
+			.HREADYMUXM2(HREADYMUXM2),
+
+			
+			.HRDATAM3(HRDATAM3),
+			.HREADYOUTM3(HREADYOUTM3),
+			.HRESPM3(HRESPM3),
+			.HSELM3(HSELM3),
+			.HADDRM3(HADDRM3),
+			.HTRANSM3(HTRANSM3),
+			.HWRITEM3(HWRITEM3),
+			.HSIZEM3(HSIZEM3),
+			.HBURSTM3(HBURSTM3),
+			.HPROTM3(HPROTM3),
+			.HWDATAM3(HWDATAM3),
+			.HMASTLOCKM3(HMASTLOCKM3),
+			.HREADYMUXM3(HREADYMUXM3),
+
+			.HRDATAM4(HRDATAM4),
+    		.HREADYOUTM4(HREADYOUTM4),
+    		.HRESPM4(HRESPM4),
+			.HSELM4(HSELM4),
+    		.HADDRM4(HADDRM4),
+    		.HTRANSM4(HTRANSM4),
+    		.HWRITEM4(HWRITEM4),
+    		.HSIZEM4(HSIZEM4),
+    		.HBURSTM4(HBURSTM4),
+    		.HPROTM4(HPROTM4),
+    		.HWDATAM4(HWDATAM4),
+    		.HMASTLOCKM4(HMASTLOCKM4),
+    		.HREADYMUXM4(HREADYMUXM4),
+
+
+			.HRDATAM5(HRDATAM5),
+    		.HREADYOUTM5(HREADYOUTM5),
+    		.HRESPM5(HRESPM5),
+			.HSELM5(HSELM5),
+    		.HADDRM5(HADDRM5),
+    		.HTRANSM5(HTRANSM5),
+    		.HWRITEM5(HWRITEM5),
+    		.HSIZEM5(HSIZEM5),
+    		.HBURSTM5(HBURSTM5),
+    		.HPROTM5(HPROTM5),
+    		.HWDATAM5(HWDATAM5),
+    		.HMASTLOCKM5(HMASTLOCKM5),
+    		.HREADYMUXM5(HREADYMUXM5),
+
+			
+			.SCANENABLE(1'b0),
+			.SCANINHCLK(1'b0),
+			.SCANOUTHCLK()
+		);
+
+		ahb3lite_dma #(
+			// chXX_conf = { CBUF, ED, ARS, EN }
+			rf_addr,
+			pri_sel,
+			ch_count,
+			ch0_conf,
+			ch1_conf,
+			ch2_conf,
+			ch3_conf,
+			ch4_conf,
+			ch5_conf,
+			ch6_conf,
+			ch7_conf,
+			ch8_conf,
+			ch9_conf,
+			ch10_conf,
+			ch11_conf,
+			ch12_conf,
+			ch13_conf,
+			ch14_conf,
+			ch15_conf,
+			ch16_conf,
+			ch17_conf,
+			ch18_conf,
+			ch19_conf,
+			ch20_conf,
+			ch21_conf,
+			ch22_conf,
+			ch23_conf,
+			ch24_conf,
+			ch25_conf,
+			ch26_conf,
+			ch27_conf,
+			ch28_conf,
+			ch29_conf,
+			ch30_conf 
+		) DMA_instance (
+			// Common signals
+			.clk_i(HCLK),
+			.rst_n_i(HRESETn),
+
+			// --------------------------------------
+			// AHB3-Lite INTERFACE 0
+			// Slave Interface
+			.s0HSEL(HSELM4),
+			.s0HADDR(HADDRM4),
+			.s0HWDATA(HWDATAM4),
+			.s0HRDATA(HRDATAM4),
+			.s0HWRITE(HWRITEM4),
+			.s0HSIZE(HSIZEM4),
+			.s0HBURST(HBURSTM4),
+			.s0HPROT(HPROTM4),
+			.s0HTRANS(HTRANSM4),
+			.s0HREADYOUT(HREADYOUTM4),
+			.s0HREADY(HREADYMUXM4),
+			.s0HRESP(HRESPM4),
+
+			// Master Interface
+			.m0HSEL(),
+			.m0HADDR(HADDRS1),
+			.m0HWDATA(HWDATAS1),
+			.m0HRDATA(HRDATAS1),
+			.m0HWRITE(HWRITES1),
+			.m0HSIZE(HSIZES1),
+			.m0HBURST(HBURSTS1),
+			.m0HPROT(HPROTS1),
+			.m0HTRANS(HTRANSS1),
+			.m0HREADYOUT(),
+			.m0HREADY(HREADYS1),
+			.m0HRESP(HRESPS1),
+
+
+			// --------------------------------------
+			// Misc Signal(),
+			.dma_req_i(dma_req_i),
+			.dma_nd_i(0),
+			.dma_ack_o(dma_ack_o),
+			.dma_rest_i(0),
+			.irqa_o(irqa_o),
+			.irqb_o(irqb_o)
+		);
+	end
+
+	else begin
+		//Bus matrix
+		AHB_BusMatrix_lite AHB_BusMatrix_lite_instance (
+			.HCLK(HCLK),
+			.HRESETn(HRESETn),
+			.REMAP(4'b0), //Remapping signal is not used in our top module or system
+			.HADDRS0(HADDRS0),
+			.HTRANSS0(HTRANSS0),
+			.HWRITES0(HWRITES0),
+			.HSIZES0(HSIZES0),
+			.HBURSTS0(HBURSTS0),
+			.HPROTS0(HPROTS0),
+			.HWDATAS0(HWDATAS0),
+			.HMASTLOCKS0(HMASTLOCKS0),
+			
+			.HRDATAM0(HRDATAM0),
+			.HREADYOUTM0(HREADYOUTM0),
+			.HRESPM0(HRESPM0),
+			.HSELM0(HSELM0),
+			.HADDRM0(HADDRM0),
+			.HTRANSM0(HTRANSM0),
+			.HWRITEM0(HWRITEM0),
+			.HSIZEM0(HSIZEM0),
+			.HBURSTM0(HBURSTM0),
+			.HPROTM0(HPROTM0),
+			.HWDATAM0(HWDATAM0),
+			.HMASTLOCKM0(HMASTLOCKM0),
+			.HREADYMUXM0(HREADYMUXM0),
+			.HRDATAS0(HRDATAS0),
+			.HREADYS0(HREADYS0),
+			.HRESPS0(HRESPS0),
+
+			
+			.HRDATAM2(HRDATAM2),
+			.HREADYOUTM2(HREADYOUTM2),
+			.HRESPM2(HRESPM2),
+			.HSELM2(HSELM2),
+			.HADDRM2(HADDRM2),
+			.HTRANSM2(HTRANSM2),
+			.HWRITEM2(HWRITEM2),
+			.HSIZEM2(HSIZEM2),
+			.HBURSTM2(HBURSTM2),
+			.HPROTM2(HPROTM2),
+			.HWDATAM2(HWDATAM2),
+			.HMASTLOCKM2(HMASTLOCKM2),
+			.HREADYMUXM2(HREADYMUXM2),
+
+			
+			
+			.HRDATAM3(HRDATAM3),
+			.HREADYOUTM3(HREADYOUTM3),
+			.HRESPM3(HRESPM3),
+			.HSELM3(HSELM3),
+			.HADDRM3(HADDRM3),
+			.HTRANSM3(HTRANSM3),
+			.HWRITEM3(HWRITEM3),
+			.HSIZEM3(HSIZEM3),
+			.HBURSTM3(HBURSTM3),
+			.HPROTM3(HPROTM3),
+			.HWDATAM3(HWDATAM3),
+			.HMASTLOCKM3(HMASTLOCKM3),
+			.HREADYMUXM3(HREADYMUXM3),
+
+			
+			.HRDATAM1(HRDATAM1),
+			.HREADYOUTM1(HREADYOUTM1),
+			.HRESPM1(HRESPM1),
+			.HSELM1(HSELM1),
+			.HADDRM1(HADDRM1),
+			.HTRANSM1(HTRANSM1),
+			.HWRITEM1(HWRITEM1),
+			.HSIZEM1(HSIZEM1),
+			.HBURSTM1(HBURSTM1),
+			.HPROTM1(HPROTM1),
+			.HWDATAM1(HWDATAM1),
+			.HMASTLOCKM1(HMASTLOCKM1),
+			.HREADYMUXM1(HREADYMUXM1),
+
+            .HRDATAM5(HRDATAM5),
+    		.HREADYOUTM5(HREADYOUTM5),
+    		.HRESPM5(HRESPM5),
+			.HSELM5(HSELM5),
+    		.HADDRM5(HADDRM5),
+    		.HTRANSM5(HTRANSM5),
+    		.HWRITEM5(HWRITEM5),
+    		.HSIZEM5(HSIZEM5),
+    		.HBURSTM5(HBURSTM5),
+    		.HPROTM5(HPROTM5),
+    		.HWDATAM5(HWDATAM5),
+    		.HMASTLOCKM5(HMASTLOCKM5),
+    		.HREADYMUXM5(HREADYMUXM5),
+
+
+			.SCANENABLE(1'b0),
+			.SCANINHCLK(1'b0),
+			.SCANOUTHCLK()
+		);
+	end
+endgenerate
 
 	
 	

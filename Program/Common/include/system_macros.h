@@ -13,11 +13,10 @@
 
 /* APB peripherals                                                           */
 #define CMSDK_TIMER0_BASE       (CMSDK_APB_BASE + 0x2000UL)
-#define CMSDK_TIMER1_BASE       (CMSDK_APB_BASE + 0x8000UL)
+//#define CMSDK_TIMER1_BASE       (CMSDK_APB_BASE + 0x8000UL)
 #define CMSDK_DUALTIMER_BASE    (CMSDK_APB_BASE + 0x5000UL)
 #define CMSDK_DUALTIMER_1_BASE  (CMSDK_DUALTIMER_BASE)
 #define CMSDK_DUALTIMER_2_BASE  (CMSDK_DUALTIMER_BASE + 0x20UL)
-#define  UART0_BASE        (CMSDK_APB_BASE)
 #define  UART1_BASE        (CMSDK_APB_BASE + 0x4000UL)
 #define  UART2_BASE        (CMSDK_APB_BASE + 0x6000UL)
 // Uart 3 is fitted to FPGA build for Arduino support
@@ -28,6 +27,7 @@
 
 // SPI0
 #define SPI0_BASE               (CMSDK_APB_BASE + 0x3000UL)
+#define RCC_BASE                (CMSDK_APB_BASE + 0x8000UL)
 
 /* AHB peripherals                                                           */
 #define GPIO0_BASE        (CMSDK_AHB_BASE + 0x0000UL)
@@ -38,9 +38,10 @@
 
 //////////////////////////////////Define used pointers
 
+#define  UART0_BASE        (CMSDK_APB_BASE)
 #define  UART0             (( uart_typedef   *)  UART0_BASE   )
-#define  UART1             (( uart_typedef   *)  UART1_BASE   )
 
+#define  UART1             (( uart_typedef   *)  UART1_BASE   )
 #define  UART2             (( uart_typedef   *)  UART2_BASE   )
 #define  UART3             (( uart_typedef   *)  UART3_BASE   )
 
@@ -62,6 +63,8 @@
 #define CMSDK_GPIO1             ((gpio_typedef   *) CMSDK_GPIO1_BASE   )
 
 #define SPI0                    ((spi_typedef       *) SPI0_BASE )
+
+#define RCC0                     ((rcc_typedef       *) RCC_BASE )
 
 #define CMSDK_SYSCON            ((CMSDK_SYSCON_TypeDef *) CMSDK_SYSCTRL_BASE )
 
